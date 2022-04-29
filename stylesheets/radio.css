@@ -51,10 +51,10 @@
 }
 
 .radio_card{
-    width:50%;
+    max-width:calc(30% - 40px);
     color:white;
     text-align: center;
-    margin:1em;
+    margin:20px;
     padding: 0 1em 1em 1em;
     border-radius: 10px;
     background-color:#ffffff12;
@@ -64,5 +64,6 @@
 @media screen and (max-width: 530px) {
     .radio_card{
         width:100%;
+        max-width: none;
     }
 }
