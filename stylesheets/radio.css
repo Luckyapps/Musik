@@ -46,12 +46,13 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .radio_card{
-    max-width: 50%;
+    max-width: 360px;
     color:white;
     text-align: center;
     margin:20px;
@@ -61,7 +62,7 @@
     backdrop-filter: blur(20px);
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 540px) {
     .radio_card{
         width:100%;
         max-width: none;
@@ -70,8 +71,13 @@
 
 .microsite{
     width:unset !important;
-    padding:1em;
-    border-radius: 1em;
+    padding:1em !important;
+    border-radius: 1em !important;
+}
+
+body.microsite, .microsite{
+    background: #0000002e !important;
+    backdrop-filter: blur(3px) !important;
 }
 
 .rde-app-page-header{
