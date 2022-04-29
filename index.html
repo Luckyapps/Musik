@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head><!---->
+    <meta charset="utf-8">
+    <html lang="de-de">
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png"> <!-- Apple App icon 
+    <link rel="icon" href="media/Ahorn_Logo_Final_RESIZE.png" type="image/png">-->
+    <meta name="theme-color" content="black"/> <!-- Theme color -->
+    <!--<link rel="manifest" href="manifest.json">  Webapp manifest -->
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Put your description here."><!-- Beschreibung der Seite für die Google Suche-->
+    <title>Musik</title>  <!-- Tab titel -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/version_history.css" rel="stylesheet" type="text/css" />
+    <!--<link href="stylesheets/titlebar.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/content.css" rel="stylesheet" type="text/css" />-->
+    <link href="stylesheets/error.css" rel="stylesheet" type="text/css" />
+    <!--<link href="stylesheets/sidecard.css" rel="stylesheet" type="text/css" />-->
+    <link href="stylesheets/cookies.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/home.css" rel="stylesheet" type="text/css" />
+    <!--<link href="stylesheets/darkmode.css" rel="stylesheet" type="text/css" />-->
+</head>
+<body>
+    <script src="script.js"></script>
+    <script src="stylesheets/version_history.js"></script>
+    <script src="stylesheets/titlebar.js"></script>
+    <script src="stylesheets/content.js"></script>
+    <script src="stylesheets/error.js"></script>
+    <script src="stylesheets/sidecard.js"></script>
+    <script src="stylesheets/cookies.js"></script>
+    <script src="stylesheets/darkmode.js"></script>
+
+    <div id="content_center">
+      <h1>Musik</h1>
+      <div class="content_center_links">
+        <a href="radio/index.html">Radio</a>
+        <a>Musik</a>
+      </div>
+    </div>
+
+    <!--Error-->
+    <div class="error_style_container"><div id="error_container" class="error_hidden"></div></div>
+
+    <!--Version_History and Watermark-->
+    <div title="Versionsinformation" id="watermark">App by <a href="">Luckyapps</a> | dvc.1.22041.0</div>
+     <div id="version_history_grid_container">
+       <div id="version_history_container" class="version_history_closed_FIRST">
+         <h2>Versionen:</h2>
+         <div>
+           <h3>dvc.1.22041.1</h3>
+           <ul>
+             <li>Projekt wurde erstellt: ALLES IST NEU!</li>
+           </ul>
+         </div>
+         <div id="version_history_toolbar">
+           <div style="cursor:help" id="version_history_info_open">?</div>
+           <div id="version_history_close">X</div>
+         </div>
+       </div>
+     </div>
+
+    <!--cookies-->
+    <div class="cookie_container_hide" id="cookie_container">
+        <div  id="cookie_content">
+          <h3>Cookies</h3>
+          <div>Bei Nutzung der Website stimmen Sie zu, dass die Website notwendige technische Nutzerdaten (z.B. Darkmode-Einstellungen, Cookieauswahl) lokal im Browser speichert.</div>
+          <div id="cookie_selection">
+            <div id="cookies_close" onclick="cookie_content_close()">Fortfahren</div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      
+    <!--Version_history_info_content-->
+    <div id="vers-hist-info-cont" style="display: none;">
+        <h2>Versionsinformation</h2>
+        <pre>---------------AHORN----------------
+          ------------------------------------
+          Versionsnummern:
+          
+          VN.X.Y.Z
+          
+          Versionsnamen(VN):
+          
+          v: stable version
+          bv: beta version
+          av: alpha version
+          dv: development version
+          dvc: development verison current (under construction, no further information available)
+          
+          Hauptversionsnummer(X):
+          
+          Große Funktions/Designänderungen (z.B.: neues UI, neuer Aufbau)
+          
+          Buildnummern(Y):
+          ->Aufbau: JahrMonatNummer (z.B.: 22011)
+          
+          kleinere Änderungen in der Hauptversion (z.B.: kleine Designänderungen, verbesserungen im Code)
+          
+          Fixnummer(Z):
+          
+          Fixes von kleinen Bugs und Fehlerbehebungen
+          
+          
+          ------------------------------------
+          --------------Versionen-------------
+          ------------------------------------
+          bv.1.22024.2:
+          --> 
+          ------------------------------------
+          bv.1.22022.1:
+          --> Versionsnummern und Erläuterungen hinzugefügt.
+          ------------------------------------
+          </pre>
+      </div>
+</body>
+</html>
