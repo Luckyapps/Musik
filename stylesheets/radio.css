@@ -75,5 +75,5 @@
 }
 
 .rde-app-page-header{
-    top:0 !important;
+    position:unset !important;
 }
