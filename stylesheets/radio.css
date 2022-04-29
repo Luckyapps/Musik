@@ -63,12 +63,12 @@
     margin:20px;
     padding: 0 1em 1em 1em;
     border-radius: 10px;
-    background-color:#ffffff12;
+    background-color:/*#ffffff12*/#0000008a;
     backdrop-filter: blur(20px);
 }
 
 .radio_card p{
-    color:#757575;
+    color:/*#757575*/#8f8f8f;
 }
 
 @media screen and (max-width: 540px) {
