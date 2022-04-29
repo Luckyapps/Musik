@@ -51,7 +51,7 @@
 }
 
 .radio_card{
-    max-width:calc(30% - 40px);
+    max-width: 50%;
     color:white;
     text-align: center;
     margin:20px;
@@ -66,4 +66,14 @@
         width:100%;
         max-width: none;
     }
+}
+
+.microsite{
+    width:unset !important;
+    padding:1em;
+    border-radius: 1em;
+}
+
+.rde-app-page-header{
+    top:0 !important;
 }
