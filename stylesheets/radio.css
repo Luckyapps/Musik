@@ -38,5 +38,31 @@
 }
 
 .radio_content{
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
 
+.radio_card{
+    width:50%;
+    color:white;
+    text-align: center;
+    margin:1em;
+    padding: 0 1em 1em 1em;
+    border-radius: 10px;
+    background-color:#ffffff12;
+    backdrop-filter: blur(20px);
+}
+
+@media screen and (max-width: 530px) {
+    .radio_card{
+        width:100%;
+    }
 }
