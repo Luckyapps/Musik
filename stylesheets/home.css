@@ -1,6 +1,7 @@
 #content_center{
     background-color: #ffffff10;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     position: absolute;
     border: 1px solid transparent;
     border-radius: 1em;
@@ -35,6 +36,7 @@
     padding: 0.5em;
     border-radius: 10px;
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
