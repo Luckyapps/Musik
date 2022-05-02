@@ -13,6 +13,12 @@
     color: white;
     font-size: 1.5em;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    box-sizing: border-box;
+}
+
+#content_center h1{
+    background-color: red;
+    border-radius: 10px;
 }
 
 .content_center_links{
@@ -46,5 +52,15 @@
 @media screen and (min-width: 2000px) { /*Wenn die Displaybreite größer als 2000px*/
     #content_center{
         font-size:2.5em;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    #content_center{
+        width: 100%;
+    }
+    #content_center h1{
+        background-color: none;
+        border-radius: 10px;
     }
 }

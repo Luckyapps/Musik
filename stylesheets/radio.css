@@ -63,7 +63,7 @@
     margin:20px;
     padding: 0 1em 1em 1em;
     border-radius: 10px;
-    background-color:/*#ffffff12*/#0000008a;
+    background-color:/*#ffffff12#0000008a*/ #ffffff12;
     backdrop-filter: blur(20px);
 }
 
@@ -75,6 +75,20 @@
     .radio_card{
         width:100%;
         max-width: none;
+        margin: 10px 0 10px 0;
+    }
+    .title{
+        top:unset;
+        bottom:0;
+    }
+    .title h1{
+        background-color: #4fb52a96;
+    }
+    .title a{
+        background-color: #b52a2a96;
+    }
+    .radio_content{
+        top:0;
     }
 }
 
