@@ -80,6 +80,8 @@
     .title{
         top:unset;
         bottom:0;
+        padding-top: 148px;
+        background-image: linear-gradient(to top, black 67px, transparent);
     }
     .title h1{
         background-color: #4fb52a96;
