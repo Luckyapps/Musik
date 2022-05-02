@@ -11,6 +11,11 @@ function title_radio(evt){
     for(i=0; i<document.getElementsByClassName("radio_card").length; i++){
         if(document.getElementsByClassName("radio_card")[i].contains(evt.target)){
             document.title = "Luckyapp_Radio: "+ document.getElementsByClassName("radio_card")[i].title;
+            if(document.getElementsByClassName("radio_card")[i].title != "" || null || undefined){
+                document.getElementsByClassName("title")[0].getElementsByTagName("h1")[0].innerHTML = document.getElementsByClassName("radio_card")[i].title;
+            }else{
+                document.getElementsByClassName("title")[0].getElementsByTagName("h1")[0].innerHTML = "Radio";
+            }
             return;
         }
     }
