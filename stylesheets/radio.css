@@ -68,7 +68,7 @@
 }
 
 .radio_card p{
-    color:/*#757575*/#8f8f8f;
+    color:/*#757575#8f8f8f*/#c8c8c8;
 }
 
 @media screen and (max-width: 540px) {
@@ -89,6 +89,7 @@
     }
     .radio_content{
         top:0;
+        padding-bottom: 100px;
     }
 }
 
