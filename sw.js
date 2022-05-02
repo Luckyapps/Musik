@@ -8,7 +8,7 @@ self.addEventListener('install', function (event) {
       .then(function (cache) {
         console.log('Precaching App Shell');
         cache.addAll([
-          '/index.html' // offline page  
+          'index.html' // offline page  
           
         ]);
       })
