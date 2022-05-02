@@ -8,5 +8,10 @@ function load_radio_script(){
 
 function title_radio(evt){
     console.log(evt);
-    document.title = evt.target.title;
+    for(i=0; i<document.getElementsByClassName("radio_card").length; i++){
+        if(document.getElementsByClassName("radio_card")[i].contains(evt.target)){
+            document.title = "Luckyapp_Radio: "+ document.getElementsByClassName("radio_card")[i].title;
+            return;
+        }
+    }
 }
