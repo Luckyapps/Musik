@@ -8,5 +8,5 @@ function load_radio_script(){
 
 function title_radio(evt){
     console.log(evt);
-    document.title = evt.title;
+    document.title = evt.target.title;
 }
