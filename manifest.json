@@ -4,8 +4,8 @@
     "theme_color": "black",
     "background_color": "black",
     "display": "standalone",
-    "Scope": "/",
-    "start_url": "/index.html",
+    "Scope": "/Musik/",
+    "start_url": "/Musik/index.html",
     "icons": [
       {
         "src": "media/images/icons/icon-72x72.png",
