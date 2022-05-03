@@ -85,12 +85,17 @@
         bottom:0;
         padding-top: 148px;
         background-image: linear-gradient(to top, black 67px, transparent);
+        flex-direction: row-reverse;
     }
     .title h1{
-        background-color: #4fb52a96;
+        background-color: /*#4fb52a96 #1c6a19*/#1c6a1991;
+        font-size: 2em;
     }
     .title a{
         background-color: #b52a2a96;
+        font-size: 2em;
+        width: 3em;
+        margin: 10px 10px 10px 0;
     }
     .radio_content{
         top:0;
