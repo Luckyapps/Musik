@@ -23,6 +23,7 @@
     background-color: #ffffff12;/*#0000009e;*/
     color:white;
     font-size: 2.5em;
+    cursor: pointer;
 }
 
 .title a{
