@@ -6,34 +6,61 @@ var streamlist = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-technik/we
         "name": "1Live",
         "description": "Ein Popsender",
         "source": "https://f111.rndfnk.com/ard/wdr/1live/live/mp3/128/stream.mp3?sid=28ssI1SUMluPZo2LkBfni3G93Sr&token=u_pKKwSdK_Y-D0DTMi2T4EcHOH-HiGmPfc2xF-v1HoY&tvf=57NgTvA37RZmMTExLnJuZGZuay5jb20",
-        /*"image": [{
-            "src": "../images/radio.png"
-        }]  */ 
+        "image": [{
+            "src": "https://luckyapps.github.io/Musik/media/images/1live.png",
+            "sizes": "400x400",
+            "type": "image/png"
+        }] 
     }],
     "wdr2":[{
         "name":"WDR2",
         "description":"WDR2 Popsender",
-        "source":"https://f131.rndfnk.com/ard/wdr/wdr2/suedwestfalen/mp3/128/stream.mp3?sid=28sv8JSRzFp7DUFDgmji9HEkWRl&token=2b7k1uPhRy-2jGAndYsZ9UK6osUab19g_UB3LIBVDCo&tvf=fiA99zY57RZmMTMxLnJuZGZuay5jb20"
+        "source":"https://f131.rndfnk.com/ard/wdr/wdr2/suedwestfalen/mp3/128/stream.mp3?sid=28sv8JSRzFp7DUFDgmji9HEkWRl&token=2b7k1uPhRy-2jGAndYsZ9UK6osUab19g_UB3LIBVDCo&tvf=fiA99zY57RZmMTMxLnJuZGZuay5jb20",
+        "image": [{
+            "src": "https://luckyapps.github.io/Musik/media/images/wdr2.png",
+            "sizes": "400x400",
+            "type": "image/png"
+        }] 
     }],
     "wdr3":[{
         "name":"WDR3",
         "description":"Klassik und Kultur",
-        "source":"https://wdr-wdr3-live.icecastssl.wdr.de/wdr/wdr3/live/mp3/128/stream.mp3"
+        "source":"https://wdr-wdr3-live.icecastssl.wdr.de/wdr/wdr3/live/mp3/128/stream.mp3",
+        "image": [{
+            "src": "https://luckyapps.github.io/Musik/media/images/wdr3.png",
+            "sizes": "448x448",
+            "type": "image/png"
+        }] 
     }],
     "wdr4":[{
         "name":"WDR4",
         "description":"Oldies",
-        "source":"https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3"
+        "source":"https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
+        "image": [{
+            "src": "",
+            "sizes": "",
+            "type": ""
+        }] 
     }],
     "wdr5":[{
         "name":"WDR5",
         "description":"Wissenschaft, Gesellschaft, Talk",
-        "source":"https://wdr-wdr5-live.icecastssl.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3"
+        "source":"https://wdr-wdr5-live.icecastssl.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3",
+        "image": [{
+            "src": "",
+            "sizes": "",
+            "type": ""
+        }] 
     }],
     "antennebayern":[{
         "name":"Antenne Bayern",
         "description":"Bayrischer Sender",
-        "source":"https://stream.antenne.de/antenne/stream/mp3"
+        "source":"https://stream.antenne.de/antenne/stream/mp3",
+        "image": [{
+            "src": "",
+            "sizes": "",
+            "type": ""
+        }] 
     }]
 }]
 
@@ -93,18 +120,19 @@ function audio_play(but){
     but.innerHTML = "Stop";
     document.title = "Luckyapps_Radio | "+ streamlist[0][but.value][0].name;
     navigator.mediaSession.metadata = new MediaMetadata({
-        //title: 'Never Gonna Give You Up',
-        //artist: 'Rick Astley',
+        title: streamlist[0][but.value][0].name,
+        artist: 'Luckyapps_Radio',
         //album: 'Whenever You Need Somebody',
         artwork: [
-            { src: 'https://dummyimage.com/96x96',   sizes: '96x96',   type: 'image/png' },
-            { src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
-            { src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
-            { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
-            { src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
-            { src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
+            //{ src: 'https://dummyimage.com/96x96',   sizes: '96x96',   type: 'image/png' },
+            //{ src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
+            //{ src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
+           // { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
+            //{ src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
+            //{ src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
+            { src: streamlist[0][but.value][0].image[0].src, sizes: streamlist[0][but.value][0].image[0].sizes, type: streamlist[0][but.value][0].image[0].type },
         ]
-    })
+    });
 }
 
 function audio_stop(but){
