@@ -4,7 +4,9 @@ if ('serviceWorker' in navigator) { navigator.serviceWorker.register('sw.js').th
 
 function load_style(){
     //load_radio_script();
-    load_musik_script();
+    if(window.location.href.match(/musik/)){
+        load_musik_script();
+    }
     //load_titlebar_stylesheet();
     //load_content_stylesheet();
     load_version_history_stylesheet();

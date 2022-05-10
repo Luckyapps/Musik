@@ -99,8 +99,8 @@ function audio_toggle(but){
             audio_stop(but);
             audio_playing = false;
         }else{
-            current_stream.button.innerHTML = "Play";
-            audio_stop(but);
+            //current_stream.button.innerHTML = "Play";
+            audio_stop(current_stream.button);
             audio_playing = false;
             audio_play(but);
             audio_playing = true;
