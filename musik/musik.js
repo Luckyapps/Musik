@@ -79,16 +79,16 @@ function but_universal_toggle(){
 
 function but_universal_update(){
     if(audio_playing){
-        but_universal.innerHTML = current_stream.name +" wird gestreamt";
+        but_universal.innerHTML = "<img src='"+ current_stream.image[0].src +"'></img>"+ current_stream.name +" | läuft";
     }else{
-        but_universal.innerHTML = current_stream.name +" Stream angehalten"
+        but_universal.innerHTML = "<img src='"+ current_stream.image[0].src +"'></img>"+ current_stream.name +" | angehalten";
     }
 }
 
 function streaming_list_load(){
     for(i=0; i<Object.keys(streamlist[0]).length; i++){
         var streamlist_selected = streamlist[0][Object.keys(streamlist[0])[i]][0];
-       content.innerHTML = content.innerHTML +"<div class='radio_card'><h2>"+ streamlist_selected.name +"</h2><p>"+ streamlist_selected.description +"</p><button onclick='audio_toggle(this)' value='"+ Object.keys(streamlist[0])[i] +"'>Start</button></div>";
+       content.innerHTML = content.innerHTML +"<div class='radio_card'><h2>"+ streamlist_selected.name +"</h2><p>"+ streamlist_selected.description +"</p><button class='radio_card_play' onclick='audio_toggle(this)' value='"+ Object.keys(streamlist[0])[i] +"'>Play</button></div>";
     }
 }
 
@@ -118,6 +118,7 @@ function audio_play(but){
     current_stream.button = but;
     audio.play();
     but.innerHTML = "Stop";
+    but.classList.replace("radio_card_play", "radio_card_stop");
     document.title = "Luckyapps_Radio | "+ streamlist[0][but.value][0].name;
     navigator.mediaSession.metadata = new MediaMetadata({
         title: streamlist[0][but.value][0].name,
@@ -137,5 +138,6 @@ function audio_play(but){
 
 function audio_stop(but){
     but.innerHTML = "Play";
+    but.classList.replace("radio_card_stop", "radio_card_play");
     audio.pause();
 }

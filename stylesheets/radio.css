@@ -11,8 +11,8 @@
     z-index: 900;
 }
 
-.title h1{
-    padding: 10px 0 10px 0;
+.title div{
+    padding: /*10px 0 10px 0*/10px;
     margin:0;
     border-radius: 10px;
     width: 100%;
@@ -24,6 +24,9 @@
     color:white;
     font-size: 2.5em;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .title a{
@@ -43,6 +46,12 @@
 .title a:hover{
     background-color: /*#ffffff4f*/#ff81814f;
     cursor: pointer;
+}
+
+.title img{
+    max-height: 1.4em;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
 .radio_content{
@@ -75,6 +84,28 @@
     color:/*#757575#8f8f8f*/#c8c8c8;
 }
 
+.radio_card button{
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: /*#6a6a6a*/#a7a7a733;
+    width: 100%;
+    cursor:pointer;
+    backdrop-filter: blur(12px);
+}
+
+.radio_card_play{
+    color:/*#003f00 #005800*/#006900;
+}
+
+.radio_card_stop{
+    color:/*#a20000*/#950000;
+}
+
+.radio_card button:hover{
+    background-color: #525252;
+}
+
 @media screen and (max-width: 540px) {
     .radio_card{
         width:100%;
@@ -88,7 +119,7 @@
         background-image: linear-gradient(to top, black 67px, transparent);
         flex-direction: row-reverse;
     }
-    .title h1{
+    .title div{
         background-color: /*#4fb52a96 #1c6a19*/#1c6a1991;
         font-size: 2em;
     }
@@ -100,7 +131,7 @@
     }
     .radio_content{
         top:0;
-        padding-bottom: 100px;
+        padding-bottom: 200px;
     }
 }
 
