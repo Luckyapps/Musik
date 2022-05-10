@@ -37,9 +37,9 @@ var streamlist = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-technik/we
         "description":"Oldies",
         "source":"https://wdr-wdr4-live.icecastssl.wdr.de/wdr/wdr4/live/mp3/128/stream.mp3",
         "image": [{
-            "src": "",
-            "sizes": "",
-            "type": ""
+            "src": "https://luckyapps.github.io/Musik/media/images/wdr4.png",
+            "sizes": "180x180",
+            "type": "image/png"
         }] 
     }],
     "wdr5":[{
@@ -47,9 +47,9 @@ var streamlist = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-technik/we
         "description":"Wissenschaft, Gesellschaft, Talk",
         "source":"https://wdr-wdr5-live.icecastssl.wdr.de/wdr/wdr5/live/mp3/128/stream.mp3",
         "image": [{
-            "src": "",
-            "sizes": "",
-            "type": ""
+            "src": "https://luckyapps.github.io/Musik/media/images/wdr5.jpg",
+            "sizes": "512x512",
+            "type": "image/jpg"
         }] 
     }],
     "antennebayern":[{
@@ -57,9 +57,9 @@ var streamlist = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-technik/we
         "description":"Bayrischer Sender",
         "source":"https://stream.antenne.de/antenne/stream/mp3",
         "image": [{
-            "src": "",
-            "sizes": "",
-            "type": ""
+            "src": "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
+            "sizes": "225x225",
+            "type": "image/png"
         }] 
     }]
 }]
