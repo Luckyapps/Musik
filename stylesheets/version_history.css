@@ -80,7 +80,7 @@
 }
 
 .version_history_opened{
-    top: 50px;
+    top: 0px;
     animation-name: version_history_open_ani;
     animation-duration: 0.5s;
 }
@@ -93,11 +93,11 @@
 
 @keyframes version_history_open_ani{
     0%{ top:100%;}
-    100%{top:50px}
+    100%{top:0px}
 }
 
 @keyframes version_history_close_ani{
-    0%{top:50px;}
+    0%{top:0px;}
     100%{top:100%;}
 }
 
