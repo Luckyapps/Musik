@@ -65,7 +65,7 @@ var streamlist = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-technik/we
     "radiosauerland":[{
         "name":"Radio Sauerland",
         "description":"Sauerländer Lokalsender",
-        "source":"http://radiosauerland.cast.addradio.de/radiosauerland/simulcast/high/stream.mp3",
+        "source":"https://radiosauerland.cast.addradio.de/radiosauerland/simulcast/high/stream.mp3",
         "image": [{
             "src": "https://luckyapps.github.io/Musik/media/images/radiosauerland.png",
             "sizes": "636x636",
