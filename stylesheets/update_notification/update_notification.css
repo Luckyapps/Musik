@@ -57,7 +57,7 @@
 }
 
 .u_n_closed{
-    display:none;
+    display:none !important;
     opacity: 0;
     bottom:-50%;
     animation-name: u_n_closed_ani;

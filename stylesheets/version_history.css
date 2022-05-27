@@ -56,11 +56,13 @@
 }
 
 .version_history_grid_container_open{
+    background-color: #00000061;
     animation-name: vers_hist_grid_cont_open_ani;
     animation-duration: 1s;
 }
 
 .version_history_grid_container_close{
+    background-color: transparent;
     animation-name: vers_hist_grid_cont_close_ani;
     animation-duration: 1s;
 }

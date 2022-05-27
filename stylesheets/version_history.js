@@ -98,6 +98,7 @@ function version_history_open(evt){
       version_history_close_button.addEventListener("click", version_history_close); //Experimentell: muss neu definiert werden
       version_history_info_button.addEventListener("click", version_history_info_open); //Experimentell: muss neu definiert werden
       version_history_grid_container.style.display = "grid";
+      version_history_grid_container.classList = "version_history_grid_container_open";
       body.style.overflow = "hidden";
       version_history_container.classList = "";
       version_history_container.classList.add("version_history_opened");
