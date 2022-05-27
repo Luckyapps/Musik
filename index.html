@@ -18,6 +18,7 @@
     <!--<link href="stylesheets/sidecard.css" rel="stylesheet" type="text/css" />-->
     <link href="stylesheets/cookies.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/home.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/update_notification/update_notification.css" rel="stylesheet" type="text/css" />
     <!--<link href="stylesheets/darkmode.css" rel="stylesheet" type="text/css" />-->
 </head>
 <body>
@@ -30,12 +31,14 @@
     <script src="stylesheets/sidecard.js"></script>
     <script src="stylesheets/cookies.js"></script>
     <script src="stylesheets/darkmode.js"></script>
+    <script src="stylesheets/update_notification/update_notification.js"></script>
+    <script src="stylesheets/update_notification/updatelist.js"></script>
 
     <div id="content_center">
       <h1>Musik</h1>
       <div class="content_center_links">
-        <a href="radio/index.html"><img src="media/images/radio.svg"></img>Radio</a>
-        <a href="musik/index.html">Musik</a>
+        <a href="musik/index.html"><img src="media/images/radio.svg"></img>Radio</a>
+        <a href="radio/index.html" title="Funktion noch nicht verfügbar" style="cursor:not-allowed">Musik</a>
       </div>
     </div>
 
@@ -43,12 +46,22 @@
     <div class="error_style_container"><div id="error_container" class="error_hidden"></div></div>
 
     <!--Version_History and Watermark-->
-    <div title="Versionsinformation" id="watermark">App by <a href="">Luckyapps</a> | dvc.1.22053.1</div>
+    <div title="Versionsinformation" id="watermark">App by <a href="">Luckyapps</a> | dvc.1.22054.0</div>
      <div id="version_history_grid_container">
        <div id="version_history_container" class="version_history_closed_FIRST">
          <h2>Versionen:</h2>
          <div>
-          <h3>dvc.1.22053.1</h3>
+           <h3>dvc.1.22054.0</h3>
+           <ul>
+             <li>Updatenotifications hinzugefügt:<ul><li>Wurde die App geupdated, gibt es eine Benachrichtigung.</li></ul></li>
+             <li>Home Seite geupdated: <ul><li>Der Link zu Musik wurde gesperrt</li><li>Der Link zu Radio wurde angepasst.</li></ul></li>
+             <li>Neue Experimentelle Funktion: Hinzufügen und entfernen von Radiostreams</li>
+             <li>Radiosender hinzugefügt: Kronehit</li>
+             <li>Bugfix: einige Streamlinks angepasst</li>
+           </ul>
+         </div>
+         <div>
+          <h3>dv.1.22053.1</h3>
           <ul>
             <li>Bugfix: Radio Sauerland wird jetzt über https gestreamt</li>
             <li>Bugfix/Design: Version_history hat nun einen geringen Abstand nach oben.</li>
@@ -63,7 +76,7 @@
           </ul>
         </div>
          <div>
-          <h3>dvc.1.22052.0</h3>
+          <h3>dv.1.22052.0</h3>
           <ul>
             <li>Klickfunktion zum Titel hinzugefügt.</li>
             <li>Test der Media notifications.</li>
@@ -95,6 +108,19 @@
          </div>
        </div>
      </div>
+
+    <!--Update_Notifications-->
+    <div id="update_notification" class="u_n_first_closed">
+      <div id="update_notification_container">
+        <div id="update_notification_toolbar">
+          <div id="update_notification_title">TITEL</div>
+          <div id="update_notification_close">X</div>
+        </div>
+        <div id="update_notification_content">
+        </div>
+      </div>
+      
+    </div>
 
     <!--cookies-->
     <div class="cookie_container_hide" id="cookie_container">

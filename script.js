@@ -13,5 +13,6 @@ function load_style(){
     load_error_stylesheet();
     //load_sidecard_stylesheet();
     load_cookie_stylesheet();
+    load_update_notification_stylesheet();
     //load_darkmode_stylesheet();
 }

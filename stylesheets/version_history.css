@@ -30,10 +30,12 @@
     height: 100%;
     /*overflow: auto;*/
     align-items: start;
+    z-index: 999;
+    background-color: #00000061;
 }
 
 #version_history_container{
-    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+    /*font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;*/
     /*background-color: #86868642;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);*/
@@ -51,6 +53,26 @@
     position:relative;
     z-index: 930;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.version_history_grid_container_open{
+    animation-name: vers_hist_grid_cont_open_ani;
+    animation-duration: 1s;
+}
+
+.version_history_grid_container_close{
+    animation-name: vers_hist_grid_cont_close_ani;
+    animation-duration: 1s;
+}
+
+@keyframes vers_hist_grid_cont_open_ani {
+    0%{background-color: transparent;}
+    100%{background-color: #00000061;}
+}
+
+@keyframes vers_hist_grid_cont_close_ani {
+    0%{background-color: #00000061;}
+    100%{background-color: transparent;}
 }
 
 #version_history_toolbar{
@@ -80,7 +102,7 @@
 }
 
 .version_history_opened{
-    top: 0px;
+    top: 10px;
     animation-name: version_history_open_ani;
     animation-duration: 0.5s;
 }
@@ -93,11 +115,11 @@
 
 @keyframes version_history_open_ani{
     0%{ top:100%;}
-    100%{top:0px}
+    100%{top:10px}
 }
 
 @keyframes version_history_close_ani{
-    0%{top:0px;}
+    0%{top:10px;}
     100%{top:100%;}
 }
 
@@ -123,7 +145,7 @@
     }
     #version_history_container{
         background-color: #86868642;
-        backdrop-filter: blur(12px);
+        backdrop-filter: blur(225px);
         -webkit-backdrop-filter: blur(12px);
     }
   }

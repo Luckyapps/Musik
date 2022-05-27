@@ -1,11 +1,11 @@
 var audio_playing = false;
-var audio, content, current_stream, but_universal, current_button;
+var audio, content, current_stream, but_universal, current_button, streamlist;
 
-var streamlist = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-technik/webradio-100.html https://www.antenne.de/programm/empfang/antenne-bayern-hoeren-internet
+var streamlist_base = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-technik/webradio-100.html https://www.antenne.de/programm/empfang/antenne-bayern-hoeren-internet
     "1live":[{
         "name": "1Live",
         "description": "Ein Popsender",
-        "source": "https://f111.rndfnk.com/ard/wdr/1live/live/mp3/128/stream.mp3?sid=28ssI1SUMluPZo2LkBfni3G93Sr&token=u_pKKwSdK_Y-D0DTMi2T4EcHOH-HiGmPfc2xF-v1HoY&tvf=57NgTvA37RZmMTExLnJuZGZuay5jb20",
+        "source": "https://wdr-1live-live.icecastssl.wdr.de/wdr/1live/live/mp3/128/stream.mp3",
         "image": [{
             "src": "https://luckyapps.github.io/Musik/media/images/1live.png",
             "sizes": "400x400",
@@ -15,7 +15,7 @@ var streamlist = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-technik/we
     "wdr2":[{
         "name":"WDR2",
         "description":"WDR2 Popsender",
-        "source":"https://f131.rndfnk.com/ard/wdr/wdr2/suedwestfalen/mp3/128/stream.mp3?sid=28sv8JSRzFp7DUFDgmji9HEkWRl&token=2b7k1uPhRy-2jGAndYsZ9UK6osUab19g_UB3LIBVDCo&tvf=fiA99zY57RZmMTMxLnJuZGZuay5jb20",
+        "source":"https://wdr-wdr2-suedwestfalen.icecastssl.wdr.de/wdr/wdr2/suedwestfalen/mp3/128/stream.mp3",
         "image": [{
             "src": "https://luckyapps.github.io/Musik/media/images/wdr2.png",
             "sizes": "400x400",
@@ -71,13 +71,29 @@ var streamlist = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-technik/we
             "sizes": "636x636",
             "type": "image/png"
         }] 
+    }],
+    "kronehit":[{
+        "name":"Kronehit",
+        "description":"Östereichischer Sender",
+        "source":"http://raj.krone.at/kronehit-ultra-hd.aac",
+        "image": [{
+            "src": "https://luckyapps.github.io/Musik/media/images/kronehit.jpeg",
+            "sizes": "1400x1400",
+            "type": "image/jpeg"
+        }] 
     }]
 }]
+
+if(localStorage.getItem("custom_streamlist") == "true"){
+    streamlist = JSON.parse(localStorage.getItem("streamlist"));
+}
 
 function load_musik_script(){
     content = document.getElementsByClassName("radio_content")[0];
     but_universal = document.getElementById("title_h1");
     but_universal.addEventListener("click", but_universal_toggle);
+    localStorage.setItem("streamlist_base", JSON.stringify(streamlist_base));
+    streamlist = streamlist_base;
     streaming_list_load();
 }
 
@@ -96,6 +112,7 @@ function but_universal_update(){
 }
 
 function streaming_list_load(){
+    content.innerHTML = "";
     for(i=0; i<Object.keys(streamlist[0]).length; i++){
         var streamlist_selected = streamlist[0][Object.keys(streamlist[0])[i]][0];
        content.innerHTML = content.innerHTML +"<div class='radio_card'><h2>"+ streamlist_selected.name +"</h2><p>"+ streamlist_selected.description +"</p><button class='radio_card_play' onclick='audio_toggle(this)' value='"+ Object.keys(streamlist[0])[i] +"'>Play</button></div>";
@@ -150,4 +167,76 @@ function audio_stop(but){
     but.innerHTML = "Play";
     but.classList.replace("radio_card_stop", "radio_card_play");
     audio.pause();
+}
+
+function recover_stream_list(){
+    streamlist = JSON.parse(localStorage.getItem("streamlist_base"));
+    localStorage.setItem("custom_streamlist", false);
+    localStorage.removeItem("streamlist");
+    streaming_list_load();
+    error_show("Streamlist wiederhergestellt");
+    flyin_close();
+}
+
+function create_stream_form(){
+    flyin_open(document.getElementById("add_stream_form").innerHTML);
+}
+
+function create_stream_form_check(){
+    var checked = 0;
+    if(document.getElementById("add_name").value != ""){checked++}else{document.getElementById("add_name").style.borderColor = "red"};
+    if(document.getElementById("add_description").value != ""){checked++}else{document.getElementById("add_description").style.borderColor = "red"};
+    if(document.getElementById("add_source").value != ""){checked++}else{document.getElementById("add_source").style.borderColor = "red"};
+    if(document.getElementById("add_src").value != ""){checked++}else{document.getElementById("add_src").style.borderColor = "red"};
+    if(document.getElementById("add_sizes").value != ""){checked++}else{document.getElementById("add_sizes").style.borderColor = "red"};
+    if(document.getElementById("add_type").value != ""){
+        if(document.getElementById("add_type").value.match(/image/)){checked++
+        }else{document.getElementById("add_type").style.borderColor = "red"}
+      }else{document.getElementById("add_type").style.borderColor = "red"};
+
+    if(checked == 6){
+        create_stream();
+    }else{
+        error_show("Bitte alle Felder ausfüllen!");
+    }
+    checked = 0;
+}
+
+function create_stream(){
+    streamlist[0][document.getElementById("add_id").value] = [{}];
+    streamlist[0][document.getElementById("add_id").value][0].name = document.getElementById("add_name").value;
+    streamlist[0][document.getElementById("add_id").value][0].description = document.getElementById("add_description").value;
+    streamlist[0][document.getElementById("add_id").value][0].source = document.getElementById("add_source").value;
+    streamlist[0][document.getElementById("add_id").value][0].image = [{}];
+    streamlist[0][document.getElementById("add_id").value][0].image[0].src = document.getElementById("add_src").value;
+    streamlist[0][document.getElementById("add_id").value][0].image[0].sizes = document.getElementById("add_sizes").value;
+    streamlist[0][document.getElementById("add_id").value][0].image[0].type = document.getElementById("add_type").value;
+    localStorage.setItem("custom_streamlist", true);
+    localStorage.setItem("streamlist", JSON.stringify(streamlist));
+    console.log(streamlist);
+    streaming_list_load();
+    var localTimeout = setTimeout(function() {
+        flyin_close();
+    }, 100);
+}
+
+function remove_stream_form(){
+    var streamlist_elements = "";
+    for(i=0; i<Object.keys(streamlist[0]).length; i++){
+        streamlist_elements += "<li onclick='remove_stream(this)' value='"+ i +"'>"+ streamlist[0][Object.keys(streamlist[0])[i]][0].name +"</li>";   
+    }
+    var remove_stream_form_content = "<br><h2>Stream entfernen:</h2><ul class='remove_stream_list'>"+ streamlist_elements +"</ul><hr style='width:100%'><h2>Streamliste wiederherstellen</h2><button onclick='recover_stream_list()'>Zurücksetzen</button><br>";
+    flyin_open(remove_stream_form_content);
+}
+
+function remove_stream(elem){
+    var removed_stream_name = streamlist[0][Object.keys(streamlist[0])[elem.value]][0].name;
+    delete streamlist[0][Object.keys(streamlist[0])[elem.value]];
+    localStorage.setItem("custom_streamlist", true);
+    localStorage.setItem("streamlist", JSON.stringify(streamlist));
+    error_show(removed_stream_name +" wurde entfernt.");
+    streaming_list_load();
+    var localTimeout = setTimeout(function() {
+        flyin_close();
+    }, 100);
 }

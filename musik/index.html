@@ -9,9 +9,9 @@
     <!--<link rel="manifest" href="manifest.json">  Webapp manifest -->
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Put your description here."><!-- Beschreibung der Seite für die Google Suche-->
-    <title>Luckyapps_Musik|Test</title>  <!-- Tab titel -->
+    <title>Luckyapps_Musik</title>  <!-- Tab titel -->
     <link href="../style.css" rel="stylesheet" type="text/css" />
-    <!--<link href="stylesheets/version_history.css" rel="stylesheet" type="text/css" />-->
+    <link href="../stylesheets/version_history.css" rel="stylesheet" type="text/css" /><!---->
     <!--<link href="stylesheets/titlebar.css" rel="stylesheet" type="text/css" />-->
     <!--<link href="stylesheets/content.css" rel="stylesheet" type="text/css" />-->
     <link href="../stylesheets/error.css" rel="stylesheet" type="text/css" />
@@ -47,6 +47,36 @@
             <button onclick="audio_toggle(this)" value="wdr2">Go</button>
         </div>-->
     </div>
+
+    <div id="add_stream_button" onclick="create_stream_form()">+</div>
+    <div id="remove_stream_button" onclick="remove_stream_form()">-</div>
+
+    <!--Version_History and Watermark-->
+    <div style="display: none;" title="Versionsinformation" id="watermark">App by <a href="">Luckyapps</a> | dvc.1.22053.1</div>
+     <div id="version_history_grid_container">
+       <div id="version_history_container" class="version_history_closed_FIRST">
+         <div id="version_history_toolbar">
+           <div style="cursor:help" id="version_history_info_open">?</div>
+           <div id="version_history_close">X</div>
+         </div>
+       </div>
+     </div>
+
+     <div style="display: none;" id="add_stream_form">
+        <br>
+        <h2>Neuen Stream hinzufügen:</h2>
+        <h3>Informationen</h3>
+         ID: <input id="add_id"></input>
+         Name: <input id="add_name"></input>
+         Beschreibung: <input id="add_description"></input>
+         Stream Quelle(direkter mp3 stream link): <input id="add_source"></input>
+         <h3>Bild</h3>
+         Quelle: <input id="add_src"></input>
+         Größe (Format: 000x000): <input id="add_sizes"></input>
+         Typ: <input id="add_type"></input>
+         <button onclick="create_stream_form_check()">Senden</button>
+         <br>
+     </div>
 
     <!--Error-->
     <div class="error_style_container"><div id="error_container" class="error_hidden"></div></div>
