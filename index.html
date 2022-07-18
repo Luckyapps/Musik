@@ -3,13 +3,13 @@
 <head><!---->
     <meta charset="utf-8">
     <html lang="de-de">
-    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png"> <!-- Apple App icon 
+    <link rel="apple-touch-icon" href="media/images/icons/icon-192x192.png"> <!-- Apple App icon 
     <link rel="icon" href="media/Ahorn_Logo_Final_RESIZE.png" type="image/png">-->
     <meta name="theme-color" content="black"/> <!-- Theme color -->
-    <!--<link rel="manifest" href="manifest.json">  Webapp manifest -->
+    <link rel="manifest" href="manifest.json">  <!--Webapp manifest -->
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Put your description here."><!-- Beschreibung der Seite für die Google Suche-->
-    <title>Musik</title>  <!-- Tab titel -->
+    <title>Luckyapp_Musik</title>  <!-- Tab titel -->
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/version_history.css" rel="stylesheet" type="text/css" />
     <!--<link href="stylesheets/titlebar.css" rel="stylesheet" type="text/css" />-->
@@ -18,10 +18,12 @@
     <!--<link href="stylesheets/sidecard.css" rel="stylesheet" type="text/css" />-->
     <link href="stylesheets/cookies.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/home.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/update_notification/update_notification.css" rel="stylesheet" type="text/css" />
     <!--<link href="stylesheets/darkmode.css" rel="stylesheet" type="text/css" />-->
 </head>
 <body>
     <script src="script.js"></script>
+    <script src="radio/radio.js"></script>
     <script src="stylesheets/version_history.js"></script>
     <script src="stylesheets/titlebar.js"></script>
     <script src="stylesheets/content.js"></script>
@@ -29,12 +31,14 @@
     <script src="stylesheets/sidecard.js"></script>
     <script src="stylesheets/cookies.js"></script>
     <script src="stylesheets/darkmode.js"></script>
+    <script src="stylesheets/update_notification/update_notification.js"></script>
+    <script src="stylesheets/update_notification/updatelist.js"></script>
 
     <div id="content_center">
       <h1>Musik</h1>
       <div class="content_center_links">
-        <a href="radio/index.html">Radio</a>
-        <a>Musik</a>
+        <a href="musik/index.html"><img src="media/images/radio.svg"></img>Radio</a>
+        <a href="radio/index.html" title="Funktion noch nicht verfügbar" style="cursor:not-allowed">Musik</a>
       </div>
     </div>
 
@@ -42,12 +46,58 @@
     <div class="error_style_container"><div id="error_container" class="error_hidden"></div></div>
 
     <!--Version_History and Watermark-->
-    <div title="Versionsinformation" id="watermark">App by <a href="">Luckyapps</a> | dvc.1.22041.0</div>
+    <div title="Versionsinformation" id="watermark">App by <a href="">Luckyapps</a> | dvc.1.22054.0</div>
      <div id="version_history_grid_container">
        <div id="version_history_container" class="version_history_closed_FIRST">
          <h2>Versionen:</h2>
          <div>
-           <h3>dvc.1.22041.1</h3>
+           <h3>dvc.1.22054.0</h3>
+           <ul>
+             <li>Updatenotifications hinzugefügt:<ul><li>Wurde die App geupdated, gibt es eine Benachrichtigung.</li></ul></li>
+             <li>Home Seite geupdated: <ul><li>Der Link zu Musik wurde gesperrt</li><li>Der Link zu Radio wurde angepasst.</li></ul></li>
+             <li>Neue Experimentelle Funktion: Hinzufügen und entfernen von Radiostreams</li>
+             <li>Radiosender hinzugefügt: Kronehit</li>
+             <li>Bugfix: einige Streamlinks angepasst</li>
+           </ul>
+         </div>
+         <div>
+          <h3>dv.1.22053.1</h3>
+          <ul>
+            <li>Bugfix: Radio Sauerland wird jetzt über https gestreamt</li>
+            <li>Bugfix/Design: Version_history hat nun einen geringen Abstand nach oben.</li>
+          </ul>
+        </div>
+         <div>
+          <h3>dv.1.22053.0</h3>
+          <ul>
+            <li>Designänderung Buttons</li>
+            <li>Reperatur Version_history</li>
+            <li>Update des Titles in 'Musik' <ul><li>Text aktualisiert</li><li>Es wird ein Bild angezeigt, wenn verfügbar.</li></ul></li>
+          </ul>
+        </div>
+         <div>
+          <h3>dv.1.22052.0</h3>
+          <ul>
+            <li>Klickfunktion zum Titel hinzugefügt.</li>
+            <li>Test der Media notifications.</li>
+          </ul>
+        </div>
+         <div>
+          <h3>dv.1.22051.0</h3>
+          <ul>
+            <li>Conent zum bereich Musik hinzugefügt<ul><li>Ein komplett eigener Musikplayer wird getestet.</li></ul></li>
+          </ul>
+        </div>
+         <div>
+          <h3>dv.1.22042.0</h3>
+          <ul>
+            <li>Verschiedene Designänderungen.</li>
+            <li>Radio funktionalität.</li>
+            <li>Safari Support</li>
+          </ul>
+        </div>
+         <div>
+           <h3>dv.1.22041.0</h3>
            <ul>
              <li>Projekt wurde erstellt: ALLES IST NEU!</li>
            </ul>
@@ -58,6 +108,18 @@
          </div>
        </div>
      </div>
+
+    <!--Update_Notifications-->
+    <div id="update_notification" class="u_n_first_closed">
+      <div id="update_notification_container">
+        <div id="update_notification_toolbar">
+          <div id="update_notification_title">TITEL</div>
+          <div id="update_notification_close">X</div>
+        </div>
+        <div id="update_notification_content">
+        </div>
+      </div>
+    </div>
 
     <!--cookies-->
     <div class="cookie_container_hide" id="cookie_container">
