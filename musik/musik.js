@@ -75,7 +75,7 @@ var streamlist_base = [{ //https://www1.wdr.de/unternehmen/der-wdr/empfang-techn
     "kronehit":[{
         "name":"Kronehit",
         "description":"Östereichischer Sender",
-        "source":"http://raj.krone.at/kronehit-ultra-hd.aac",
+        "source":"https://raj.krone.at/kronehit-ultra-hd.aac",
         "image": [{
             "src": "https://luckyapps.github.io/Musik/media/images/kronehit.jpeg",
             "sizes": "1400x1400",
@@ -143,6 +143,8 @@ function audio_play(but){
     audio = new Audio(streamlist[0][but.value][0].source);
     current_stream = streamlist[0][but.value][0];
     current_stream.button = but;
+    sessionStorage.setItem("streamsource", streamlist[0][but.value][0].source);
+    sessionStorage.setItem("audio_playstate", true);
     audio.play();
     but.innerHTML = "Stop";
     but.classList.replace("radio_card_play", "radio_card_stop");
@@ -166,6 +168,7 @@ function audio_play(but){
 function audio_stop(but){
     but.innerHTML = "Play";
     but.classList.replace("radio_card_stop", "radio_card_play");
+    sessionStorage.setItem("audio_playstate", false);
     audio.pause();
 }
 

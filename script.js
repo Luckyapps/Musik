@@ -14,5 +14,17 @@ function load_style(){
     //load_sidecard_stylesheet();
     load_cookie_stylesheet();
     load_update_notification_stylesheet();
+    load_audio_play();
     //load_darkmode_stylesheet();
+}
+
+function load_audio_play(){
+    /*console.log("streamtest");
+    if((sessionStorage.getItem("streamsource") != undefined) && (sessionStorage.getItem("audio_playstate") == "true")){
+        console.log("start streaming");
+        audio = new Audio(sessionStorage.getItem("streamsource"));
+        audio.autoplay = true;
+        audio.play();
+    }else{console.log("TesTIT");}*/
+    
 }
