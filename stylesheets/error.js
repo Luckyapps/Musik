@@ -1,3 +1,5 @@
+window.addEventListener("load", load_error_stylesheet());
+
 var error_container;
 
 function load_error_stylesheet(){

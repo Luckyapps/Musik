@@ -1,24 +1,9 @@
-html{
+/*html{
     background: url(media/images/back.jpg) no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     font-family: calibri;
     /*animation-name: background_color;
     animation-duration: 60s;
-    animation-iteration-count: infinite;*/
-}
-
-@keyframes background_color {
-    0%{background-color: #300000;}
-    12%{background-color: #302e00;}
-    24%{background-color: #073000}    
-    36%{background-color: #00302c;}
-    48%{background-color: #000a30;}
-    60%{background-color: #230030;}
-    72%{background-color: #2d0030;}
-    100%{background-color: #300000;}
-}
-
-*{
-    font-family: calibri !important;
-}
+    animation-iteration-count: infinite;
+}*/
