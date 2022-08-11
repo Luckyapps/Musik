@@ -13,12 +13,83 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/error.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/cookies.css" rel="stylesheet" type="text/css" />
-    <link href="stylesheets/home.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/home/home.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/playbar/playbar.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <script src="script.js"></script>
     <script src="stylesheets/error.js"></script>
     <script src="stylesheets/cookies.js"></script>
+
+    <div id="home">
+        <h1>Luckyapp Musik</h1>
+        <p>Die neue Musikapp</p>
+        <section class="radio_home">
+            <div class="home_sectitle">
+                <h2>Radio</h2>
+                <div class="show_more" id="radio_home_show_more" value="radio">Mehr Anzeigen</div>
+            </div>
+            <div class="home_card_container">
+                <div class="home_card">
+                    <div class="home_card_img">
+                        <img src="media/images/1live.png">
+                        <div class="home_card_play">></div></div>
+                    <h3>TITEL</h3>
+                    <p>Hier steht Der Beschreibungstext. Dieser sollte auch gelesen werden.</p>
+                </div>
+                <div class="home_card">
+                    <img src="media/images/back.jpg"></img>
+                    <h3>TITEL</h3>
+                    <p>Hier steht Der Beschreibungstext. Dieser sollte auch gelesen werden.</p>
+                </div>
+                <div class="home_card">
+                    <img src="media/images/1live.png"></img>
+                    <h3>TITEL</h3>
+                    <p>Hier steht Der Beschreibungstext. Dieser sollte auch gelesen werden.</p>
+                </div>
+                <div class="home_card">
+                    <img src="media/images/1live.png"></img>
+                    <h3>TITEL</h3>
+                    <p>Hier steht Der Beschreibungstext. Dieser sollte auch gelesen werden.</p>
+                </div>
+            </div>
+        </section>
+        <section class="musik_home">
+            <div class="home_sectitle">
+                <h2>Musik</h2>
+                <div class="show_more" id="radio_home_show_more" value="Musik">Mehr Anzeigen</div>
+            </div>
+            <div class="home_card_container">
+                <div class="home_card">
+                    <img src="media/images/1live.png"></img>
+                    <h3>TITEL</h3>
+                </div>
+                <div class="home_card">
+                    <img src="media/images/1live.png"></img>
+                    <h3>TITEL</h3>
+                </div>
+                <div class="home_card">
+                    <img src="media/images/1live.png"></img>
+                    <h3>TITEL</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="playbar_container">
+        <div class="playbar">
+            <div class="playbar_left">
+                <img src="media/images/1live.png">
+                <div class="playbar_text">
+                    <div class="playbar_text_main color_main">Hier steht der Titel</div>
+                    <div class="playbar_text_sub">Hier steht eine Info</div>
+                </div>
+            </div>
+            <div class="playbar_right">
+                <div>></div>
+            </div>
+        </div>
+    </div>
 
     <!--Error-->
     <div class="error_style_container"><div id="error_container" class="error_hidden"></div></div>
