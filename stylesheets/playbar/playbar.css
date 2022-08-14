@@ -19,6 +19,7 @@
     flex-direction: row;
     justify-content: space-between;
     border-radius: 10px;
+    cursor:pointer;
 }
 
 .playbar_left{
@@ -50,4 +51,8 @@
     font-weight: bolder;
     color: black;
     cursor: pointer;
+}
+
+.playbar_text_main{
+    font-size: 1.5em;
 }

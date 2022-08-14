@@ -58,7 +58,20 @@ var radio = {
 window.addEventListener("load", radio_start);
 
 function radio_start(){
+    if(localStorage.getItem("radio")){
+        radio = JSON.parse(localStorage.getItem("radio"));
+    }else{
+        save_radio();
+    }
     streamlist_load();
+}
+
+function save_radio(){
+    var radio_tmp = JSON.stringify(radio);
+    radio_tmp = JSON.parse(radio_tmp);
+    radio_tmp.audio_playing = false;
+    localStorage.setItem("radio", JSON.stringify(radio_tmp));
+    console.log("radio Gespeichert");
 }
 
 function streamlist_load(){
@@ -87,6 +100,8 @@ function audio_toggle(but, value){
         audio_play(but, value);
     }
     playbar_design_toggle();
+    songscreen_playbutton_toggle()
+    save_radio();
 }
 
 function audio_play(but, value){

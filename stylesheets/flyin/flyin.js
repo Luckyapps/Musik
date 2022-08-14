@@ -23,7 +23,7 @@ function flyin_toggle(type, content, title){
     }
     if(content){
         console.log("flyin_content");
-        flyin_content 
+        //flyin_content 
     }
     if(flyin_state == "close"){
         flyin_open(content);
@@ -39,7 +39,7 @@ function flyin_titlebar_init(title, content){
 }
 
 function flyin_open(content){
-    flyin.innerHTML += content;
+    flyin.innerHTML = flyin_titlebar_INIT + content;
     document.body.style.overflow = "hidden";
     flyin.classList = "flyin_open";
     flyin_state = "open";
