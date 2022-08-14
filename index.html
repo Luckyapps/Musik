@@ -15,11 +15,15 @@
     <link href="stylesheets/cookies.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/home/home.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/playbar/playbar.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/flyin/flyin.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <script src="script.js"></script>
     <script src="stylesheets/error.js"></script>
     <script src="stylesheets/cookies.js"></script>
+    <script src="stylesheets/flyin/flyin.js"></script>
+    <script src="stylesheets/radio/radio_core.js"></script>
+    <script src="stylesheets/playbar/playbar.js"></script>
 
     <div id="blende"></div>
 
@@ -30,7 +34,7 @@
                 <div>Home</div>
                 <div>Über uns</div>
             </div>
-            <div class="homebar_settings">Settings</div>
+            <div class="homebar_settings" onclick="flyin_toggle('normal', '', 'settings')">Settings</div>
         </section>
         <section class="radio_home">
             <div class="home_sectitle">
@@ -155,6 +159,14 @@
                 <div>></div>
             </div>
         </div>
+    </div>
+
+    <div id="flyin" class="flyin_close_init">
+        <div id="flyin_titlebar">
+            <div id="flyin_close_button" onclick="flyin_toggle()"><--</div>
+            <h2 id="flyin_titlebar_title">Testtitel</h2>
+        </div>
+        
     </div>
 
     <!--Error-->

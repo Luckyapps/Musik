@@ -1,0 +1,57 @@
+#flyin{
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100%;
+    background-color: gray;
+    z-index: 999;
+    position:fixed;
+    left: 0;
+}
+
+.flyin_close_init{
+    top:100%;
+}
+
+.flyin_open{
+    top:0;
+    animation-name: flyin_open_ani;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+}
+
+.flyin_close{
+    top:100%;
+    animation-name: flyin_close_ani;
+    animation-duration: 0.3s;
+}
+
+@keyframes flyin_open_ani {
+    0%{top:100%}
+    100%{top:0}
+}
+
+@keyframes flyin_close_ani {
+    0%{top:0}
+    100%{top:100%}
+}
+
+#flyin_titlebar{
+    position: absolute;
+    top:0;
+    left: 0;
+    margin: 0 0 10px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#flyin_close_button{
+    font-size: 200%;
+    font-weight: bold;
+    margin: 0 20px 0 10px;
+    cursor:pointer;
+}
+

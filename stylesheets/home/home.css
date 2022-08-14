@@ -119,6 +119,7 @@ section{
     backdrop-filter: blur(12px);
     border-radius: 10px;
     max-width: /*244px*/ 144px;
+    min-width: 144px;
     transition: background-color 0.5s;
 }
 
