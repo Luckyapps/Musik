@@ -7,7 +7,7 @@ function flyin_start(){
     flyin_titlebar_INIT = document.getElementById("flyin").innerHTML;
 }
 
-function flyin_toggle(type, content, title){
+function flyin_toggle(type, content, title, background){
     if(flyin_state == "open"){
         flyin_close();
         return;
@@ -26,7 +26,7 @@ function flyin_toggle(type, content, title){
         //flyin_content 
     }
     if(flyin_state == "close"){
-        flyin_open(content);
+        flyin_open(content, background);
     }
 }
 

@@ -45,7 +45,8 @@
     width: 100%;
     box-sizing: border-box;
     z-index: 999;
-    background-color: #808080d9;
+    background: #ffffff0f;
+    backdrop-filter: blur(300px);
 }
 
 #flyin_close_button{
