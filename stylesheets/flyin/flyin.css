@@ -3,7 +3,7 @@
     width: 100%;
     min-height: 100%;
     background-color: gray;
-    z-index: 999;
+    z-index: 500;
     position:fixed;
     left: 0;
 }
@@ -46,6 +46,7 @@
     justify-content: flex-start;
     width: 100%;
     box-sizing: border-box;
+    z-index: 999;
 }
 
 #flyin_close_button{
