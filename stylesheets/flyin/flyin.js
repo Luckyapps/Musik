@@ -38,7 +38,10 @@ function flyin_titlebar_init(title, content){
     }
 }
 
-function flyin_open(content){
+function flyin_open(content, background){
+    if(background){
+        flyin.style.background = background;
+    }
     flyin.innerHTML = flyin_titlebar_INIT + content;
     document.body.style.overflow = "hidden";
     flyin.classList = "flyin_open";
@@ -52,5 +55,6 @@ function flyin_close(){
     var timeout_duration = parseFloat(window.getComputedStyle(flyin).animationDuration) * 1000;
     setTimeout(function (){
         flyin.innerHTML = "";
+        flyin.style.background = "transparent";
     }, timeout_duration);
 }

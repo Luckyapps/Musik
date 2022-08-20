@@ -14,6 +14,7 @@ function playbar_start(){
 }
 
 function playbar_design_toggle(){
+    playbar.style.display = "flex";
     playbar_img.src = radio.current_stream.data.image.src;
     playbar_text_main.innerHTML = radio.current_stream.data.name;
     playbar_text_sub.innerHTML = "Luckyapps_Musik";

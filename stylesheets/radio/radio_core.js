@@ -19,6 +19,36 @@ var streamlist_base = {
             type: "image/png"
         }
     },
+    antennebayern:{
+        name:"Antenne Bayern",
+        description :"Bayrischer Sender",
+        source:"https://stream.antenne.de/antenne/stream/mp3",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
+            sizes: "225x225",
+            type: "image/png"
+        } 
+    },
+    radiosauerland:{
+        name:"Radio Sauerland",
+        description:"Sauerländer Lokalsender",
+        source:"https://radiosauerland.cast.addradio.de/radiosauerland/simulcast/high/stream.mp3",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/radiosauerland.png",
+            sizes: "636x636",
+            type: "image/png"
+        } 
+    },
+    kronehit:{
+        name:"Kronehit",
+        description:"Östereichischer Sender",
+        source:"https://raj.krone.at/kronehit-ultra-hd.aac",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/kronehit.jpeg",
+            sizes: "1400x1400",
+            type: "image/jpeg"
+        } 
+    }
 };
 
 class stream {
