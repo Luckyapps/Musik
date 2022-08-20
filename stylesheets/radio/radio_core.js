@@ -91,6 +91,8 @@ window.addEventListener("load", radio_start);
 function radio_start(){
     if(localStorage.getItem("radio")){
         radio = JSON.parse(localStorage.getItem("radio"));
+        radio.streamlist.base.content = streamlist_base;
+        radio.streamlist.base.keylist = Object.keys(streamlist_base);
     }else{
         save_radio();
     }
