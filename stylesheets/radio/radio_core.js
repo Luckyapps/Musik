@@ -42,7 +42,8 @@ var streamlist_base = {
     kronehit:{
         name:"Kronehit",
         description:"Östereichischer Sender",
-        source:"https://raj.krone.at/kronehit-ultra-hd.aac",
+        source:"https://secureonair.krone.at/kronehit-ultra-hd.aac?context=fHA6LTE=&listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
+        channels: "https://www.kronehit.at/player/channels/portal.xml",
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/kronehit.jpeg",
             sizes: "1400x1400",
