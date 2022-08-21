@@ -1,10 +1,10 @@
-var flyin, flyin_state = "close", flyin_titlebar_INIT;
+var flyin, flyin_state = "close", flyin_titlebar_INIT, flyin_titlebar_title;
 
 window.addEventListener("load", flyin_start);
 
 function flyin_start(){
     flyin = document.getElementById("flyin");
-    flyin_titlebar_INIT = document.getElementById("flyin").innerHTML;
+    flyin_titlebar_INIT = createHTML(document.getElementById("flyin").innerHTML);
 }
 
 function flyin_toggle(type, content, title, background){
@@ -31,9 +31,8 @@ function flyin_toggle(type, content, title, background){
 }
 
 function flyin_titlebar_init(title, content){
-    flyin_titlebar = document.getElementById("flyin_titlebar");
     if(title){
-        flyin_titlebar_title = document.getElementById("flyin_titlebar_title");
+        flyin_titlebar_title = flyin_titlebar_INIT.children.flyin_titlebar_title;
         flyin_titlebar_title.innerHTML = content;
     }
 }
@@ -41,11 +40,15 @@ function flyin_titlebar_init(title, content){
 function flyin_open(content, background){
     if(background){
         flyin.style.background = background;
+    }else{
+        flyin.style.background = "gray";
     }
-    flyin.innerHTML = flyin_titlebar_INIT + content;
+    flyin.innerHTML = flyin_titlebar_INIT.outerHTML + content;
+    flyin.style.paddingTop = document.getElementById("flyin_titlebar").offsetHeight +"px";
     document.body.style.overflow = "hidden";
     flyin.classList = "flyin_open";
     flyin_state = "open";
+    flyin_titlebar_title.innerHTML = "";
 }
 
 function flyin_close(){

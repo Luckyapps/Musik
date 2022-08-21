@@ -7,7 +7,8 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding: 0 20px 60px 20px;
+    /*padding: 0 20px 60px 20px;*/
+    padding: 20px 20px 0px 20px;
     flex-direction: column;
     font-size: 2em;
     z-index: 900;
@@ -45,6 +46,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    max-height: 30%;
 }
 
 .songscreen_container_back{
@@ -54,4 +56,8 @@
     width: 100%;
     height: 100%;
     z-index: 901;
+}
+
+.songscreen_description{
+    overflow: auto;
 }

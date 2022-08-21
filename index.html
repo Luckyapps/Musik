@@ -17,6 +17,7 @@
     <link href="stylesheets/playbar/playbar.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/flyin/flyin.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/songscreen/songscreen.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/settings/settings.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <script src="script.js"></script>
@@ -26,6 +27,8 @@
     <script src="stylesheets/radio/radio_core.js"></script>
     <script src="stylesheets/playbar/playbar.js"></script>
     <script src="stylesheets/songscreen/songscreen.js"></script>
+    <script src="stylesheets/settings/settings.js"></script>
+    <script src="https://luckyapps.github.io/Lucky_library/luckylibrary.js"></script>
 
     <div id="blende"></div>
 
@@ -36,7 +39,7 @@
                 <div>Home</div>
                 <div>Über uns</div>
             </div>
-            <div class="homebar_settings" onclick="flyin_toggle('normal', '', 'settings', 'gray')">Settings</div>
+            <div class="homebar_settings" onclick="settings_start()">Settings</div>
         </section>
         <section class="radio_home">
             <div class="home_sectitle">

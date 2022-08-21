@@ -41,7 +41,7 @@ var streamlist_base = {
     },
     kronehit:{
         name:"Kronehit",
-        description:"Östereichischer Sender",
+        description:"Östereichischer Privatsender UHD",
         source:"https://secureonair.krone.at/kronehit-ultra-hd.aac?context=fHA6LTE=&listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
         channels: "https://www.kronehit.at/player/channels/portal.xml",
         image: {
@@ -51,6 +51,12 @@ var streamlist_base = {
         } 
     }
 };
+
+var channels = {
+    "1live": {
+        
+    }
+}
 
 class stream {
     constructor(name, description, souce, src, sizes, type, data){
