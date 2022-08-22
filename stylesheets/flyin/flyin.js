@@ -44,7 +44,7 @@ function flyin_open(content, background){
         flyin.style.background = "gray";
     }
     flyin.innerHTML = flyin_titlebar_INIT.outerHTML + content;
-    flyin.style.paddingTop = document.getElementById("flyin_titlebar").offsetHeight +"px";
+    //flyin.style.paddingTop = document.getElementById("flyin_titlebar").offsetHeight +"px";
     document.body.style.overflow = "hidden";
     flyin.classList = "flyin_open";
     flyin_state = "open";

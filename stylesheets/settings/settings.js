@@ -5,7 +5,7 @@ function settings_start(){
         }
     };
 
-    settings.page.content = "<div class='settings_container'"
+    settings.page.content = "<div class='settings_container'>"
     +"<section><h3>Zurücksetzen</h3>"
     +"<p>Dies setzt die gesammte App zurück auf Werkseinstellungen.</p>"
     +"<button onclick='setting_reset()'>Alles zurücksetzen</button>"
