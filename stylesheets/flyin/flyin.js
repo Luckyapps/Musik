@@ -48,7 +48,9 @@ function flyin_open(content, background){
     document.body.style.overflow = "hidden";
     flyin.classList = "flyin_open";
     flyin_state = "open";
-    flyin_titlebar_title.innerHTML = "";
+    if(flyin_titlebar_title){
+        flyin_titlebar_title.innerHTML = "";
+    }
 }
 
 function flyin_close(){
