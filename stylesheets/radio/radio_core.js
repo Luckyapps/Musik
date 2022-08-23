@@ -203,30 +203,15 @@ function radiotext_get___(){
   }
 }
 
-async function radiotext_get(){
-    var data = await getData_("https://faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt");
+function radiotext_get(){
+    getText("https://faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt");
+    /*console.log(data);
     radio.radiotext = data;
-    streamlist_load();
+    streamlist_load();*/
 }
 
-function get_add_(adress){
-    return new Promise(resolve => {
-    if(adress.search("https") == -1){
-      adress = adress.replace("http", "https");
-    }
-    var requestURL = adress;
-    var request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'document';
-    request.send();
-    request.onload = function() {
-      var data_temp2 = request.response;
-      resolve(data_temp2);
-    }
-  });
-}
-  
-async function getData_(adress){
-    var data_temp = await get_add_(adress);
-    return data_temp;
-}
+async function getText(file) {
+    let myObject = await fetch(file);
+    let myText = await myObject.text();
+    console.log(myText);
+  }
