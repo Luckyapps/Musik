@@ -5,13 +5,13 @@
     height: 100%;
     /*background-color: gray;*/
     z-index: 500;
-    position:absolute;
     left: 0;
     overflow: auto;
 }
 
 .flyin_close_init{
     top:100%;
+    position: fixed;
 }
 
 .flyin_open{
@@ -19,9 +19,11 @@
     animation-name: flyin_open_ani;
     animation-duration: 0.3s;
     animation-timing-function: ease-out;
+    position: absolute
 }
 
 .flyin_close{
+    position: fixed;
     top:100%;
     animation-name: flyin_close_ani;
     animation-duration: 0.3s;

@@ -3,6 +3,8 @@ var streamlist_base = {
         name: "1Live",
         description: "Ein Popsender",
         source: "https://wdr-1live-live.icecastssl.wdr.de/wdr/1live/live/mp3/128/stream.mp3",
+        main: true,
+        radiotext: "text_1live",
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/1live.png",
             sizes: "400x400",
@@ -13,6 +15,7 @@ var streamlist_base = {
         name:"WDR2",
         description:"WDR2 Popsender",
         source:"https://wdr-wdr2-suedwestfalen.icecastssl.wdr.de/wdr/wdr2/suedwestfalen/mp3/128/stream.mp3",
+        main: true,
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/wdr2.png",
             sizes: "400x400",
@@ -23,6 +26,7 @@ var streamlist_base = {
         name:"Antenne Bayern",
         description :"Bayrischer Sender",
         source:"https://stream.antenne.de/antenne/stream/mp3",
+        main: true,
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
             sizes: "225x225",
@@ -33,6 +37,7 @@ var streamlist_base = {
         name:"Radio Sauerland",
         description:"Sauerländer Lokalsender",
         source:"https://radiosauerland.cast.addradio.de/radiosauerland/simulcast/high/stream.mp3",
+        main: true,
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/radiosauerland.png",
             sizes: "636x636",
@@ -43,6 +48,7 @@ var streamlist_base = {
         name:"Kronehit",
         description:"Östereichischer Privatsender UHD",
         source:"https://secureonair.krone.at/kronehit-ultra-hd.aac?context=fHA6LTE=&listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
+        main: true,
         channels: "https://www.kronehit.at/player/channels/portal.xml",
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/kronehit.jpeg",
@@ -73,6 +79,7 @@ class stream {
 }
 
 var radio = {
+    radiotext: radiotext_get(),
     streamlist: {
         base: {
             content: streamlist_base,
@@ -83,6 +90,7 @@ var radio = {
             content: {},
             keylist: []
         },
+        last: []
     },
     current_stream: {
         data: {},//von radio.streamlist.base.content['XXX']
@@ -102,6 +110,7 @@ function radio_start(){
     }else{
         save_radio();
     }
+    radiotext_get();
     streamlist_load();
 }
 
@@ -113,7 +122,8 @@ function save_radio(){
     console.log("radio Gespeichert");
 }
 
-function streamlist_load(){
+async function streamlist_load(){
+    //console.log(radio.radiotext);
     var home_container = document.getElementsByClassName("radio_home")[0].getElementsByClassName("home_card_container")[0];
     home_container.innerHTML = "";
     if(radio.streamlist.custom.active){
@@ -122,7 +132,11 @@ function streamlist_load(){
         var streamlist = radio.streamlist.base;
     }
     for(i=0; i < streamlist.keylist.length; i++){
+        if(streamlist.content[streamlist.keylist[i]].main){
             home_container.innerHTML += "<div class='home_card'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p>"+ streamlist.content[streamlist.keylist[i]].description +"</p></div>"
+        }else{
+            console.log("nomain");
+        }    
     }
 }
 
@@ -147,6 +161,7 @@ function audio_play(but, value){
     radio.current_stream.data = radio.streamlist.base.content[value];
     radio.current_stream.key = value;
     radio.current_stream.current_button = but;
+    radio.streamlist.last.push(radio.streamlist.base.content[value]);
     audio = new Audio(radio.current_stream.data.source);
     audio.play();
     radio.audio_playing = true;
@@ -172,4 +187,46 @@ function audio_stop(but, value){
     but.innerHTML = ">";
     audio.pause();
     radio.audio_playing = false;
+}
+
+function radiotext_get___(){
+    var requestURL = "https://faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt";
+  var request = new XMLHttpRequest();
+  request.open('GET', requestURL);
+  //request.responseType = 'document';
+  request.send();
+  request.onload = function() {
+    var data = request.responseText;
+    radio.radiotext = data;
+    streamlist_load();
+    setTimeout(()=>{radiotext_get()}, 5000);
+  }
+}
+
+async function radiotext_get(){
+    var data = await getData_("https://faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt");
+    radio.radiotext = data;
+    streamlist_load();
+}
+
+function get_add_(adress){
+    return new Promise(resolve => {
+    if(adress.search("https") == -1){
+      adress = adress.replace("http", "https");
+    }
+    var requestURL = adress;
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+      var data_temp2 = request.response;
+      resolve(data_temp2);
+    }
+  });
+}
+  
+async function getData_(adress){
+    var data_temp = await get_add_(adress);
+    return data_temp;
 }
