@@ -217,7 +217,7 @@ function get_add_(adress){
     var requestURL = adress;
     var request = new XMLHttpRequest();
     request.open('GET', requestURL);
-    request.responseType = 'json';
+    request.responseType = 'document';
     request.send();
     request.onload = function() {
       var data_temp2 = request.response;
