@@ -9,7 +9,7 @@ function songscreen_open(){
     +"<div class='songscreen_container'>"
     +"<img src='"+ radio.current_stream.data.image.src +"'>"
     +"<div class='songscreen_name_container'><h2 class='songscreen_name'>"+ radio.current_stream.data.name +"</h2>"
-    +"<div class='songscreen_description color_sub'>"+ radio.current_stream.data.description +"</div></div>"
+    +"<div class='songscreen_description color_sub' id='"+ radio.current_stream.key +"_rtssc'>"+ radio.current_stream.data.description+"</div></div>"
     +"<div class='songscreen_playbutton'>></div>"
     +"</div></div>";
 

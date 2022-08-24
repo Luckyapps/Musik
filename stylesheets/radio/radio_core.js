@@ -4,7 +4,7 @@ var streamlist_base = {
         description: "Ein Popsender",
         source: "https://wdr-1live-live.icecastssl.wdr.de/wdr/1live/live/mp3/128/stream.mp3",
         main: true,
-        radiotext: "text_1live",
+        radiotext_url: "https://www.wdr.de/radio/radiotext/streamtitle_1live.txt",
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/1live.png",
             sizes: "400x400",
@@ -16,6 +16,7 @@ var streamlist_base = {
         description:"WDR2 Popsender",
         source:"https://wdr-wdr2-suedwestfalen.icecastssl.wdr.de/wdr/wdr2/suedwestfalen/mp3/128/stream.mp3",
         main: true,
+        radiotext_url: "https://www.wdr.de/radio/radiotext/streamtitle_wdr2.txt",
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/wdr2.png",
             sizes: "400x400",
@@ -79,7 +80,9 @@ class stream {
 }
 
 var radio = {
-    radiotext: radiotext_get(),
+    radiotext: {
+        keylist: []
+    },
     streamlist: {
         base: {
             content: streamlist_base,
@@ -104,13 +107,14 @@ window.addEventListener("load", radio_start);
 
 function radio_start(){
     if(localStorage.getItem("radio")){
-        radio = JSON.parse(localStorage.getItem("radio"));
+        /*radio = JSON.parse(localStorage.getItem("radio"));
         radio.streamlist.base.content = streamlist_base;
-        radio.streamlist.base.keylist = Object.keys(streamlist_base);
+        radio.streamlist.base.keylist = Object.keys(streamlist_base);*/
     }else{
         save_radio();
     }
-    radiotext_get();
+    window.addEventListener('message', function (evt) {radiotext_receive(evt.data)});
+    radiotext_load();
     streamlist_load();
 }
 
@@ -132,8 +136,13 @@ async function streamlist_load(){
         var streamlist = radio.streamlist.base;
     }
     for(i=0; i < streamlist.keylist.length; i++){
+        if(streamlist.content[streamlist.keylist[i]].radiotext != undefined){
+            var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].radiotext;
+        }else{
+            var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].description
+        }
         if(streamlist.content[streamlist.keylist[i]].main){
-            home_container.innerHTML += "<div class='home_card'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p>"+ streamlist.content[streamlist.keylist[i]].description +"</p></div>"
+            home_container.innerHTML += "<div class='home_card'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    
@@ -189,29 +198,33 @@ function audio_stop(but, value){
     radio.audio_playing = false;
 }
 
-function radiotext_get___(){
-    var requestURL = "https://faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt";
-  var request = new XMLHttpRequest();
-  request.open('GET', requestURL);
-  //request.responseType = 'document';
-  request.send();
-  request.onload = function() {
-    var data = request.responseText;
-    radio.radiotext = data;
-    streamlist_load();
-    setTimeout(()=>{radiotext_get()}, 5000);
-  }
+function radiotext_receive(data){
+    if(data.result){
+        console.log(data.data.antwort);
+        radio.streamlist.base.content[data.data.stream].radiotext = data.data.antwort;
+        if(document.getElementById(data.data.stream +"_rtcd")){
+            document.getElementById(data.data.stream +"_rtcd").innerHTML = data.data.antwort;
+        }
+        if(document.getElementById(data.data.stream +"_rtssc")){
+            document.getElementById(data.data.stream +"_rtssc").innerHTML = data.data.antwort;
+        }
+        console.log(radio.streamlist.base.content[data.data.stream]);
+    }
 }
 
-function radiotext_get(){
-    getText("https://faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt");
-    /*console.log(data);
-    radio.radiotext = data;
-    streamlist_load();*/
+function radiotext_load(){
+    console.log("load_radiotext");
+    if(radio.streamlist.custom.active){
+        var streamlist = radio.streamlist.custom;
+    }else{
+        var streamlist = radio.streamlist.base;
+    }
+    for(i=0; i < streamlist.keylist.length; i++){
+        if(streamlist.content[streamlist.keylist[i]].radiotext_url != undefined){
+            radio.radiotext.keylist.push(streamlist.keylist[i]);
+            window.postMessage({request: "true", url: streamlist.content[streamlist.keylist[i]].radiotext_url, stream: streamlist.keylist[i]});
+        }
+    }
+    setTimeout(()=>{radiotext_load()}, 5000);
 }
 
-async function getText(file) {
-    let myObject = await fetch(file);
-    let myText = await myObject.text();
-    console.log(myText);
-  }

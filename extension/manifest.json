@@ -1,0 +1,22 @@
+{
+  "name": "Musik Radiotext",
+  "description": "",
+  "version": "1",
+  "manifest_version": 3,
+  "permissions": [
+    "storage"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "icons": { 
+    "128": "logo_128.png"
+  },
+
+ "content_scripts": [{
+    "js": ["script.js"],
+    "matches": ["file:///C:/Users/ole/Documents/GitHub/Musik/*"]
+  }]
+}

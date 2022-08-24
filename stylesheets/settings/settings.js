@@ -10,6 +10,8 @@ function settings_start(){
     +"<p>Dies setzt die gesammte App zurück auf Werkseinstellungen.</p>"
     +"<button onclick='setting_reset()'>Alles zurücksetzen</button>"
     +"</section>"
+    +"<section><h3>Erweiterung</h3>"
+    +"<a href='extension.zip' download='Extension.zip'>Hier Herunterladen</a>"
     +"<section><h3>Daten auslesen</h3>"
     +"<button onclick='setting_showData()'>radio auslesen</button><div id='settings_auslesen_container'></div>"
     +"</div>";
