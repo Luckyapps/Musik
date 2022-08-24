@@ -223,7 +223,7 @@ function radiotext_load(){
             testit(streamlist.content[streamlist.keylist[i]].radiotext_url, streamlist.keylist[i]);
         }
     }
-    setTimeout(()=>{radiotext_load()}, 5000);
+    setTimeout(()=>{radiotext_load()}, 1000);
 }
 
 function testit(url, stream){
