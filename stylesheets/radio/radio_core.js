@@ -201,7 +201,6 @@ function audio_stop(but, value){
 function radiotext_receive(data){
     if(data.result){
         radio.streamlist.base.content[data.data.stream].radiotext = data.data.antwort;
-        document.getElementsByClassName("playbar_text_sub")[0].innerHTML = data.data.antwort;
         if(document.getElementById(data.data.stream +"_rtcd")){
             document.getElementById(data.data.stream +"_rtcd").innerHTML = data.data.antwort;
         }
@@ -209,6 +208,7 @@ function radiotext_receive(data){
             document.getElementById(data.data.stream +"_rtssc").innerHTML = data.data.antwort;
         }
         if(data.data.stream == radio.current_stream.key){
+            document.getElementsByClassName("playbar_text_sub")[0].innerHTML = data.data.antwort;
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: radio.current_stream.data.name,
                 artist: data.data.antwort,
