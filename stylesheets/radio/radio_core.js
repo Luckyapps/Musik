@@ -201,6 +201,7 @@ function audio_stop(but, value){
 function radiotext_receive(data){
     if(data.result){
         radio.streamlist.base.content[data.data.stream].radiotext = data.data.antwort;
+        document.getElementsByClassName("playbar_text_sub")[0].innerHTML = data.data.antwort;
         if(document.getElementById(data.data.stream +"_rtcd")){
             document.getElementById(data.data.stream +"_rtcd").innerHTML = data.data.antwort;
         }
@@ -210,7 +211,7 @@ function radiotext_receive(data){
         if(data.data.stream == radio.current_stream.key){
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: radio.current_stream.data.name,
-                artist: 'Luckyapps_Radio: '+ data.data.antwort,
+                artist: data.data.antwort,
                 //album: 'Whenever You Need Somebody',
                 artwork: [
                     //{ src: 'https://dummyimage.com/96x96',   sizes: '96x96',   type: 'image/png' },
