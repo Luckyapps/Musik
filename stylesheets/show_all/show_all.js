@@ -16,7 +16,7 @@ function show_all_open(type){
         var streamlist = radio.streamlist.base;
     }
     for(i=0; i < streamlist.keylist.length; i++){
-        if(streamlist.content[streamlist.keylist[i]].main){
+        if(streamlist.content[streamlist.keylist[i]]){
             if(streamlist.content[streamlist.keylist[i]].radiotext != undefined){
                 var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].radiotext;
             }else{
