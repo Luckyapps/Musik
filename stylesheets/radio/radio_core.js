@@ -93,7 +93,7 @@ var streamlist_base = {
 };
 
 var channels_base = {
-    "1live": {
+    "wdr": {
         name: "WDR",
         description: "Öffentlich Rechtlicher Rundfunk",
         streams: ["1live", "wdr2", "wdr3", "wdr4", "wdr5"],
@@ -213,6 +213,7 @@ function audio_toggle(but, value){
 function audio_play(but, value){
     radio.current_stream.data = radio.streamlist.base.content[value];
     radio.current_stream.key = value;
+    stream_history.add(radio.current_stream.key);
     radio.current_stream.current_button = but;
     radio.streamlist.last.push(radio.streamlist.base.content[value]);
     audio = new Audio(radio.current_stream.data.source);
@@ -271,6 +272,36 @@ function radiotext_receive(data){
                 ]
             });
         }
+    }
+}
+
+var stream_history = {
+    get: ()=>{
+        if(localStorage.getItem("musik_history")){
+            return JSON.parse(localStorage.getItem("musik_history"));
+        }else{
+            return false;
+        }
+    },
+    add: (content)=>{
+        if(localStorage.getItem("musik_history")){
+            var history = JSON.parse(localStorage.getItem("musik_history"));
+            history.forEach((element, index) => {
+                if(element == content){
+                    history.splice(index,1);
+                }
+            });
+            history.unshift(content);
+            localStorage.setItem("musik_history", JSON.stringify(history));
+            return true;
+        }else{
+            localStorage.setItem("musik_history", JSON.stringify([content]));
+            return true;
+        }
+    },
+    reset: ()=>{
+        localStorage.removeItem("musik_history");
+        return true;
     }
 }
 
