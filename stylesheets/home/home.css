@@ -164,5 +164,14 @@ section{
     align-content: center;
 }
 
+.beta_tag{
+    font-size: 50%;
+    border: 1px solid red;
+    border-radius: 1em;
+    padding: 5px;
+    color: red;
+    vertical-align: middle;
+}
+
 
 

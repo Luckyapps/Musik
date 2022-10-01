@@ -159,6 +159,7 @@ function radio_start(){
     window.addEventListener('message', function (evt) {radiotext_receive(evt.data)});
     radiotext_load();
     streamlist_load();
+    recently_played_load();
 }
 
 function save_radio(){
@@ -166,7 +167,7 @@ function save_radio(){
     radio_tmp = JSON.parse(radio_tmp);
     radio_tmp.audio_playing = false;
     localStorage.setItem("radio", JSON.stringify(radio_tmp));
-    console.log("radio Gespeichert");
+    //console.log("radio Gespeichert");
 }
 
 async function streamlist_load(){
@@ -211,6 +212,7 @@ function audio_toggle(but, value){
 }
 
 function audio_play(but, value){
+    console.log(but);
     radio.current_stream.data = radio.streamlist.base.content[value];
     radio.current_stream.key = value;
     stream_history.add(radio.current_stream.key);
@@ -293,16 +295,52 @@ var stream_history = {
             });
             history.unshift(content);
             localStorage.setItem("musik_history", JSON.stringify(history));
+            streamlist = stream_history.get_list();
+            console.log(streamlist);
+            recently_played_load(streamlist);
             return true;
         }else{
             localStorage.setItem("musik_history", JSON.stringify([content]));
             return true;
         }
     },
+    get_list: ()=>{
+        var history = JSON.parse(localStorage.getItem("musik_history"));
+        var streamlist = {
+            content: {}
+        };
+        history.forEach((element, index) => {
+            streamlist.content[element] = radio.streamlist.base.content[element];
+        });
+        streamlist.keylist = Object.keys(streamlist.content);
+        return streamlist;
+    },
     reset: ()=>{
         localStorage.removeItem("musik_history");
         return true;
     }
+}
+
+function recently_played_load(streamlist){
+    if(!streamlist){
+        streamlist = stream_history.get_list();
+    }
+    //console.log(radio.radiotext);
+    var home_container = document.getElementsByClassName("radio_recent")[0].getElementsByClassName("home_card_container")[0];
+    home_container.innerHTML = "";
+    for(i=0; i < streamlist.keylist.length; i++){
+        if(streamlist.content[streamlist.keylist[i]].radiotext != undefined){
+            var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].radiotext;
+        }else{
+            var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].description;
+        }
+        if(streamlist.content[streamlist.keylist[i]]){
+            home_container.innerHTML += "<div class='home_card' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+        }else{
+            console.log("nomain");
+        }    
+    }
+    channels_start();
 }
 
 function radiotext_load(){
