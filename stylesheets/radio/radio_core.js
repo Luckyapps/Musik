@@ -95,8 +95,8 @@ var streamlist_base = {
         description :"Untersender von Antenne Bayern mit 2000er Hits",
         source: "https://stream.antenne.de/2000er-hits/stream/aacp",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
-            sizes: "225x225",
+            src: "https://luckyapps.github.io/Musik/media/images/antenne/2000.png",
+            sizes: "678x678",
             type: "image/png"
         } 
     },
@@ -105,8 +105,8 @@ var streamlist_base = {
         description :"Untersender von Antenne Bayern mit 2000er Hits",
         source: "https://stream.antenne.de/2000er-hits/stream/aacp",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
-            sizes: "225x225",
+            src: "https://luckyapps.github.io/Musik/media/images/antenne/2010.png",
+            sizes: "678x678",
             type: "image/png"
         } 
     },
@@ -115,8 +115,8 @@ var streamlist_base = {
         description :"Untersender von Antenne Bayern mit 70er Hits",
         source: "https://stream.antenne.de/70er-hits/stream/aacp",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
-            sizes: "225x225",
+            src: "https://luckyapps.github.io/Musik/media/images/antenne/70.png",
+            sizes: "678x678",
             type: "image/png"
         } 
     },
@@ -125,8 +125,8 @@ var streamlist_base = {
         description :"Untersender von Antenne Bayern mit 80er Hits",
         source: "https://stream.antenne.de/80er-kulthits/stream/aacp",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
-            sizes: "225x225",
+            src: "https://luckyapps.github.io/Musik/media/images/antenne/80.png",
+            sizes: "678x678",
             type: "image/png"
         } 
     },
@@ -135,8 +135,8 @@ var streamlist_base = {
         description :"Untersender von Antenne Bayern mit 90er Hits",
         source: "https://stream.antenne.de/90er-hits/stream/aacp",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
-            sizes: "225x225",
+            src: "https://luckyapps.github.io/Musik/media/images/antenne/90.png",
+            sizes: "678x678",
             type: "image/png"
         } 
     }
