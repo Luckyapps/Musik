@@ -135,9 +135,9 @@ var streamlist_base = {
         description :"Untersender von Antenne Bayern mit 90er Hits",
         source: "https://stream.antenne.de/90er-hits/stream/aacp",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/antenne/90.png",
+            src: "https://luckyapps.github.io/Musik/media/images/antenne/90.jpg",
             sizes: "678x678",
-            type: "image/png"
+            type: "image/jpg"
         } 
     }
 };
