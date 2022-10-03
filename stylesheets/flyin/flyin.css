@@ -19,7 +19,7 @@
     animation-name: flyin_open_ani;
     animation-duration: 0.3s;
     animation-timing-function: ease-out;
-    position: absolute
+    position: fixed;
 }
 
 .flyin_close{
