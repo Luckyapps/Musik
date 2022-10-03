@@ -59,7 +59,7 @@ var streamlist_base = {
     antennebayern:{
         name:"Antenne Bayern",
         description :"Bayrischer Sender",
-        source:"https://stream.antenne.de/antenne/stream/mp3",
+        source:"https://stream.antenne.de/antenne/stream/aacp",//"https://stream.antenne.de/antenne/stream/mp3",
         main: true,
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
@@ -89,6 +89,56 @@ var streamlist_base = {
             sizes: "1400x1400",
             type: "image/jpeg"
         } 
+    },
+    antennebayern2000:{
+        name:"Antenne Bayern 2000er Hits",
+        description :"Untersender von Antenne Bayern mit 2000er Hits",
+        source: "https://stream.antenne.de/2000er-hits/stream/aacp",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
+            sizes: "225x225",
+            type: "image/png"
+        } 
+    },
+    antennebayern2010:{
+        name:"Antenne Bayern 2000er Hits",
+        description :"Untersender von Antenne Bayern mit 2000er Hits",
+        source: "https://stream.antenne.de/2000er-hits/stream/aacp",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
+            sizes: "225x225",
+            type: "image/png"
+        } 
+    },
+    antennebayern70:{
+        name:"Antenne Bayern 70er Hits",
+        description :"Untersender von Antenne Bayern mit 70er Hits",
+        source: "https://stream.antenne.de/70er-hits/stream/aacp",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
+            sizes: "225x225",
+            type: "image/png"
+        } 
+    },
+    antennebayern80:{
+        name:"Antenne Bayern 80er Hits",
+        description :"Untersender von Antenne Bayern mit 80er Hits",
+        source: "https://stream.antenne.de/80er-kulthits/stream/aacp",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
+            sizes: "225x225",
+            type: "image/png"
+        } 
+    },
+    antennebayern90:{
+        name:"Antenne Bayern 90er Hits",
+        description :"Untersender von Antenne Bayern mit 90er Hits",
+        source: "https://stream.antenne.de/90er-hits/stream/aacp",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
+            sizes: "225x225",
+            type: "image/png"
+        } 
     }
 };
 
@@ -103,6 +153,16 @@ var channels_base = {
             type: "image/png"
         }
     },
+    antennebayern: {
+        name: "Antenne Bayern",
+        description: "Bayrischer ANTENNE Sender mit vielen verschiedenen Streams: <a href='https://www.antenne.de/musik/unsere-streams'>Senderübersicht</a>",
+        streams: ["antennebayern","antennebayern2000","antennebayern2010","antennebayern70","antennebayern80","antennebayern90"],
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
+            sizes: "225x225",
+            type: "image/png"
+        }
+    }
 };
 
 class stream {
