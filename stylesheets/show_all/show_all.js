@@ -29,5 +29,5 @@ function show_all_open(type){
     }
     content += "</div>";
 
-    flyin_toggle("normal", content, type, "gray");
+    flyin_toggle("normal", content, type, "#2c2c2c");
 }
