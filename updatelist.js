@@ -1,6 +1,14 @@
 var updatelist_musik = {
     "source": "Musik",
-    "content": [ 
+    "content": [
+        {
+            id: "dv.1.22101.1",
+            title: "Luckyapp Musik Update 2|okt22",
+            name: "",
+            date: "18.10.2022",
+            type: "UPDATE",
+            description: "<ul><li>Settings: <ul><li>Die aktuelle Versionsnummer wird angezeigt.</li></ul></li><li><b>neue Sender</b> hinzugefügt <ul><li>Verschiedene <b>Antenne Bayern Themensender</b></li></ul></li><li><b>neuer Channel</b> hinzugefügt: <ul><li><b>Antenne Bayern</b></li></ul></li></ul>"
+        },
         {
             id: "dv.1.22101.1",
             title: "Luckyapp Update 1|okt22",
