@@ -34,7 +34,7 @@ function channels_load(elem){
     }
     content += "</div>";
 
-    flyin_toggle("normal", content, channel.name, "#54575e");
+    flyin_toggle("normal", content, channel.name, channel.color);
 }
 
 function channels_get(stream){

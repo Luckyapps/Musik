@@ -6,6 +6,13 @@
 }
 
 .channel_description{
-    color:black;
+    color: black;
     text-align: center;
+    position: relative;
+    width: fit-content;
+    left: 50%;
+    background-color: gray;
+    transform: translate(-50%,0);
+    padding: 5px;
+    border-radius: 10px;
 }

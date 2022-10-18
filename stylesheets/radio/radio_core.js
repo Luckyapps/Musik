@@ -147,6 +147,7 @@ var channels_base = {
         name: "WDR",
         description: "Öffentlich Rechtlicher Rundfunk",
         streams: ["1live", "wdr2", "wdr3", "wdr4", "wdr5"],
+        color: "#2c2c2c",
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/wdr2.png",
             sizes: "400x400",
@@ -157,6 +158,7 @@ var channels_base = {
         name: "Antenne Bayern",
         description: "Bayrischer ANTENNE Sender mit vielen verschiedenen Streams: <a href='https://www.antenne.de/musik/unsere-streams'>Senderübersicht</a>",
         streams: ["antennebayern","antennebayern2000","antennebayern2010","antennebayern70","antennebayern80","antennebayern90"],
+        color: "#2c2c2c",
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/antennebayern.png",
             sizes: "225x225",
