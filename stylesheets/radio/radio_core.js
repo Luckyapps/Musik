@@ -101,9 +101,9 @@ var streamlist_base = {
         } 
     },
     antennebayern2010:{
-        name:"Antenne Bayern 2000er Hits",
-        description :"Untersender von Antenne Bayern mit 2000er Hits",
-        source: "https://stream.antenne.de/2000er-hits/stream/aacp",
+        name:"Antenne Bayern 2010er Hits",
+        description :"Untersender von Antenne Bayern mit 2010er Hits",
+        source: "https://stream.antenne.de/2010er-hits/stream/aacp",
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/antenne/2010.png",
             sizes: "678x678",
