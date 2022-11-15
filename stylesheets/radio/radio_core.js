@@ -232,7 +232,7 @@ function save_radio(){
     //console.log("radio Gespeichert");
 }
 
-async function streamlist_load(){
+function streamlist_load(){
     //console.log(radio.radiotext);
     var home_container = document.getElementsByClassName("radio_home")[0].getElementsByClassName("home_card_container")[0];
     home_container.innerHTML = "";
@@ -248,7 +248,13 @@ async function streamlist_load(){
             var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].description;
         }
         if(streamlist.content[streamlist.keylist[i]].main){
-            home_container.innerHTML += "<div class='home_card' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            if(part_of_channels(streamlist.keylist[i])){
+                var home_card_class = "home_card";
+            }else{
+                console.log(streamlist.keylist[i]);
+                var home_card_class = "home_card home_card_nolink";
+            }
+            home_container.innerHTML += "<div class='"+ home_card_class +"' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    

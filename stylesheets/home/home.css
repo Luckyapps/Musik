@@ -128,6 +128,11 @@ section{
     background: #3f3f3f;
 }
 
+.home_card_nolink:hover{
+    background-color:#1c1c1c !important;
+    cursor: auto;
+}
+
 .home_card_img{
     max-width: 100%;
     position: relative;
@@ -149,6 +154,7 @@ section{
 }
 
 .home_card_play{
+    cursor: pointer;
     position: absolute;
     right: 10px;
     bottom: 10px;
