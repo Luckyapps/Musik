@@ -32,7 +32,7 @@ function channels_load(elem){
             }else{
                 var radiotext = " id='"+ streamlist.keylist[i] +"_rtcl'>"+ streamlist.content[streamlist.keylist[i]].description
             }
-            content += "<div class='home_card'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            content += "<div class='home_card home_card_nolink'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    
@@ -86,4 +86,28 @@ function channels_list_load(){
     }
     channels_list_status = "loaded";
     channels_start();
+}
+
+function part_of_channels(stream, infomode){ //Darf nicht in Funktionen mit m oder j for loops aufgerufen werden!!!!
+    var channel = "";
+    var stream = "";
+    for(m=0;m<radio.channels_keylist.length;m++){
+        channel = radio.channels_keylist[m];
+        for(j=0;j<radio.channels[radio.channels_keylist[m]].streams.length;j++){
+            //console.log(m +"    "+ j);
+            stream = radio.channels[radio.channels_keylist[m]].streams[j];
+            if(radio.channels[radio.channels_keylist[m]].streams[j] == stream){
+                if(infomode){
+                    var result = {
+                        channelname: channel,
+                        data: radio.channels[radio.channels_keylist[m]]
+                    };
+                    return result;
+                }else{
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
 }
