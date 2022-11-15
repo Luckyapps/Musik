@@ -16,3 +16,13 @@ button{
     overflow: auto;
     box-sizing: border-box;
 }
+
+.setting_reset_button{
+    transition: background-color 0.2s ease, padding 0.2s ease, border-radius 0.6s ease;
+}
+
+.setting_reset_button:hover{
+    background-color: red;
+    padding: 1em;
+    border-radius: 20px;
+}
