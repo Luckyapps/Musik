@@ -89,13 +89,9 @@ function channels_list_load(){
 }
 
 function part_of_channels(stream, infomode){ //Darf nicht in Funktionen mit m oder j for loops aufgerufen werden!!!!
-    var channel = "";
-    var stream = "";
     for(m=0;m<radio.channels_keylist.length;m++){
-        channel = radio.channels_keylist[m];
         for(j=0;j<radio.channels[radio.channels_keylist[m]].streams.length;j++){
             //console.log(m +"    "+ j);
-            stream = radio.channels[radio.channels_keylist[m]].streams[j];
             if(radio.channels[radio.channels_keylist[m]].streams[j] == stream){
                 if(infomode){
                     var result = {
