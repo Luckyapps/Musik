@@ -6,7 +6,7 @@ function settings_start(){
     };
 
     settings.page.content = "<div class='settings_container' style='padding-top:0'>"
-    +"<section><p style=''>Luckyapp_Musik version dv.1.22111.1</p></section>"
+    +"<section><p style=''>Luckyapp_Musik version dv.1.22111.2</p></section>"
     +"<section><h3>Zurücksetzen</h3>"
     +"<p>Dies setzt die gesammte App zurück auf Werkseinstellungen.</p>"
     +"<button class='setting_reset_button' onclick='setting_reset()'>Alles zurücksetzen</button>"
