@@ -20,7 +20,10 @@ function settings_start(){
 }
 
 function setting_reset(){
-    localStorage.clear();
+    //localStorage.clear();
+    localStorage.removeItem("radio");
+    localStorage.removeItem("musik_history");
+    localStorage.removeItem("cookies");
     location.reload(true);
 }
 
