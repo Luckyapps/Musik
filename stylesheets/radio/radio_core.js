@@ -90,6 +90,49 @@ var streamlist_base = {
             type: "image/jpeg"
         } 
     },
+    kronehitfresh:{
+        name:"Kronehit Fresh",
+        description :"Untersender von Kronehit",
+        source: "https://secureonair.krone.at/kronehit22.mp3?listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
+        image: {
+            src: "https://www.kronehit.at/media/images/fresh-90x65-min.original.png",
+            alt: "https://www.kronehit.at/media/images/fresh-Variante-2-AdobeStock-Syda-Productions-80.original.jpg",
+            sizes: "90x65",
+            type: "image/png"
+        } 
+    },
+    kronehitdance:{
+        name:"Kronehit Dance",
+        description :"Untersender von Kronehit",
+        source: "https://secureonair.krone.at/kronehit23.mp3?listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
+        image: {
+            src: "https://www.kronehit.at/media/images/dance-90x65-min.original.png",
+            alt: "https://www.kronehit.at/media/images/dance-shutterstock-Ariwasabi-940x233.original.jpg",
+            sizes: "90x65",
+            type: "image/png"
+        } 
+    },
+    kronehitgreatesthits:{
+        name:"Kronehit Greatest Hits",
+        description :"Untersender von Kronehit",
+        source: "https://secureonair.krone.at/kronehit13.mp3?listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
+        image: {
+            src: "https://www.kronehit.at/media/images/greatest-hits-90x65-min.original.png",
+            sizes: "90x65",
+            type: "image/png"
+        } 
+    },
+    kronehitchristmas:{
+        name:"Kronehit Christmas",
+        description :"Untersender von Kronehit",
+        source: "https://secureonair.krone.at/kronehit12.mp3?context=fHA6LTE=&listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
+        image: {
+            src: "https://www.kronehit.at/media/images/Christmas-NEU-90x65.original.jpg",
+            alt: "https://www.kronehit.at/media/images/CHRISTMAS-NEU-800x259.original.jpg",
+            sizes: "90x65",
+            type: "image/png"
+        } 
+    },
     antennebayern2000:{
         name:"Antenne Bayern 2000er Hits",
         description :"Untersender von Antenne Bayern mit 2000er Hits",
@@ -164,6 +207,17 @@ var channels_base = {
             sizes: "225x225",
             type: "image/png"
         }
+    },
+    kronehit: {
+        name: "Kronehit",
+        description: "Hitradio mit vielen verschiedenen Streams",
+        streams: ["kronehit", "kronehitfresh", "kronehitdance", "kronehitgreatesthits", "kronehitchristmas"],
+        color: "#2c2c2c",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/kronehit.jpeg",
+            sizes: "1400x1400",
+            type: "image/jpeg"
+        } 
     }
 };
 

@@ -5,9 +5,15 @@ function songscreen_start(){
 }
 
 function songscreen_open(){
-    var content = "<div class='songscreen_container_back' style='background: url("+ radio.current_stream.data.image.src +");background-size: cover;background-position: center;'>"
+    var image = ""; //Experimental
+    if(radio.current_stream.data.image.alt){
+        image = radio.current_stream.data.image.alt;
+    }else{
+        image = radio.current_stream.data.image.src
+    }
+    var content = "<div class='songscreen_container_back' style='background: url("+ /*radio.current_stream.data.image.src*/image +");background-size: cover;background-position: center;'>"
     +"<div class='songscreen_container'>"
-    +"<img src='"+ radio.current_stream.data.image.src +"'>"
+    +"<img src='"+ /*radio.current_stream.data.image.src*/image +"'>"
     +"<div class='songscreen_name_container'><h2 class='songscreen_name'>"+ radio.current_stream.data.name +"</h2>"
     +"<div class='songscreen_description color_sub' id='"+ radio.current_stream.key +"_rtssc'>"+ radio.current_stream.data.description+"</div></div>"
     +"<div class='songscreen_playbutton'>></div>"

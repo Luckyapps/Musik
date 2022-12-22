@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.1.22121.1",
+            title: "Luckyapp Musik Update 1|dez22",
+            name: "",
+            date: "22.12.2022",
+            type: "UPDATE",
+            description: "<ul><li>Neuer Channel: <b>Kronehit</b><ul><li>Es wurden neue Kronehit-Untersender hinzugefügt.</li></ul></li></ul>"
+        },{
             id: "dv.1.22111.1",
             title: "Luckyapp Musik Update 1|nov22",
             name: "",
