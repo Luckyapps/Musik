@@ -488,5 +488,5 @@ function testit(url, stream){
     
     .then((response) => response.text())
 
-    .then((text) => {radiotext_receive({data: {antwort: text, stream: stream}, result: "true"})});
+    .then((text) => {radiotext_receive({data: {antwort: /*"&#128308;"+*/text, stream: stream}, result: "true"})});
 }

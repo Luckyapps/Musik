@@ -20,6 +20,7 @@
     <link href="stylesheets/settings/settings.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/show_all/show_all.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/channels/channels.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/favorites/favorites.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <script src="script.js"></script>
@@ -33,6 +34,7 @@
     <script src="stylesheets/show_all/show_all.js"></script>
     <script src="https://luckyapps.github.io/Lucky_library/luckylibrary.js"></script>
     <script src="stylesheets/channels/channels.js"></script>
+    <script src="stylesheets/favorites/favorites.js"></script>
 
     <div id="blende"></div>
 
@@ -40,8 +42,9 @@
         <h1>Luckyapp Musik2</h1>
         <section class="homebar color_main">
             <div class="homebar_textbar">
-                <div onclick="window.location='../Luckyapp/index.html'">Home</div>
-                <div onclick="window.location='../Luckyapp/pages/musik/index.html'">Über uns</div>
+                <!--<div onclick="window.location='../Luckyapp/index.html'">Home</div>-->
+                <div onclick="window.location='../Luckyapp/pages/musik/index.html'">Infos</div>
+                <div onclick="favorites_show()">&#10084;&#65039;Favoriten</div>
             </div>
             <div class="homebar_settings" onclick="settings_start()">Settings</div>
         </section>
@@ -179,7 +182,8 @@
                 </div>
             </div>
             <div class="playbar_right">
-                <div>></div>
+                <div class="playbar_playbutton">></div>
+                <div class="playbar_favorite">&#129293;</div>
             </div>
         </div>
     </div>
@@ -199,7 +203,7 @@
     <div class="cookie_container_hide" id="cookie_container">
         <div  id="cookie_content">
           <h3>Cookies</h3>
-          <div>Bei Nutzung der Website stimmen Sie zu, dass die Website notwendige technische Nutzerdaten (z.B. Darkmode-Einstellungen, Cookieauswahl) lokal im Browser speichert.</div>
+          <div>Bei Nutzung der Website stimmen Sie zu, dass die Website notwendige technische Nutzerdaten (z.B. Darkmode-Einstellungen, Cookieauswahl, Favoriten, Einstellungen) lokal im Browser speichert.</div>
           <div id="cookie_selection">
             <div id="cookies_close" onclick="cookie_content_close()">Fortfahren</div>
           </div>

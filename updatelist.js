@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.1.22122.1",
+            title: "Luckyapp Musik Update 2|dez22",
+            name: "",
+            date: "23.12.2022",
+            type: "UPDATE",
+            description: "<ul><li>Favoriten wurden hinzugefügt: <ul><li>Mit einem Klick auf das Herz kann ein Stream zu den Favoriten hinzugefügt oder entfernt werden.</li><li>Über den Button '&#10084;&#65039;Favoriten' können die Favoriten abgerufen werden. <ul><li>Klickt man in dieser Übersicht auf einen der Streams, wird dieser aus den Favoriten entfernt.</li></ul></li></ul></li></ul>"
+        },{
             id: "dv.1.22121.1",
             title: "Luckyapp Musik Update 1|dez22",
             name: "",

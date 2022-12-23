@@ -44,6 +44,7 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+    gap: 1em;
 }
 
 .playbar_right div{
@@ -51,6 +52,10 @@
     font-weight: bolder;
     color: black;
     cursor: pointer;
+}
+
+.playbar_right .playbar_favorite{
+    font-size: 2em;
 }
 
 .playbar_text_main{
