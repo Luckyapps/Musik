@@ -1,0 +1,22 @@
+.favorites_edit_button{
+    background-color: #b90000;
+    border: 2px solid #760404;
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
+    cursor:pointer;
+}
+
+.fav_m_r{
+    background-color: #b90000;
+    border: 2px solid #760404;
+}
+
+.fav_m_s{
+    background-color: #00b928;
+    border: 2px solid #047615;
+}
+
+.fav_home_r{
+    border: 2px solid red;
+}

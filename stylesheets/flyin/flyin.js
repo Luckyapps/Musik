@@ -1,4 +1,4 @@
-var flyin, flyin_state = "close", flyin_titlebar_INIT, flyin_titlebar_title;
+var flyin, flyin_state = "close", flyin_titlebar_INIT, flyin_titlebar_title, flyin_titlebar_toolbar;
 
 window.addEventListener("load", flyin_start);
 
@@ -7,12 +7,12 @@ function flyin_start(){
     flyin_titlebar_INIT = createHTML(document.getElementById("flyin").innerHTML);
 }
 
-function flyin_toggle(type, content, title, background){
+function flyin_toggle(type, content, title, background, toolbar){
     if(flyin_state == "open"){
         flyin_close();
         return;
     }
-    flyin.innerHTML = ""
+    flyin.innerHTML = "";
     if(type == "normal"){
         flyin.innerHTML = flyin_titlebar_INIT;
         if(title){
@@ -26,7 +26,7 @@ function flyin_toggle(type, content, title, background){
         //flyin_content 
     }
     if(flyin_state == "close"){
-        flyin_open(content, background);
+        flyin_open(content, background, toolbar);
     }
 }
 
@@ -37,13 +37,16 @@ function flyin_titlebar_init(title, content){
     }
 }
 
-function flyin_open(content, background){
+function flyin_open(content, background, toolbar){
     if(background){
         flyin.style.background = background;
     }else{
         flyin.style.background = "gray";
     }
     flyin.innerHTML = flyin_titlebar_INIT.outerHTML + content;
+    if(toolbar){
+        document.getElementById("flyin_tools_container").innerHTML = toolbar;
+    }
     //flyin.style.paddingTop = document.getElementById("flyin_titlebar").offsetHeight +"px";
     document.body.style.overflow = "hidden";
     flyin.classList = "flyin_open";

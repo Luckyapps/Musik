@@ -19,9 +19,12 @@ function songscreen_open(){
     +"<div class='songscreen_playbutton'>></div>"
     +"</div></div>";
 
-    flyin_open(content);
+    var toolbar = "<div id='songscreen_fav_but' onclick='favorite_toggle()'>❤️</div>";
+
+    flyin_open(content,undefined, toolbar);
     document.getElementsByClassName("songscreen_playbutton")[0].addEventListener("click", function(){audio_toggle(radio.current_stream.current_button, radio.current_stream.key)})
     songscreen_playbutton_toggle();
+    favorite_style_init();
 }
 
 function songscreen_playbutton_toggle(){
