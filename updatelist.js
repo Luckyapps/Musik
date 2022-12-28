@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.1.22123.2",
+            title: "Luckyapp Musik Update 3|dez22",
+            name: "",
+            date: "28.12.2022",
+            type: "BUGFIX",
+            description: "<ul><li>Bilder der Kronehit-Untersender wurden nicht richtig angezeigt.</li></ul>"
+        },{
             id: "dv.1.22123.1",
             title: "Luckyapp Musik Update 3|dez22",
             name: "&#10084;&#65039;Favoriten 2",
