@@ -85,7 +85,7 @@ var streamlist_base = {
         main: true,
         channels: "https://www.kronehit.at/player/channels/portal.xml",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/kronehit.jpeg",
+            src: "media/images/kronehit.jpeg",
             sizes: "1400x1400",
             type: "image/jpeg"
         } 
@@ -95,8 +95,8 @@ var streamlist_base = {
         description :"Untersender von Kronehit",
         source: "https://secureonair.krone.at/kronehit22.mp3?listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/kronehit/fresh-90x65-min.original.png",
-            alt: "https://luckyapps.github.io/Musik/media/images/kronehit/fresh-Variante-2-AdobeStock-Syda-Productions-80.original.jpg",
+            src: "media/images/kronehit/fresh-90x65-min.original.png",
+            alt: "media/images/kronehit/fresh-Variante-2-AdobeStock-Syda-Productions-80.original.jpg",
             sizes: "90x65",
             type: "image/png"
         } 
@@ -106,8 +106,8 @@ var streamlist_base = {
         description :"Untersender von Kronehit",
         source: "https://secureonair.krone.at/kronehit23.mp3?listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/kronehit/dance-90x65-min.original.png",
-            alt: "https://luckyapps.github.io/Musik/media/images/kronehit/dance-shutterstock-Ariwasabi-940x233.original.jpg",
+            src: "media/images/kronehit/dance-90x65-min.original.png",
+            alt: "media/images/kronehit/dance-shutterstock-Ariwasabi-940x233.original.jpg",
             sizes: "90x65",
             type: "image/png"
         } 
@@ -117,7 +117,7 @@ var streamlist_base = {
         description :"Untersender von Kronehit",
         source: "https://secureonair.krone.at/kronehit13.mp3?listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/kronehit/greatest-hits-90x65-min.original.png",
+            src: "media/images/kronehit/greatest-hits-90x65-min.original.png",
             sizes: "90x65",
             type: "image/png"
         } 
@@ -127,8 +127,8 @@ var streamlist_base = {
         description :"Untersender von Kronehit",
         source: "https://secureonair.krone.at/kronehit12.mp3?context=fHA6LTE=&listenerId=[IFA]&aw_0_req.userConsentV2=[PLAYER_TC_STRING]",
         image: {
-            src: "https://luckyapps.github.io/Musik/media/images/kronehit/Christmas-NEU-90x65.original.jpg",
-            alt: "https://luckyapps.github.io/Musik/media/images/kronehit/CHRISTMAS-NEU-800x259.original.jpg",
+            src: "media/images/kronehit/Christmas-NEU-90x65.original.jpg",
+            alt: "media/images/kronehit/CHRISTMAS-NEU-800x259.original.jpg",
             sizes: "90x65",
             type: "image/png"
         } 
