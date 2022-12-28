@@ -5,7 +5,7 @@ window.addEventListener("load", flyin_start);
 function flyin_start(){
     flyin = document.getElementById("flyin");
     flyin_titlebar_INIT = createHTML(document.getElementById("flyin").innerHTML);
-    document.addEventListener("backbutton", ()=>{
+    document.addEventListener("hashchange", ()=>{
         if(flyin_state == "open"){
             flyin_close();
         }
