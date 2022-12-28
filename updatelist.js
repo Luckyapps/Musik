@@ -55,5 +55,7 @@ var updatelist_musik = {
     ]
 };
 
-luckyapp_core.modules.updates.updatelists.musik = {loaded: true};
-luckyapp_core.modules.updates.updatelists.musik.list = updatelist_musik;
+if(luckyapp_core){
+    luckyapp_core.modules.updates.updatelists.musik = {loaded: true};
+    luckyapp_core.modules.updates.updatelists.musik.list = updatelist_musik;
+}
