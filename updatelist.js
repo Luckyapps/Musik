@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.1.22124.1",
+            title: "Luckyapp Musik Update 4|dez22",
+            name: "",
+            date: "28.12.2022",
+            type: "UPDATE",
+            description: "<ul></ul>"
+        },{
             id: "dv.1.22123.2",
             title: "Luckyapp Musik Update 3|dez22",
             name: "",

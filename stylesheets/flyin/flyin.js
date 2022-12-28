@@ -5,6 +5,11 @@ window.addEventListener("load", flyin_start);
 function flyin_start(){
     flyin = document.getElementById("flyin");
     flyin_titlebar_INIT = createHTML(document.getElementById("flyin").innerHTML);
+    document.addEventListener("backbutton", ()=>{
+        if(flyin_state == "open"){
+            flyin_close();
+        }
+    })
 }
 
 function flyin_toggle(type, content, title, background, toolbar){
