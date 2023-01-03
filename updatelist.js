@@ -2,12 +2,12 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
-            id: "dv.1.22124.2",
-            title: "Luckyapp Musik Update 4|dez22",
-            name: "",
-            date: "28.12.2022",
+            id: "dv.1.22124.3",
+            title: "Luckyapp Musik Update 4|jan23",
+            name: "Flyin Backbutton",
+            date: "03.01.2023",
             type: "UPDATE",
-            description: "<ul></ul>"
+            description: "<ul><li>Neue Möglichkeit zum Schließen des Flyins: <ul><li>Wird der Zurückbutton gedrückt, schließt sich das Flyin.</li></ul></li></ul>"
         },{
             id: "dv.1.22123.2",
             title: "Luckyapp Musik Update 3|dez22",

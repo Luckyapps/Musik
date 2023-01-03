@@ -2,14 +2,17 @@ var flyin, flyin_state = "close", flyin_titlebar_INIT, flyin_titlebar_title, fly
 
 window.addEventListener("load", flyin_start);
 
+window.addEventListener('popstate', (event) => {
+    console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
+    if(flyin_state == "open"){
+        flyin_close();
+        window.history.forward(1);
+    }
+});
+
 function flyin_start(){
     flyin = document.getElementById("flyin");
     flyin_titlebar_INIT = createHTML(document.getElementById("flyin").innerHTML);
-    document.addEventListener("hashchange", ()=>{
-        if(flyin_state == "open"){
-            flyin_close();
-        }
-    })
 }
 
 function flyin_toggle(type, content, title, background, toolbar){
@@ -43,6 +46,7 @@ function flyin_titlebar_init(title, content){
 }
 
 function flyin_open(content, background, toolbar){
+    history.pushState({ page: 1 }, "title 1", "?state=flyin");
     if(background){
         flyin.style.background = background;
     }else{
@@ -62,6 +66,7 @@ function flyin_open(content, background, toolbar){
 }
 
 function flyin_close(){
+    history.back();
     flyin.classList = "flyin_close";
     document.body.style.overflow = "auto";
     flyin_state = "close";
