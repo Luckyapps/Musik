@@ -1,5 +1,7 @@
 var cookie_container, cookie_content;
 
+window.addEventListener("load", load_cookie_stylesheet);
+
 function load_cookie_stylesheet(){
     cookie_container = document.getElementById("cookie_container");
     cookie_content = document.getElementById("cookie_content");
