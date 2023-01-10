@@ -46,7 +46,7 @@ function flyin_titlebar_init(title, content){
 }
 
 function flyin_open(content, background, toolbar){
-    history.pushState({ page: 1 }, "title 1", "?state=flyin");
+    history.pushState({ page: 1 }, "title 1", "?flyin");
     if(background){
         flyin.style.background = background;
     }else{
