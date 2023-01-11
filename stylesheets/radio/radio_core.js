@@ -305,12 +305,12 @@ function streamlist_load(){
             if(part_of_channels(streamlist.keylist[i])){
                 var home_card_class = "home_card";
             }else{
-                console.log(streamlist.keylist[i]);
+                //console.log(streamlist.keylist[i]);
                 var home_card_class = "home_card home_card_nolink";
             }
             home_container.innerHTML += "<div class='"+ home_card_class +"' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
-            console.log("nomain");
+            //console.log("nomain");
         }    
     }
     channels_start();
@@ -334,7 +334,7 @@ function audio_toggle(but, value){
 }
 
 function audio_play(but, value){
-    console.log(but);
+    //console.log(but);
     radio.current_stream.data = radio.streamlist.base.content[value];
     radio.current_stream.key = value;
     stream_history.add(radio.current_stream.key);
@@ -418,7 +418,7 @@ var stream_history = {
             history.unshift(content);
             localStorage.setItem("musik_history", JSON.stringify(history));
             streamlist = stream_history.get_list();
-            console.log(streamlist);
+            //console.log(streamlist);
             recently_played_load(streamlist);
             return true;
         }else{

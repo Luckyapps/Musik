@@ -3,7 +3,7 @@ var flyin, flyin_state = "close", flyin_titlebar_INIT, flyin_titlebar_title, fly
 window.addEventListener("load", flyin_start);
 
 window.addEventListener('popstate', (event) => {
-    console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
+    //console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
     if(flyin_state == "open"){
         flyin_close();
         window.history.forward(1);
@@ -30,7 +30,7 @@ function flyin_toggle(type, content, title, background, toolbar){
         }
     }
     if(content){
-        console.log("flyin_content");
+        //console.log("flyin_content");
         //flyin_content 
     }
     if(flyin_state == "close"){

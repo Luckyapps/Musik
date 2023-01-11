@@ -11,9 +11,9 @@ function channels_start(){
 
 function channels_start_onclick(e){
     if(e.target.classList == "home_card_play"){
-        console.log("Play");
+        //console.log("Play");
     }else{
-        console.log("Card");
+        //console.log("Card");
         channels_load(e.path[e.path.length - 8]);
     }
 }
@@ -21,9 +21,9 @@ function channels_start_onclick(e){
 function channels_load(elem){
     var stream = elem.id.replace("_hc","");
     var channel = channels_get(stream);
-    console.log(channel);
+    //console.log(channel);
     var streamlist = channels_streamlist(stream, channel);
-    console.log(streamlist);
+    //console.log(streamlist);
     var content = "<p class='channel_description'>"+ channel.description +"</p><div class='channel_container'>";
     for(i=0; i < streamlist.keylist.length; i++){
         if(streamlist.content[streamlist.keylist[i]]){

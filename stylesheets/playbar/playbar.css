@@ -13,6 +13,7 @@
     width: 100%;
     background-color: #3f3f3fb5;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     margin: 10px;
     padding: 10px;
     display: none;

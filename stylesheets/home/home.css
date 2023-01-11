@@ -3,6 +3,10 @@
     font-family: calibri;
 }*/
 
+*{
+    font-family: calibri;
+}
+
 html{
     background: url(../../media/images/back.jpg) no-repeat center center fixed;
     background-size: cover;
@@ -117,6 +121,7 @@ section{
     padding: 10px;
     background-color: #1c1c1c;
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 10px;
     max-width: /*244px*/ 144px;
     min-width: 144px;

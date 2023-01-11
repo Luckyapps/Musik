@@ -2,8 +2,15 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
-            id: "dv.1.22124.3",
-            title: "Luckyapp Musik Update 4|jan23",
+            id: "dv.1.23011.2",
+            title: "Luckyapp Musik Update 1|jan23",
+            name: "Bugfix 1",
+            date: "11.01.2023",
+            type: "BUGFIX",
+            description: "<ul><li>IPad Kompatibilität erhöht, indem blur-effekte gefixt werden.</li><li>Die Anzahl der Konsolenausgaben wurde auf ein minimum verringert.</li></ul>"
+        },{
+            id: "dv.1.23011.1",
+            title: "Luckyapp Musik Update 1|jan23",
             name: "Flyin Backbutton",
             date: "03.01.2023",
             type: "UPDATE",

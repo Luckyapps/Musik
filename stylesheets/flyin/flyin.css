@@ -52,6 +52,7 @@
     z-index: 999;
     background: #ffffff0f;
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 #flyin_close_button{
