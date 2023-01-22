@@ -1,4 +1,4 @@
-function settings_start(){
+async function settings_start(){
     var settings = {
         page : {
             content: ""
@@ -11,12 +11,17 @@ function settings_start(){
     +"<p>Dies setzt die gesammte App zurück auf Werkseinstellungen.</p>"
     +"<button class='setting_reset_button' onclick='setting_reset()'>Alles zurücksetzen</button>"
     +"</section>"
+    +"<section>"
+        +"<h3>Versionsinfos</h3>"
+        +"<div id='set_upd_list'></div>"
+    +"</section"
     /*+"<section><h3>Erweiterung</h3>"
     +"<a href='extension.zip' download='Extension.zip'>Hier Herunterladen</a>"
     +"<section><h3>Daten auslesen</h3>"
     +"<button onclick='setting_showData()'>radio auslesen</button><div id='settings_auslesen_container'></div>"*/
     +"</div>";
-    flyin_toggle("normal", settings.page.content, "Settings", "#444444");
+    await flyin_toggle("normal", settings.page.content, "Settings", "#444444");
+    load_updatelist();
 }
 
 function setting_reset(){

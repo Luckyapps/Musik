@@ -26,3 +26,9 @@ button{
     padding: 1em;
     border-radius: 20px;
 }
+
+#set_upd_list{
+    background-color: antiquewhite;
+    padding: 10px;
+    border-radius: 10px;
+}
