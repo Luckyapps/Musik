@@ -331,6 +331,7 @@ function audio_toggle(but, value){
     playbar_design_toggle();
     songscreen_playbutton_toggle()
     save_radio();
+    recently_played_load();
 }
 
 function audio_play(but, value){
@@ -427,15 +428,19 @@ var stream_history = {
         }
     },
     get_list: ()=>{
-        var history = JSON.parse(localStorage.getItem("musik_history"));
-        var streamlist = {
-            content: {}
-        };
-        history.forEach((element, index) => {
-            streamlist.content[element] = radio.streamlist.base.content[element];
-        });
-        streamlist.keylist = Object.keys(streamlist.content);
-        return streamlist;
+        if(localStorage.getItem("musik_history")){
+            var history = JSON.parse(localStorage.getItem("musik_history"));
+            var streamlist = {
+                content: {}
+            };
+            history.forEach((element, index) => {
+                streamlist.content[element] = radio.streamlist.base.content[element];
+            });
+            streamlist.keylist = Object.keys(streamlist.content);
+            return streamlist;
+        }else{
+            return false;
+        }
     },
     reset: ()=>{
         localStorage.removeItem("musik_history");
@@ -446,6 +451,9 @@ var stream_history = {
 function recently_played_load(streamlist){
     if(!streamlist){
         streamlist = stream_history.get_list();
+    }
+    if(streamlist == false){
+        return false;
     }
     //console.log(radio.radiotext);
     var home_container = document.getElementsByClassName("radio_recent")[0].getElementsByClassName("home_card_container")[0];

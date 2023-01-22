@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.1.23011.3",
+            title: "Luckyapp Musik Update 1|jan23",
+            name: "Bugfix 1",
+            date: "11.01.2023",
+            type: "BUGFIX",
+            description: "<ul><li>Bugfixes:<ul><li>Es wurde ein Fehler behoben, bei dem der erste abgespielte Sender nicht bei Zuletzt Gespielt angezeigt wird, sondern erst der zweite.</li><li>Es wurde ein Kompatibilitätsproblem behoben, das verhindert hat, dass sich die Channelübersicht öffnen ließ. (onclick elem hat kein .path mehr --> ist jetzt composedPath())</li></ul></li></ul>"
+        },{
             id: "dv.1.23011.2",
             title: "Luckyapp Musik Update 1|jan23",
             name: "Bugfix 1",

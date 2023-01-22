@@ -14,7 +14,7 @@ function channels_start_onclick(e){
         //console.log("Play");
     }else{
         //console.log("Card");
-        channels_load(e.path[e.path.length - 8]);
+        channels_load(e.composedPath()[e.composedPath().length - 8]);
     }
 }
 
