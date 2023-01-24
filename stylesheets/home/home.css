@@ -185,5 +185,23 @@ section{
     vertical-align: middle;
 }
 
+.neu_tag{
+    font-size: 50%;
+    border: 1px solid green;
+    border-radius: 1em;
+    padding: 5px;
+    color: green;
+    vertical-align: middle;
+}
+
+.preview_tag{
+    font-size: 50%;
+    border: 1px solid orange;
+    border-radius: 1em;
+    padding: 5px;
+    color: orange;
+    vertical-align: middle;
+}
+
 
 
