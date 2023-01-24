@@ -29,6 +29,7 @@ function setting_reset(){
     localStorage.removeItem("radio");
     localStorage.removeItem("musik_history");
     localStorage.removeItem("cookies");
+    localStorage.removeItem("radio_favorites");
     location.reload(true);
 }
 
