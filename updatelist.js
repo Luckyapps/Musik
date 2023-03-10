@@ -7,7 +7,7 @@ var updatelist_musik = {
             name: "Originals",
             date: "10.03.2023",
             type: "UPDATE",
-            description: "<ul><li><b>Originals</b><ul><li>Unter Originals werden <b>Originalinhalte verfügbar</b> sein.</li><li>Die Seite Originals kann über das Menüband geöffnet werden.</li><li><span color='red'><b>Achtung:</b> Funktion noch in einem frühen Entwicklungsstadium.</span></li></ul></li><li>Einstellungen.<ul><li>In den Einstellungen werden jetzt die genauen Versionsinformationen zu einzelnen Updates Angezeigt.</li></ul></li><li>Wichtige Codeänderungen(nur für Entwickler):<ul><li>Tags zeigen nun automatisch ihren Text an. Er muss also nicht mehr manuel eingegeben werden.</li></ul></li></ul>"
+            description: "<ul><li><b>Originals</b><ul><li>Unter Originals werden <b>Originalinhalte verfügbar</b> sein.</li><li>Die Seite Originals kann über das Menüband geöffnet werden.</li><li><span style='color:red'><b>Achtung:</b> Funktion noch in einem frühen Entwicklungsstadium.</span></li></ul></li><li>Einstellungen.<ul><li>In den Einstellungen werden jetzt die genauen Versionsinformationen zu einzelnen Updates Angezeigt.</li></ul></li><li>Wichtige Codeänderungen(nur für Entwickler):<ul><li>Tags zeigen nun automatisch ihren Text an. Er muss also nicht mehr manuel eingegeben werden.</li></ul></li></ul>"
         },{
             id: "dv.1.23011.3",
             title: "Luckyapp Musik Update 1|jan23",
