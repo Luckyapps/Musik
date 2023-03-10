@@ -1,0 +1,40 @@
+.originals_container{
+    display: flex;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    gap:10px;
+    justify-content: space-evenly;
+}
+
+.originals_item{
+    padding: 10px;
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.originals_item > h2{
+    margin-top:0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+:root{
+    --playbarHeight: 15px;
+}
+
+.orig_playbar_container{
+    display: none;
+    margin-top: 10px;
+    height: var(--playbarHeight);
+    border-radius: var(--playbarHeight);
+    background: red;
+    width: 100%;
+}
+
+.orig_playbar{
+    height: 100%;
+    border-radius: var(--playbarHeight);
+    background: green;
+    width: 0%;
+    transition: width 1s;
+}
