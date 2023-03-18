@@ -5,8 +5,8 @@ window.addEventListener("load", flyin_start);
 window.addEventListener('popstate', (event) => {
     //console.log(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
     if(flyin_state == "open"){
-        flyin_close();
-        window.history.forward(1);
+        flyin_close("backbutton");
+        //window.history.forward(1);
     }
 });
 
@@ -65,8 +65,10 @@ function flyin_open(content, background, toolbar){
     }
 }
 
-function flyin_close(){
-    history.back();
+function flyin_close(origin){
+    if(origin != "backbutton"){
+        history.back();
+    }
     flyin.classList = "flyin_close";
     document.body.style.overflow = "auto";
     flyin_state = "close";
