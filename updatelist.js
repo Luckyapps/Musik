@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.1.23031.2",
+            title: "Luckyapp Musik Update 1|mär23",
+            name: "Bugfix",
+            date: "18.03.2023",
+            type: "BUGFIX",
+            description: "<ul><li>Bugfixes: <ul><li><b>Fehler behoben: </b>Drückte man die Zurücktaste oder den 'vorherige Seite' Pfeil im Browser, um ein Flyin zu schließen, wurde die Streamwiedergabe angehalten.<br>Schloß man das Flyin über Knopf per Mausklick/Touch stoppte die Wiedergabe nicht.</li></ul></li></ul>"
+        },{
             id: "dv.1.23031.1",
             title: "Luckyapp Musik Update 1|mär23",
             name: "Originals",
