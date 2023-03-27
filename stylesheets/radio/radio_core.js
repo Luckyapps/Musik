@@ -371,8 +371,6 @@ function audio_stop(but, value){
 
 function radiotext_receive(data){
     if(data.data.stream == "radiosauerland"){ //Sonderfall Radio Sauerland
-        console.log(data);
-        console.log(JSON.parse(data.data.antwort));
         var sdata = JSON.parse(data.data.antwort);
         data.data.antwort = sdata.title +" by "+ sdata.artist;
         radio.streamlist.base.content.radiosauerland.image.alt = sdata.cover;

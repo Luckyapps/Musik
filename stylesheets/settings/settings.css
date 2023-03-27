@@ -32,3 +32,8 @@ button{
     padding: 10px;
     border-radius: 10px;
 }
+
+#set_upd_list div {
+    padding-bottom: 5px;
+    border-bottom: 2px solid palevioletred;
+}
