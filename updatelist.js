@@ -4,9 +4,9 @@ var updatelist_musik = {
         {
             id: "dv.1.23032.2",
             title: "Luckyapp Musik Update 2|mär23",
-            name: "UPDATE",
+            name: "Radio Sauerland Radiotext",
             date: "27.03.2023",
-            type: "BUGFIX",
+            type: "UPDATE",
             description: "<ul><li>Experimente mit <b>Radiotext für Radio Sauerland</b> <ul><li>Funktion noch in der Testphase.</li><li>Außerdem in Arbeit: Wenn verfügbar Album cover und andere Informationen auf dem Songscreen anzeigen lassen.</li></ul>"
         },{
             id: "dv.1.23031.2",
