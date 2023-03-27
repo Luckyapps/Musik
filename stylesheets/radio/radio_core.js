@@ -71,6 +71,7 @@ var streamlist_base = {
         name:"Radio Sauerland",
         description:"Sauerländer Lokalsender",
         source:"https://radiosauerland.cast.addradio.de/radiosauerland/simulcast/high/stream.mp3",
+        radiotext_url: "https://api-prod.nrwlokalradios.com/playlist/current?station=21", //https://api-prod.nrwlokalradios.com/playlist/current?station=21
         main: true,
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/radiosauerland.png",
@@ -369,6 +370,13 @@ function audio_stop(but, value){
 }
 
 function radiotext_receive(data){
+    if(data.data.stream == "radiosauerland"){ //Sonderfall Radio Sauerland
+        console.log(data);
+        console.log(JSON.parse(data.data.antwort));
+        var sdata = JSON.parse(data.data.antwort);
+        data.data.antwort = sdata.title +" by "+ sdata.artist;
+        radio.streamlist.base.content.radiosauerland.image.alt = sdata.cover;
+    }
     if(data.result){
         radio.streamlist.base.content[data.data.stream].radiotext = data.data.antwort;
         if(document.getElementById(data.data.stream +"_rtcd")){
