@@ -374,6 +374,9 @@ function radiotext_receive(data){
         var sdata = JSON.parse(data.data.antwort);
         data.data.antwort = sdata.title +" by "+ sdata.artist;
         radio.streamlist.base.content.radiosauerland.image.alt = sdata.cover;
+        if(document.getElementsByClassName("songscreen_container_back")[0]){
+            document.getElementsByClassName("songscreen_container_back")[0].style.background = "url('"+ sdata.cover +"') center center / cover";
+        }
     }
     if(data.result){
         radio.streamlist.base.content[data.data.stream].radiotext = data.data.antwort;
