@@ -21,6 +21,7 @@
     <link href="stylesheets/show_all/show_all.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/channels/channels.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/favorites/favorites.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/originals/originals.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <script src="script.js"></script>
@@ -37,6 +38,7 @@
     <script src="stylesheets/favorites/favorites.js"></script>
     <script src="updatelist.js"></script>
     <script src="stylesheets/settings/updates.js"></script>
+    <script src="stylesheets/originals/originals.js"></script>
 
     <div id="blende"></div>
 
@@ -47,6 +49,7 @@
                 <!--<div onclick="window.location='../Luckyapp/index.html'">Home</div>-->
                 <div onclick="window.location='../Luckyapp/pages/musik/index.html'">Infos</div>
                 <div onclick="favorites_show()">&#10084;&#65039;Favoriten</div>
+                <div onclick="originals.show()">Originals <span class="neu_tag"></span></div>
             </div>
             <div class="homebar_settings" onclick="settings_start()">Settings</div>
         </section>
@@ -109,7 +112,8 @@
         </section>
         <section class="radio_recent">
             <div class="home_sectitle">
-                <h2>Zuletzt Gespielt <span class="preview_tag">Preview</span></h2>
+                <h2>Zuletzt Gespielt <span class="neu_tag"></span></h2>
+
                 <!--<div class="show_more" id="radio_home_show_more" value="radio" onclick="//show_all_open('recent')">Mehr Anzeigen</div>-->
             </div>
             <div class="home_card_container">
@@ -118,7 +122,7 @@
         </section>
         <section class="radio_channels">
             <div class="home_sectitle">
-                <h2>Channels <span class="preview_tag">Preview</span></h2>
+                <h2>Channels <span class="neu_tag"></span></h2>
             </div>
             <div class="home_card_container"></div>
         </section>

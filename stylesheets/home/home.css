@@ -22,6 +22,7 @@ html{
     top:0;
     left:0;
     backdrop-filter: blur(19px);
+    -webkit-backdrop-filter: blur(19px);
     background: #181818ab;
 }
 
@@ -184,6 +185,9 @@ section{
     color: red;
     vertical-align: middle;
 }
+.beta_tag::after{
+    content: "Beta";
+}
 
 .neu_tag{
     font-size: 50%;
@@ -193,6 +197,9 @@ section{
     color: green;
     vertical-align: middle;
 }
+.neu_tag::after{
+    content:"Neu";
+}
 
 .preview_tag{
     font-size: 50%;
@@ -201,6 +208,9 @@ section{
     padding: 5px;
     color: orange;
     vertical-align: middle;
+}
+.preview_tag::after{
+    content:"Preview";
 }
 
 
