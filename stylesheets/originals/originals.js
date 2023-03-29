@@ -37,7 +37,7 @@ var originals = {
                         +"</div>"
         }
         content += "</div>";
-        await flyin_toggle("normal", content, "Originals <span class='beta_tag'></span> <span class='neu_tag'></span>", "#2c2c2c");
+        await flyin_toggle("normal", content, "Originals <span class='preview_tag'></span> <span class='neu_tag'></span>", "#2c2c2c");
         loadCustomControls(this.list.length);
     },
     play(evt, audioTag){
