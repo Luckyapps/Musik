@@ -30,7 +30,7 @@ var originals = {
                                 +"<button onclick='custom_controls(this.value, at"+i+", "+i+", this)' value='volumeDown'>-</button>"
                                 +"<button onclick='custom_controls(this.value, at"+i+", "+i+", this)' value='volumeUp'>+</button>"
                                 +"<div id='pb"+i+"Container' class='orig_playbar_container'><div id='pb"+i+"' class='orig_playbar'></div></div>"
-                                +"<audio id='at"+i+"'>"
+                                +"<audio style='display:none' id='at"+i+"'>"
                                     +"<source src='"+ this.list[i].source +"' type='"+ this.list[i].type +"'>"
                                 +"</audio>" 
                             +"</div>"
