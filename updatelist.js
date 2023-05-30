@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23051.1",
+            title: "Luckyapp Musik Update 2|mai23",
+            name: "Neuer Unterbau",
+            date: "30.05.2023",
+            type: "UPDATE",
+            description: "<ul><li>Luckyapp Musik wird auf <b>das nächste Level gehoben.</b> Denn mit dem neusten Update liefern wir einen <b>komplett neuen Mediaplayer-Unterbau</b>.<ul><li>Ab sofort verwendet Luckyapps Musik die <a href='https://luckyapps.github.io/Luckyapp/pages/apitest/index.html'>Luckyapps Audio API</a>.</li><li>Der neue Unterbau läuft stabiler und bietet mehr Möglichkeiten zukünftig neue Inhalte bereitzustellen.<ul><li><span style='color:red'>‼️❗Achtung, durch die Integration können noch unerwartet Fehler auftreten❗‼️</span></li><li>Sollten ihnen Bugs auffallen, Melden Sie diese bitte.</li></ul></li></ul></li></ul>"
+        },{
             id: "dv.1.23032.2",
             title: "Luckyapp Musik Update 2|mär23",
             name: "Radio Sauerland Radiotext",

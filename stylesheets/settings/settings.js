@@ -8,7 +8,7 @@ async function settings_start(){
     settings.page.content = "<div class='settings_container' style='padding-top:0'>"
     +"<section><p style=''>Luckyapp_Musik version "+ updatelist_musik.content[0].id +"</p></section>"
     +"<section><h3>Zurücksetzen</h3>"
-    +"<p>Dies setzt die gesammte App zurück auf Werkseinstellungen.</p>"
+    +"<p>Dies setzt die gesammte App zurück auf Werkseinstellungen. Wenn eine Funktion, insbesondere zuletzt angesehen oder die Favoriten, nicht Funktionieren, empfehlen wir die App zurückzusetzen.</p>"
     +"<button class='setting_reset_button' onclick='setting_reset()'>Alles zurücksetzen</button>"
     +"</section>"
     +"<section>"

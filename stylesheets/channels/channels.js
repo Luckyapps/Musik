@@ -10,7 +10,7 @@ function channels_start(){
 }
 
 function channels_start_onclick(e){
-    if(e.target.classList == "home_card_play"){
+    if(e.target.classList == "home_card_play" ||e.target.classList == "home_card_play playbutton"){
         //console.log("Play");
     }else{
         //console.log("Card");
@@ -32,7 +32,7 @@ function channels_load(elem){
             }else{
                 var radiotext = " id='"+ streamlist.keylist[i] +"_rtcl'>"+ streamlist.content[streamlist.keylist[i]].description
             }
-            content += "<div class='home_card home_card_nolink'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            content += "<div class='home_card home_card_nolink'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    
@@ -40,6 +40,7 @@ function channels_load(elem){
     content += "</div>";
 
     flyin_toggle("normal", content, channel.name, channel.color);
+    reloadPlaybuttons();
 }
 
 function channels_get(stream){

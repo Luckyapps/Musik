@@ -1,6 +1,7 @@
 var streamlist_base = {
     "1live": {
         name: "1Live",
+        type: "radio",
         description: "Ein Popsender",
         source: "https://wdr-1live-live.icecastssl.wdr.de/wdr/1live/live/mp3/128/stream.mp3",
         main: true,
@@ -273,6 +274,8 @@ function radio_start(){
     }else{
         save_radio();
     }
+    loadPlaybuttons();
+    loadPlaybars();
     window.addEventListener('message', function (evt) {radiotext_receive(evt.data)});
     radiotext_load();
     streamlist_load();
@@ -309,15 +312,271 @@ function streamlist_load(){
                 //console.log(streamlist.keylist[i]);
                 var home_card_class = "home_card home_card_nolink";
             }
-            home_container.innerHTML += "<div class='"+ home_card_class +"' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            home_container.innerHTML += "<div class='"+ home_card_class +"' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             //console.log("nomain");
         }    
     }
+    loadPlaybuttons();
     channels_start();
 }
 
-function audio_toggle(but, value){
+
+class audioObject{
+    constructor(source,name,desciption,type,image){
+        this.source = source;
+        this.name = name;
+        this.desciption = desciption;
+        this.type = type;
+        this.image = image;
+    }
+}
+
+var player = {
+    currentAudio: {},
+    audioPlaying: false,
+    playbuttons: [],
+    playbars: [],
+    audioList: {
+        audios: radio.streamlist.base.content,
+        keylist: radio.streamlist.base.keylist
+    },
+    add: function(id, source, data){
+        this.audioList.keylist.push(id);
+        this.audioList.audios[id] = new audioObject(source,data.name,data.desciption,data.type,data.image);
+        reloadPlaybuttons();
+    },
+    check: function(id){
+        for(i=0;i<this.audioList.keylist.length;i++){
+            if(this.audioList.keylist[i] == id){
+                return true;
+            }
+        }
+        return false;
+    },
+    play: function(audio_id){
+        if(!player.audioList.audios[audio_id].audio){
+            player.audioList.audios[audio_id].audio = new Audio(player.audioList.audios[audio_id].source);
+            //player.audioList.audios[audio_id].audio.play();
+            player.audioList.audios[audio_id].audio.addEventListener("play", (evt)=>{player.audioPlaying = true;if(player.audioList.audios[audio_id].buttons){playbuttons.update(player.audioList.audios[audio_id].buttons);}});
+            player.audioList.audios[audio_id].audio.addEventListener("pause", (evt)=>{player.audioPlaying = false;if(player.audioList.audios[audio_id].buttons){playbuttons.update(player.audioList.audios[audio_id].buttons);}});
+            player.audioList.audios[audio_id].audio.addEventListener("ended", (evt)=>{player.audioPlaying = false;if(player.audioList.audios[audio_id].buttons){playbuttons.update(player.audioList.audios[audio_id].buttons);}});
+            player.audioList.audios[audio_id].audio.addEventListener("timeupdate", (evt)=>{if(player.audioList.audios[audio_id].playbars){playbars.update(player.audioList.audios[audio_id].playbars);}});
+        }
+        var audio = player.audioList.audios[audio_id].audio;
+        if(player.audioList.audios[audio_id].type == "radio"){
+            console.log("INFO");
+            audio.src = audio.src;
+        }
+        audio.play();
+        this.audioPlaying = true;
+        this.currentAudio = player.audioList.audios[audio_id];
+        this.currentAudio.id = audio_id;
+        if(player.audioList.audios[audio_id].buttons){
+            playbuttons.update(player.audioList.audios[audio_id].buttons);
+        }
+        stream_history.add(audio_id);
+        loadMediaInterface(audio_id);
+    },
+    pause: function(audio_id){
+        console.log(audio_id);
+        var audio = player.audioList.audios[audio_id].audio;
+        audio.pause();
+        this.audioPlaying = false;
+        if(player.audioList.audios[audio_id].buttons){
+            playbuttons.update(player.audioList.audios[audio_id].buttons);
+        }
+    },
+    stop: function(audio_id){
+        if(audio_id != undefined){
+            var audio = player.audioList.audios[audio_id].audio;
+        }else{
+            var audio = player.currentAudio.audio;
+        }
+        audio.pause();
+        audio.currentTime = 0;
+    },
+    toggle: function(audio_id){
+        if(this.audioPlaying){
+            if(audio_id == this.currentAudio.id){
+                this.pause(audio_id);
+            }else{
+                this.pause(this.currentAudio.id);
+                this.play(audio_id);
+            }
+        }else{
+            this.play(audio_id);
+        }
+        try{
+            refreshPlaybar(player.currentAudio);
+        }
+        catch{
+            console.log("RefreshPlaybar nicht gesetzt oder keine Playbar vorhanden.");
+        }
+        console.log(player);
+        //Additions
+        radio.current_stream.data = player.currentAudio;
+        try{ //Unstabile Funktionen
+            playbar_design_toggle();
+            recently_played_load();
+        }
+        catch{}
+        songscreen_playbutton_toggle()
+        save_radio();
+    }
+}
+
+var playbuttons = {
+    update: function(buttons){
+        for(i=0;i<buttons.length;i++){
+            if(player.audioPlaying){
+                buttons[i].innerHTML = "||";
+            }else{
+                buttons[i].innerHTML = ">";
+            }
+        }
+    },
+    updateAll: function(){ //Experimentell
+        var buttons = player.playbuttons;
+        for(i=0;i<buttons.length;i++){
+            if(player.audioPlaying){
+                for(j=0;j<player.currentAudio.buttons.length;j++){
+                    if(buttons[i] == player.currentAudio.buttons[j]){
+                        buttons[i].innerHTML = "||";
+                        break;
+                    }else{
+                        buttons[i].innerHTML = ">";
+                    }
+                }
+            }else{
+                buttons[i].innerHTML = ">";
+            }
+        }
+    }
+}
+
+var playbars = {
+    update: function(playbars){
+        var audioTag = player.currentAudio.audio;
+        for(i=0;i<playbars.length;i++){
+            playbars[i].style.width = (100 / audioTag.duration) * audioTag.currentTime+"%";
+        }
+    }
+}
+
+function loadPlaybuttons(){
+    var playbuttons = document.getElementsByClassName("playbutton");
+    for(i=0;i<playbuttons.length;i++){
+        if(playbuttons[i].getAttribute("data-audio")){
+            for(j=0;j<player.audioList.keylist.length;j++){ 
+                if(playbuttons[i].getAttribute("data-audio") == player.audioList.keylist[j]){ //Wenn es für data-audio ein Audioelement gibt.
+                    player.playbuttons.push(playbuttons[i]);
+                    if(player.audioList.audios[player.audioList.keylist[j]].buttons){
+                        player.audioList.audios[player.audioList.keylist[j]].buttons.push(playbuttons[i]);
+                    }else{
+                        player.audioList.audios[player.audioList.keylist[j]].buttons = [playbuttons[i]];
+                    }
+                }
+            }
+        }
+    }
+    for(i=0;i<player.playbuttons.length;i++){
+        player.playbuttons[i].addEventListener("click",playbuttonclickeventlistener);
+    }
+    //console.log(player);
+    loadPlaybars();
+}
+function playbuttonclickeventlistener(evt){player.toggle(evt.target.getAttribute("data-audio"))};//für Playbuttons eventlistener
+
+function resetPlaybuttons(){
+    for(i=0;i<player.playbuttons.length;i++){
+        player.playbuttons[i].removeEventListener("click", playbuttonclickeventlistener);
+    }
+    player.playbuttons = []; //Playbuttons zurücksetzen
+    for(i=0;i<player.audioList.keylist.length;i++){
+        if(player.audioList.audios[player.audioList.keylist[i]].buttons!=undefined){
+            player.audioList.audios[player.audioList.keylist[i]].buttons = undefined;
+        }
+    }
+}
+
+function reloadPlaybuttons(){
+    resetPlaybuttons();
+    loadPlaybuttons();
+    playbuttons.updateAll();
+}
+
+function loadPlaybars(){
+    var playbars = document.getElementsByClassName("playbar");
+    for(i=0;i<playbars.length;i++){
+        if(playbars[i].getAttribute("data-audio")){
+            for(j=0;j<player.audioList.keylist.length;j++){ 
+                if(playbars[i].getAttribute("data-audio") == player.audioList.keylist[j]){ //Wenn es für data-audio ein Audioelement gibt.
+                    player.playbars.push(playbars[i]);
+                    if(player.audioList.audios[player.audioList.keylist[j]].playbars){
+                        player.audioList.audios[player.audioList.keylist[j]].playbars.push(playbars[i]);
+                    }else{
+                        player.audioList.audios[player.audioList.keylist[j]].playbars = [playbars[i]];
+                    }
+                }
+            }
+        }
+    }
+    //console.log(player);
+    for(i=0;i<player.playbars.length;i++){
+        player.playbars[i].parentElement.addEventListener("click",playbarsclickeventlistener);
+    }
+    //console.log(player);
+}
+function playbarsclickeventlistener(e){
+    var rect = e.target.getBoundingClientRect();
+    var x = e.clientX - rect.left; //x position within the element.
+    var y = e.clientY - rect.top;  //y position within the element.
+    console.log("x: "+ x +" | "+ "y: "+ y);
+    console.log(parseFloat(e.target.childNodes[0].style.width));
+};//für Playbuttons eventlistener
+
+
+
+function loadMediaInterface(audio_id, artist){
+    var data = player.currentAudio;
+
+    if(audio_id){
+        data = player.audioList.audios[audio_id];
+    }
+
+    var image = {src:"https://luckyapps.github.io/Musik/media/images/logo.png", sizes:"1440x1440", type: "image/png"};
+
+    if(data.image){
+        image = data.image;
+    }
+
+    if(!data.name){
+        data.name = audio_id;
+    }
+
+    if(!artist){
+        artist = "Luckyapps";
+    }
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: data.name,
+        artist: artist,
+        album: 'Luckyapps Media Player',
+        artwork: [
+            //{ src: 'https://dummyimage.com/96x96',   sizes: '96x96',   type: 'image/png' },
+            //{ src: 'https://dummyimage.com/128x128', sizes: '128x128', type: 'image/png' },
+            //{ src: 'https://dummyimage.com/192x192', sizes: '192x192', type: 'image/png' },
+        // { src: 'https://dummyimage.com/256x256', sizes: '256x256', type: 'image/png' },
+            //{ src: 'https://dummyimage.com/384x384', sizes: '384x384', type: 'image/png' },
+            //{ src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
+            //---------------{ src: radio.current_stream.data.image.src, sizes: radio.current_stream.data.image.sizes, type: radio.current_stream.data.image.type },
+            image
+        ]
+    });
+}
+
+/*function audio_toggle(but, value){
     if(radio.audio_playing){
         if(radio.current_stream.data.name == radio.streamlist.base.content[value].name){
             audio_stop(but, value);
@@ -367,15 +626,17 @@ function audio_stop(but, value){
     but.innerHTML = ">";
     audio.pause();
     radio.audio_playing = false;
-}
+}*/
 
 function radiotext_receive(data){
     if(data.data.stream == "radiosauerland"){ //Sonderfall Radio Sauerland
         var sdata = JSON.parse(data.data.antwort);
         data.data.antwort = sdata.title +" by "+ sdata.artist;
         radio.streamlist.base.content.radiosauerland.image.alt = sdata.cover;
-        if(document.getElementsByClassName("songscreen_container_back")[0]){
-            document.getElementsByClassName("songscreen_container_back")[0].style.background = "url('"+ sdata.cover +"') center center / cover";
+        if(player.currentAudio.id == "radiosauerland"){ //Songscreen Fix???
+            if(document.getElementsByClassName("songscreen_container_back")[0]){
+                document.getElementsByClassName("songscreen_container_back")[0].style.background = "url('"+ sdata.cover +"') center center / cover";
+            }
         }
     }
     if(data.result){
@@ -389,9 +650,10 @@ function radiotext_receive(data){
         if(document.getElementById(data.data.stream +"_rtssc")){
             document.getElementById(data.data.stream +"_rtssc").innerHTML = data.data.antwort;
         }
-        if(data.data.stream == radio.current_stream.key){
+        if(data.data.stream == player.currentAudio.id){
             document.getElementsByClassName("playbar_text_sub")[0].innerHTML = data.data.antwort;
-            navigator.mediaSession.metadata = new MediaMetadata({
+            loadMediaInterface(player.currentAudio.id, data.data.antwort);
+            /*navigator.mediaSession.metadata = new MediaMetadata({
                 title: radio.current_stream.data.name,
                 artist: data.data.antwort,
                 //album: 'Whenever You Need Somebody',
@@ -404,7 +666,7 @@ function radiotext_receive(data){
                     //{ src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
                     { src: radio.current_stream.data.image.src, sizes: radio.current_stream.data.image.sizes, type: radio.current_stream.data.image.type },
                 ]
-            });
+            });*/
         }
     }
 }
@@ -418,22 +680,24 @@ var stream_history = {
         }
     },
     add: (content)=>{
-        if(localStorage.getItem("musik_history")){
-            var history = JSON.parse(localStorage.getItem("musik_history"));
-            history.forEach((element, index) => {
-                if(element == content){
-                    history.splice(index,1);
-                }
-            });
-            history.unshift(content);
-            localStorage.setItem("musik_history", JSON.stringify(history));
-            streamlist = stream_history.get_list();
-            //console.log(streamlist);
-            recently_played_load(streamlist);
-            return true;
-        }else{
-            localStorage.setItem("musik_history", JSON.stringify([content]));
-            return true;
+        if(content != ""){
+            if(localStorage.getItem("musik_history")){
+                var history = JSON.parse(localStorage.getItem("musik_history"));
+                history.forEach((element, index) => {
+                    if(element == content){
+                        history.splice(index,1);
+                    }
+                });
+                history.unshift(content);
+                localStorage.setItem("musik_history", JSON.stringify(history));
+                streamlist = stream_history.get_list();
+                //console.log(streamlist);
+                recently_played_load(streamlist);
+                return true;
+            }else{
+                localStorage.setItem("musik_history", JSON.stringify([content]));
+                return true;
+            }
         }
     },
     get_list: ()=>{
@@ -443,7 +707,7 @@ var stream_history = {
                 content: {}
             };
             history.forEach((element, index) => {
-                streamlist.content[element] = radio.streamlist.base.content[element];
+                streamlist.content[element] = player.audioList.audios[element];
             });
             streamlist.keylist = Object.keys(streamlist.content);
             return streamlist;
@@ -474,11 +738,12 @@ function recently_played_load(streamlist){
             var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].description;
         }
         if(streamlist.content[streamlist.keylist[i]]){
-            home_container.innerHTML += "<div class='home_card' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' style='width:124px; padding: 5px; left:5px; right:5px' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            home_container.innerHTML += "<div class='home_card' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    
     }
+    reloadPlaybuttons();
     channels_start();
 }
 
