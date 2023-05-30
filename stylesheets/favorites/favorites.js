@@ -75,7 +75,12 @@ async function favorites_show(){
             }else{
                 var radiotext = " id='"+ streamlist.keylist[i] +"_rtcl'>"+ streamlist.content[streamlist.keylist[i]].description
             }
-            content += "<div class='home_card home_card_nolink home_card_favorite' onclick='favorite_remove(`"+ streamlist.keylist[i] +"`, this)'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            if(streamlist.content[streamlist.keylist[i]].image != undefined){
+                var image_src = streamlist.content[streamlist.keylist[i]].image.src;
+            }else{
+                var image_src = "https://luckyapps.github.io/Musik/media/images/logo.png"
+            }
+            content += "<div class='home_card home_card_nolink home_card_favorite' onclick='favorite_remove(`"+ streamlist.keylist[i] +"`, this)'><div class='home_card_img'><img src='"+ image_src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    

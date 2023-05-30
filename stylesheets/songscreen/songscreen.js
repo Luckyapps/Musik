@@ -6,13 +6,18 @@ function songscreen_start(){
 
 async function songscreen_open(){
     var image = ""; //Experimental
-    if(player.currentAudio.image.alt){
-        console.log(player.currentAudio.image.alt);
-        image = player.currentAudio.image.src;
-        var imageBackground = player.currentAudio.image.alt
+    if(player.currentAudio.image){
+        if(player.currentAudio.image.alt){
+            console.log(player.currentAudio.image.alt);
+            image = player.currentAudio.image.src;
+            var imageBackground = player.currentAudio.image.alt
+        }else{
+            image = player.currentAudio.image.src;
+            var imageBackground = image;
+        }
     }else{
-        image = player.currentAudio.image.src;
-        var imageBackground = image;
+        var image = "https://luckyapps.github.io/Musik/media/images/logo.png";
+        var imageBackground = "https://luckyapps.github.io/Musik/media/images/logo.png";
     }
     var content = "<div class='songscreen_container_back' style='background: url("+ /*radio.current_stream.data.image.src*/imageBackground +");background-size: cover;background-position: center;'>"
     +"<div class='songscreen_container'>"

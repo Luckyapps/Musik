@@ -11,7 +11,7 @@ function playbar_start(){
     playbar_playbutton = document.getElementsByClassName("playbar_right")[0].getElementsByClassName("playbar_playbutton")[0];
     playbar_favorite = document.getElementsByClassName("playbar_right")[0].getElementsByClassName("playbar_favorite")[0];
 
-    playbar_playbutton.addEventListener("click", function(){audio_toggle(radio.current_stream.current_button, radio.current_stream.key)});
+    //playbar_playbutton.addEventListener("click", function(){audio_toggle(radio.current_stream.current_button, radio.current_stream.key)});
     playbar.addEventListener("click", playbar_onclick);
 
     playbar_favorite.addEventListener("click", ()=>{favorite_toggle()});
@@ -22,8 +22,12 @@ function playbar_design_toggle(){
     playbar_playbutton.setAttribute("data-audio", player.currentAudio.id);
     reloadPlaybuttons();
     playbar.style.display = "flex";
-    playbar_img.src = radio.current_stream.data.image.src;
-    playbar_text_main.innerHTML = radio.current_stream.data.name;
+    if(player.currentAudio.image){
+        playbar_img.src = player.currentAudio.image.src;
+    }else{
+        playbar_img.src = "https://luckyapps.github.io/Musik/media/images/logo.png";
+    }
+    playbar_text_main.innerHTML = player.currentAudio.name;
     playbar_text_sub.innerHTML = "Luckyapps_Musik";
     /*if(radio.audio_playing){
         playbar_playbutton.innerHTML = "||";

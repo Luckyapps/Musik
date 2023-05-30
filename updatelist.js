@@ -2,8 +2,15 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23051.2",
+            title: "Luckyapp Musik Update 1|mai23",
+            name: "",
+            date: "30.05.2023",
+            type: "BUGFIX",
+            description: "<ul><li>Fix einer Bugs, die sich eingeschlichen haben.</li></ul>"
+        },{
             id: "dv.2.23051.1",
-            title: "Luckyapp Musik Update 2|mai23",
+            title: "Luckyapp Musik Update 1|mai23",
             name: "Neuer Unterbau",
             date: "30.05.2023",
             type: "UPDATE",

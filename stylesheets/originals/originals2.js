@@ -1,23 +1,11 @@
-var first_load = true;
-
 async function originals2Start(){
-    if(first_load){
-        first_load = false;
-        var source = sources.list;
-        var keylist = Object.keys(source);
-        for(g=0;g<keylist.length;g++){
-            var obj = source[keylist[g]];
-            console.log(obj);
-            player.add(keylist[g], obj.source, obj);
-        }
-    }
     console.log(player);
     var content = "<div class='originals_container'>";
     for(i=0;i<Object.keys(sources.list).length;i++){
         var data = sources.list[Object.keys(sources.list)[i]]
         content += "<div class='originals_item'>"
                         +"<h2>"+ data.name +"</h2>"
-                        +"<p>"+ data.desciption +"</p>"
+                        +"<p>"+ data.description +"</p>"
                         +"<div class='player'>"
                             +"<button class='playbutton' data-audio='"+Object.keys(sources.list)[i]+"'>Unset</button>"
                             //+"<button onclick='custom_controls(this.value, at"+i+", "+i+", this)' value='volumeDown'>-</button>"
@@ -33,6 +21,7 @@ async function originals2Start(){
     await flyin_toggle("normal", content, "Originals <span class='preview_tag'></span> <span class='beta_tag'></span>", "#2c2c2c");
     reloadPlaybuttons();
 }
+
 
 var sources = {
     list: {
@@ -75,9 +64,17 @@ var sources = {
         },
         loop1:{
             name: "LOOP1",
-            desciption: "Ein Loop für zwischendurch.",
+            description: "Ein Loop für zwischendurch",
             source: "media/audio/LOOP 1.wav",
             type: "audio/wav"
         }
     }
+}
+
+//insert originals to player
+var source = sources.list;
+var keylist = Object.keys(source);
+for(g=0;g<keylist.length;g++){
+    var obj = source[keylist[g]];
+    player.add(keylist[g], obj.source, obj);
 }

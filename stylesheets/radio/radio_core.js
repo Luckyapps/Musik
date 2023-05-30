@@ -323,10 +323,10 @@ function streamlist_load(){
 
 
 class audioObject{
-    constructor(source,name,desciption,type,image){
+    constructor(source,name,description,type,image){
         this.source = source;
         this.name = name;
-        this.desciption = desciption;
+        this.description = description;
         this.type = type;
         this.image = image;
     }
@@ -342,9 +342,15 @@ var player = {
         keylist: radio.streamlist.base.keylist
     },
     add: function(id, source, data){
-        this.audioList.keylist.push(id);
-        this.audioList.audios[id] = new audioObject(source,data.name,data.desciption,data.type,data.image);
-        reloadPlaybuttons();
+        if(player.check(id)!=true){
+            this.audioList.keylist.push(id);
+            console.warn(data);
+            this.audioList.audios[id] = new audioObject(source,data.name,data.description,data.type,data.image);
+            reloadPlaybuttons();
+        }else{
+            console.warn(id +" kann nicht hinzugefügt werden, da die Id bereits belegt ist.");
+            return false;
+        }
     },
     check: function(id){
         for(i=0;i<this.audioList.keylist.length;i++){
@@ -416,11 +422,8 @@ var player = {
         console.log(player);
         //Additions
         radio.current_stream.data = player.currentAudio;
-        try{ //Unstabile Funktionen
-            playbar_design_toggle();
-            recently_played_load();
-        }
-        catch{}
+        recently_played_load();
+        playbar_design_toggle();
         songscreen_playbutton_toggle()
         save_radio();
     }
@@ -736,9 +739,15 @@ function recently_played_load(streamlist){
             var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].radiotext;
         }else{
             var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].description;
+           // console.warn(streamlist.content[streamlist.keylist[i]])
+        }
+        if(streamlist.content[streamlist.keylist[i]].image != undefined){
+            var image_src = streamlist.content[streamlist.keylist[i]].image.src;
+        }else{
+            var image_src = "https://luckyapps.github.io/Musik/media/images/logo.png"
         }
         if(streamlist.content[streamlist.keylist[i]]){
-            home_container.innerHTML += "<div class='home_card' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            home_container.innerHTML += "<div class='home_card' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ image_src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    
