@@ -344,8 +344,7 @@ var player = {
     add: function(id, source, data){
         this.audioList.keylist.push(id);
         this.audioList.audios[id] = new audioObject(source,data.name,data.desciption,data.type,data.image);
-        resetPlaybuttons();
-        loadPlaybuttons();
+        reloadPlaybuttons();
     },
     check: function(id){
         for(i=0;i<this.audioList.keylist.length;i++){
@@ -376,9 +375,11 @@ var player = {
         if(player.audioList.audios[audio_id].buttons){
             playbuttons.update(player.audioList.audios[audio_id].buttons);
         }
+        stream_history.add(audio_id);
         loadMediaInterface(audio_id);
     },
     pause: function(audio_id){
+        console.log(audio_id);
         var audio = player.audioList.audios[audio_id].audio;
         audio.pause();
         this.audioPlaying = false;
@@ -414,9 +415,14 @@ var player = {
         }
         console.log(player);
         //Additions
+        radio.current_stream.data = player.currentAudio;
+        try{ //Unstabile Funktionen
+            playbar_design_toggle();
+            recently_played_load();
+        }
+        catch{}
         songscreen_playbutton_toggle()
         save_radio();
-        recently_played_load();
     }
 }
 
@@ -425,6 +431,23 @@ var playbuttons = {
         for(i=0;i<buttons.length;i++){
             if(player.audioPlaying){
                 buttons[i].innerHTML = "||";
+            }else{
+                buttons[i].innerHTML = ">";
+            }
+        }
+    },
+    updateAll: function(){ //Experimentell
+        var buttons = player.playbuttons;
+        for(i=0;i<buttons.length;i++){
+            if(player.audioPlaying){
+                for(j=0;j<player.currentAudio.buttons.length;j++){
+                    if(buttons[i] == player.currentAudio.buttons[j]){
+                        buttons[i].innerHTML = "||";
+                        break;
+                    }else{
+                        buttons[i].innerHTML = ">";
+                    }
+                }
             }else{
                 buttons[i].innerHTML = ">";
             }
@@ -460,7 +483,7 @@ function loadPlaybuttons(){
     for(i=0;i<player.playbuttons.length;i++){
         player.playbuttons[i].addEventListener("click",playbuttonclickeventlistener);
     }
-    console.log(player);
+    //console.log(player);
     loadPlaybars();
 }
 function playbuttonclickeventlistener(evt){player.toggle(evt.target.getAttribute("data-audio"))};//für Playbuttons eventlistener
@@ -475,6 +498,12 @@ function resetPlaybuttons(){
             player.audioList.audios[player.audioList.keylist[i]].buttons = undefined;
         }
     }
+}
+
+function reloadPlaybuttons(){
+    resetPlaybuttons();
+    loadPlaybuttons();
+    playbuttons.updateAll();
 }
 
 function loadPlaybars(){
@@ -493,11 +522,11 @@ function loadPlaybars(){
             }
         }
     }
-    console.log(player);
+    //console.log(player);
     for(i=0;i<player.playbars.length;i++){
         player.playbars[i].parentElement.addEventListener("click",playbarsclickeventlistener);
     }
-    console.log(player);
+    //console.log(player);
 }
 function playbarsclickeventlistener(e){
     var rect = e.target.getBoundingClientRect();
@@ -509,7 +538,7 @@ function playbarsclickeventlistener(e){
 
 
 
-function loadMediaInterface(audio_id){
+function loadMediaInterface(audio_id, artist){
     var data = player.currentAudio;
 
     if(audio_id){
@@ -526,9 +555,13 @@ function loadMediaInterface(audio_id){
         data.name = audio_id;
     }
 
+    if(!artist){
+        artist = "Luckyapps";
+    }
+
     navigator.mediaSession.metadata = new MediaMetadata({
         title: data.name,
-        artist: 'Luckyapps',
+        artist: artist,
         album: 'Luckyapps Media Player',
         artwork: [
             //{ src: 'https://dummyimage.com/96x96',   sizes: '96x96',   type: 'image/png' },
@@ -543,7 +576,7 @@ function loadMediaInterface(audio_id){
     });
 }
 
-function audio_toggle(but, value){
+/*function audio_toggle(but, value){
     if(radio.audio_playing){
         if(radio.current_stream.data.name == radio.streamlist.base.content[value].name){
             audio_stop(but, value);
@@ -593,15 +626,17 @@ function audio_stop(but, value){
     but.innerHTML = ">";
     audio.pause();
     radio.audio_playing = false;
-}
+}*/
 
 function radiotext_receive(data){
     if(data.data.stream == "radiosauerland"){ //Sonderfall Radio Sauerland
         var sdata = JSON.parse(data.data.antwort);
         data.data.antwort = sdata.title +" by "+ sdata.artist;
         radio.streamlist.base.content.radiosauerland.image.alt = sdata.cover;
-        if(document.getElementsByClassName("songscreen_container_back")[0]){
-            document.getElementsByClassName("songscreen_container_back")[0].style.background = "url('"+ sdata.cover +"') center center / cover";
+        if(player.currentAudio.id == "radiosauerland"){ //Songscreen Fix???
+            if(document.getElementsByClassName("songscreen_container_back")[0]){
+                document.getElementsByClassName("songscreen_container_back")[0].style.background = "url('"+ sdata.cover +"') center center / cover";
+            }
         }
     }
     if(data.result){
@@ -615,9 +650,10 @@ function radiotext_receive(data){
         if(document.getElementById(data.data.stream +"_rtssc")){
             document.getElementById(data.data.stream +"_rtssc").innerHTML = data.data.antwort;
         }
-        if(data.data.stream == radio.current_stream.key){
+        if(data.data.stream == player.currentAudio.id){
             document.getElementsByClassName("playbar_text_sub")[0].innerHTML = data.data.antwort;
-            navigator.mediaSession.metadata = new MediaMetadata({
+            loadMediaInterface(player.currentAudio.id, data.data.antwort);
+            /*navigator.mediaSession.metadata = new MediaMetadata({
                 title: radio.current_stream.data.name,
                 artist: data.data.antwort,
                 //album: 'Whenever You Need Somebody',
@@ -630,7 +666,7 @@ function radiotext_receive(data){
                     //{ src: 'https://dummyimage.com/512x512', sizes: '512x512', type: 'image/png' },
                     { src: radio.current_stream.data.image.src, sizes: radio.current_stream.data.image.sizes, type: radio.current_stream.data.image.type },
                 ]
-            });
+            });*/
         }
     }
 }
@@ -644,22 +680,24 @@ var stream_history = {
         }
     },
     add: (content)=>{
-        if(localStorage.getItem("musik_history")){
-            var history = JSON.parse(localStorage.getItem("musik_history"));
-            history.forEach((element, index) => {
-                if(element == content){
-                    history.splice(index,1);
-                }
-            });
-            history.unshift(content);
-            localStorage.setItem("musik_history", JSON.stringify(history));
-            streamlist = stream_history.get_list();
-            //console.log(streamlist);
-            recently_played_load(streamlist);
-            return true;
-        }else{
-            localStorage.setItem("musik_history", JSON.stringify([content]));
-            return true;
+        if(content != ""){
+            if(localStorage.getItem("musik_history")){
+                var history = JSON.parse(localStorage.getItem("musik_history"));
+                history.forEach((element, index) => {
+                    if(element == content){
+                        history.splice(index,1);
+                    }
+                });
+                history.unshift(content);
+                localStorage.setItem("musik_history", JSON.stringify(history));
+                streamlist = stream_history.get_list();
+                //console.log(streamlist);
+                recently_played_load(streamlist);
+                return true;
+            }else{
+                localStorage.setItem("musik_history", JSON.stringify([content]));
+                return true;
+            }
         }
     },
     get_list: ()=>{
@@ -669,7 +707,7 @@ var stream_history = {
                 content: {}
             };
             history.forEach((element, index) => {
-                streamlist.content[element] = radio.streamlist.base.content[element];
+                streamlist.content[element] = player.audioList.audios[element];
             });
             streamlist.keylist = Object.keys(streamlist.content);
             return streamlist;
@@ -700,11 +738,12 @@ function recently_played_load(streamlist){
             var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].description;
         }
         if(streamlist.content[streamlist.keylist[i]]){
-            home_container.innerHTML += "<div class='home_card' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' style='width:124px; padding: 5px; left:5px; right:5px' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            home_container.innerHTML += "<div class='home_card' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    
     }
+    reloadPlaybuttons();
     channels_start();
 }
 

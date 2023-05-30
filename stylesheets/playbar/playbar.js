@@ -19,15 +19,17 @@ function playbar_start(){
 
 function playbar_design_toggle(){
     favorite_style_init();
+    playbar_playbutton.setAttribute("data-audio", player.currentAudio.id);
+    reloadPlaybuttons();
     playbar.style.display = "flex";
     playbar_img.src = radio.current_stream.data.image.src;
     playbar_text_main.innerHTML = radio.current_stream.data.name;
     playbar_text_sub.innerHTML = "Luckyapps_Musik";
-    if(radio.audio_playing){
+    /*if(radio.audio_playing){
         playbar_playbutton.innerHTML = "||";
     }else{
         playbar_playbutton.innerHTML = ">";
-    }
+    }*/
 }
 
 function playbar_onclick(e){

@@ -20,7 +20,7 @@ function favorites_store(){
 function favorite_toggle(){
     var isfavorite = false;
     for(i=0;i<radio.favorites.length;i++){
-        if(radio.favorites[i] == radio.current_stream.key){
+        if(radio.favorites[i] == player.currentAudio.id){
             console.warn("MUSS entfernt werden: "+ i);
             radio.favorites.splice(i,1)
             console.log(radio.favorites);
@@ -29,7 +29,7 @@ function favorite_toggle(){
         }
     }
     if(!isfavorite){
-        radio.favorites.push(radio.current_stream.key);
+        radio.favorites.push(player.currentAudio.id);
         favorite_style(true);
     }
     favorites_store();
@@ -39,7 +39,7 @@ function favorite_toggle(){
 function favorite_style_init(){
     var isfavorite = false;
     for(i=0;i<radio.favorites.length;i++){
-        if(radio.favorites[i] == radio.current_stream.key){
+        if(radio.favorites[i] == player.currentAudio.id){
             isfavorite = true;
             favorite_style(true);
         }
@@ -64,7 +64,7 @@ function favorite_style(isfavorite){
     }
 }
 
-function favorites_show(){
+async function favorites_show(){
     var streamlist = favorites_streamlist();
     console.log(streamlist);
     var content = "<p class='channel_description'>Das sind deine Favoriten:</p><div class='channel_container'>";
@@ -75,7 +75,7 @@ function favorites_show(){
             }else{
                 var radiotext = " id='"+ streamlist.keylist[i] +"_rtcl'>"+ streamlist.content[streamlist.keylist[i]].description
             }
-            content += "<div class='home_card home_card_nolink home_card_favorite' onclick='favorite_remove(`"+ streamlist.keylist[i] +"`, this)'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            content += "<div class='home_card home_card_nolink home_card_favorite' onclick='favorite_remove(`"+ streamlist.keylist[i] +"`, this)'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    
@@ -84,7 +84,9 @@ function favorites_show(){
 
     var toolbar = "<div class='favorites_edit_button fav_m_r' onclick='favorites_edit_toggle()'>Bearbeiten</div>";
 
-    flyin_toggle("normal", content, "&#10084;&#65039;Favoriten", "#2c2c2c", toolbar);
+    await flyin_toggle("normal", content, "&#10084;&#65039;Favoriten", "#2c2c2c", toolbar);
+
+    reloadPlaybuttons();
 }
 
 function favorites_edit_toggle(){

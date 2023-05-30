@@ -8,7 +8,7 @@ function show_all_show(){
 
 }
 
-function show_all_open(type){
+async function show_all_open(type){
     var content = "<div class='show_all_container'>";
     if(radio.streamlist.custom.active){
         var streamlist = radio.streamlist.custom;
@@ -26,16 +26,17 @@ function show_all_open(type){
             if(part_of_channels(streamlist.keylist[i])){
                 var home_card_class = "home_card";
             }else{
-                console.log(streamlist.keylist[i]);
+                //console.log(streamlist.keylist[i]);
                 var home_card_class = "home_card home_card_nolink";
             }
 
-            content += "<div class='"+ home_card_class +"'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play' onclick='audio_toggle(this, `"+ streamlist.keylist[i] +"`)'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            content += "<div class='"+ home_card_class +"'><div class='home_card_img'><img src='"+ streamlist.content[streamlist.keylist[i]].image.src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    
     }
     content += "</div>";
 
-    flyin_toggle("normal", content, type, "#2c2c2c");
+    await flyin_toggle("normal", content, type, "#2c2c2c");
+    reloadPlaybuttons();
 }
