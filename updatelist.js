@@ -7,7 +7,7 @@ var updatelist_musik = {
             name: "",
             date: "30.05.2023",
             type: "BUGFIX",
-            description: "<ul><li>Fix einer Bugs, die sich eingeschlichen haben.</li></ul>"
+            description: "<ul><li>Fix einiger Bugs, die sich eingeschlichen haben.</li></ul>"
         },{
             id: "dv.2.23051.1",
             title: "Luckyapp Musik Update 1|mai23",
