@@ -742,13 +742,21 @@ function recently_played_load(streamlist){
             var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].description;
            // console.warn(streamlist.content[streamlist.keylist[i]])
         }
+
+        if(part_of_channels(streamlist.keylist[i])){
+            var home_card_class = "home_card";
+        }else{
+            //console.log(streamlist.keylist[i]);
+            var home_card_class = "home_card home_card_nolink";
+        }
+
         if(streamlist.content[streamlist.keylist[i]].image != undefined){
             var image_src = streamlist.content[streamlist.keylist[i]].image.src;
         }else{
             var image_src = "https://luckyapps.github.io/Musik/media/images/logo.png"
         }
         if(streamlist.content[streamlist.keylist[i]]){
-            home_container.innerHTML += "<div class='home_card' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ image_src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            home_container.innerHTML += "<div class='"+ home_card_class +"' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ image_src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    

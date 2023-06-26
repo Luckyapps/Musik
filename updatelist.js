@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23060.2",
+            title: "Luckyapp Musik Bugfix 2|jun23",
+            name: "",
+            date: "26.06.2023",
+            type: "BUGFIX",
+            description: "<ul><li>Card hover bugfix in zuletzt gespielt und alle streams.</li></ul>"
+        },{
             id: "dv.2.23060.1",
             title: "Luckyapp Musik Bugfix 1|jun23",
             name: "",

@@ -36,7 +36,7 @@ async function show_all_open(type){
                 var image_src = "https://luckyapps.github.io/Musik/media/images/logo.png"
             }
 
-            content += "<div class='"+ home_card_class +"'><div class='home_card_img'><img src='"+ image_src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            content += "<div class='"+ home_card_class +" home_card_nolink'><div class='home_card_img'><img src='"+ image_src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>></div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
         }else{
             console.log("nomain");
         }    
