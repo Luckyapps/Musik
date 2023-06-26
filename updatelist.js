@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23050.1",
+            title: "Luckyapp Musik Bugfix 1|jun23",
+            name: "",
+            date: "26.06.2023",
+            type: "BUGFIX",
+            description: "<ul><li>Radiosauerland source fix.</li></ul>"
+        },{
             id: "dv.2.23051.2",
             title: "Luckyapp Musik Update 1|mai23",
             name: "",

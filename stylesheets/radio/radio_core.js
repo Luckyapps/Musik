@@ -71,7 +71,8 @@ var streamlist_base = {
     radiosauerland:{
         name:"Radio Sauerland",
         description:"Sauerländer Lokalsender",
-        source:"https://radiosauerland.cast.addradio.de/radiosauerland/simulcast/high/stream.mp3",
+        // old_source: --> "https://radiosauerland.cast.addradio.de/radiosauerland/simulcast/high/stream.mp3",
+        source: "https://edge09.streamonkey.net/wf-radiosauerland?aggregator=eigeneweb&gfksui=1687771715364D6355C0C18B643DE984E3A0B2BB4EF9137A85A77C1F&listenerid=399367aff4cc098615ed89d0af3776fc&aw_0_req.userConsentV2=CPt-FIAPt-FIAAFADBDEDKCsAP_AAH_AAAYgG4BR9DpebWNAcXh8QMsUKYQGVlATQGQAABSBAyABQBEAMJwAgWAAAASAgAAAgQYAolAAAABEDEAEQAAAQAAAAACkAgAEhAEIICBAEAEBAAAAAAgAAAAAAAAAgAAJAAQAkAAAAcLgRAAAAAAAAAAABAyQAEgVLiABoCgwJgAgihRACCsICKAQAAAAQJEAAAAIABBGAAiwAAAAQAAAAECDAFEAAAAAAAAgAgAAACAAAAAAAAAAAAAAhAAQIAgAAIAAAAAEAAAAAAAAAAAAAAACAEAAIAAAACAA.YAAAAAAAAAAA",
         radiotext_url: "https://api-prod.nrwlokalradios.com/playlist/current?station=21", //https://api-prod.nrwlokalradios.com/playlist/current?station=21
         main: true,
         image: {
