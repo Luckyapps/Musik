@@ -185,6 +185,17 @@ var streamlist_base = {
             sizes: "678x678",
             type: "image/jpg"
         } 
+    },
+    radio21buxtehude:{
+        name:"Radio 21 Buxtehude",
+        description: "Lokaler Radiosender aus Buxtehude",
+        source: "https://streams.radio21.de/buxtehude/mp3-192/web",
+        radiotext_url: "https://wp.radio21.de/cover/currentsong.json",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/radio21/buxtehude.webp",
+            sizes: "175x175",
+            type: "image/webp"
+        } 
     }
 };
 
@@ -642,6 +653,10 @@ function radiotext_receive(data){
                 document.getElementsByClassName("songscreen_container_back")[0].style.background = "url('"+ sdata.cover +"') center center / cover";
             }
         }
+    }
+    if(data.data.stream == "radio21buxtehude"){
+        var sdata = JSON.parse(data.data.antwort);
+        data.data.antwort = sdata[0];
     }
     if(data.result){
         radio.streamlist.base.content[data.data.stream].radiotext = data.data.antwort;
