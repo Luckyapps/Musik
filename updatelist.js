@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23071.0",
+            title: "Luckyapp Musik Update 1|jul23",
+            name: "",
+            date: "24.07.2023",
+            type: "UPDATE",
+            description: "<ul><li>Neuer Sender: Radio 21 Buxtehude</li></ul>"
+        },{
             id: "dv.2.23060.2",
             title: "Luckyapp Musik Bugfix 2|jun23",
             name: "",
