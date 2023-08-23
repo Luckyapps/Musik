@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23081.0",
+            title: "Luckyapp Musik Update 1|aug23",
+            name: "N-JOY",
+            date: "23.08.2023",
+            type: "UPDATE",
+            description: "<ul><li>Neuer Sender: N-JOY</li></ul>"
+        },{
             id: "dv.2.23071.0",
             title: "Luckyapp Musik Update 1|jul23",
             name: "",

@@ -196,6 +196,17 @@ var streamlist_base = {
             sizes: "175x175",
             type: "image/webp"
         } 
+    },
+    njoy:{
+        name:"N-JOY",
+        description: "Das 1Live des Nordens",
+        radiotext_url: "https://www.n-joy.de/public/radioplaylists/njoy.json", //inkl. weiere Infos
+        source: "https://d111.rndfnk.com/ard/ndr/njoy/live/mp3/128/stream.mp3?cid=01FBRKKTM6TVGA3B3W6Y8NMXK8&sid=2UOa7pXqV0I7kIPb4YARMTDcRaX&token=vSr7JRoKq6p6zfrxKzC6hq4dB6MAVwpANhciJggOE4g&tvf=VjNB1AUofhdkMTExLnJuZGZuay5jb20",
+        image:{
+            src: "https://www.n-joy.de/favicon-196x196.png",
+            size: "196x196",
+            type: "image/png"
+        }
     }
 };
 
@@ -658,6 +669,11 @@ function radiotext_receive(data){
         var sdata = JSON.parse(data.data.antwort);
         data.data.antwort = sdata[0];
     }
+    if(data.data.stream == "njoy"){
+        var sdata = JSON.parse(data.data.antwort);
+        //console.log(sdata);
+        data.data.antwort = sdata.song_now;
+    }
     if(data.result){
         radio.streamlist.base.content[data.data.stream].radiotext = data.data.antwort;
         if(document.getElementById(data.data.stream +"_rtcd")){
@@ -798,10 +814,18 @@ function radiotext_load(){
 
 function testit(url, stream){
     //var url = "https://www.faderstart.wdr.de/radio/radiotext/streamtitle_1live.txt";
+    if(url == "https://wp.radio21.de/cover/currentsong.json"){
+        return;
+    }
+    try{
+        fetch(url)
+        
+        .then((response) => response.text())
     
-    fetch(url)
-    
-    .then((response) => response.text())
-
-    .then((text) => {radiotext_receive({data: {antwort: /*"&#128308;"+*/text, stream: stream}, result: "true"})});
+        .then((text) => {radiotext_receive({data: {antwort: /*"&#128308;"+*/text, stream: stream}, result: "true"})})
+        
+        .catch(error => {console.error(`failed to fetch${url}`)});
+    }catch(err){
+        console.error(`failed to fetch ${url}`);
+    }
 }
