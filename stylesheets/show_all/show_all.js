@@ -15,6 +15,7 @@ async function show_all_open(type){
     }else{
         var streamlist = radio.streamlist.base;
     }
+    console.log(streamlist);
     for(i=0; i < streamlist.keylist.length; i++){
         if(streamlist.content[streamlist.keylist[i]]){
             if(streamlist.content[streamlist.keylist[i]].radiotext != undefined){

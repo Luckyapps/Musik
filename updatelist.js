@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23082.0",
+            title: "Luckyapp Musik Update 2|aug23",
+            name: "Hauptseite und Originals",
+            date: "28.08.2023",
+            type: "UPDATE",
+            description: "<ul><li>Verbesserung der Hauptseite:<ul><li>Neuanordnung der Kategorien</li><li>Die zuletzt gespielten Songs werden nun zuerst angezeigt. Es folgen die Kategorien und zum Schluss die Channels.</li></ul></li><li>Verbesserte Implementierung von Originals:<ul><li>Originals haben jetzt, genau wie Radiosender, einen eigenen Platz auf der Hauptseite sowie einen eigenen Channel.</li><li>In zuletzt gespielt wird bei Originals die Playbar getestet.</li></ul></li></ul>"
+        },{
             id: "dv.2.23081.0",
             title: "Luckyapp Musik Update 1|aug23",
             name: "N-JOY",
@@ -139,7 +146,7 @@ var updatelist_musik = {
     ]
 };
 
-if(luckyapp_core){
+/*if(luckyapp_core){
     luckyapp_core.modules.updates.updatelists.musik = {loaded: true};
     luckyapp_core.modules.updates.updatelists.musik.list = updatelist_musik;
-}
+}*/

@@ -67,7 +67,7 @@ function channels_streamlist(stream, channel){
         content: {}
     }
     for(i=0;i<channel.streams.length;i++){
-        streamlist.content[channel.streams[i]] = radio.streamlist.base.content[channel.streams[i]];
+        streamlist.content[channel.streams[i]] = player.audioList.audios[channel.streams[i]];
     }
     return streamlist;
 }

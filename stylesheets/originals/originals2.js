@@ -7,7 +7,7 @@ async function originals2Start(){
                         +"<h2>"+ data.name +"</h2>"
                         +"<p>"+ data.description +"</p>"
                         +"<div class='player'>"
-                            +"<button class='playbutton' data-audio='"+Object.keys(sources.list)[i]+"'>Unset</button>"
+                            +"<button class='playbutton player_toggle' data-audio='"+Object.keys(sources.list)[i]+"'>Unset</button>"
                             //+"<button onclick='custom_controls(this.value, at"+i+", "+i+", this)' value='volumeDown'>-</button>"
                             //+"<button onclick='custom_controls(this.value, at"+i+", "+i+", this)' value='volumeUp'>+</button>"
                             //+"<div id='pb"+i+"Container' class='orig_playbar_container'><div id='pb"+i+"' class='orig_playbar'></div></div>"
@@ -22,10 +22,9 @@ async function originals2Start(){
     reloadPlaybuttons();
 }
 
-
 var sources = {
     list: {
-        wdr2:{
+        /*wdr2:{
             name:"WDR2",
             description:"WDR2 Popsender",
             source:"https://wdr-wdr2-suedwestfalen.icecastssl.wdr.de/wdr/wdr2/suedwestfalen/mp3/128/stream.mp3",
@@ -61,12 +60,20 @@ var sources = {
                 sizes: "180x180",
                 type: "image/png"
             }
-        },
+        },*/
         loop1:{
             name: "LOOP1",
             description: "Ein Loop für zwischendurch",
             source: "media/audio/LOOP 1.wav",
-            type: "audio/wav"
+            type: "audio/wav",
+            playbar: true
+        },
+        skyfall_fresh:{
+            name: "Skyfall Fresh",
+            description: "Luckyapp Remix von Skyfall",
+            source: "media/audio/Adele - Skyfall_F_minor__bpm_104.mp3",
+            type: "audio/mp3",
+            playbar: true
         }
     }
 }
@@ -77,4 +84,42 @@ var keylist = Object.keys(source);
 for(g=0;g<keylist.length;g++){
     var obj = source[keylist[g]];
     player.add(keylist[g], obj.source, obj);
+}
+
+function originals_home_load(){
+    //console.log(radio.radiotext);
+    var home_container = document.getElementsByClassName("radio_originals")[0].getElementsByClassName("home_card_container")[0];
+    home_container.innerHTML = "";
+    var streamlist = {content:{},keylist:[]};
+    streamlist.content = sources.list;
+    streamlist.keylist = Object.keys(sources.list);
+    console.log(streamlist);
+    for(i=0; i < streamlist.keylist.length; i++){
+        if(streamlist.content[streamlist.keylist[i]].radiotext != undefined){
+            var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].radiotext;
+        }else{
+            var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].description;
+           // console.warn(streamlist.content[streamlist.keylist[i]])
+        }
+
+        if(part_of_channels(streamlist.keylist[i])){
+            var home_card_class = "home_card";
+        }else{
+            //console.log(streamlist.keylist[i]);
+            var home_card_class = "home_card home_card_nolink";
+        }
+
+        if(streamlist.content[streamlist.keylist[i]].image != undefined){
+            var image_src = streamlist.content[streamlist.keylist[i]].image.src;
+        }else{
+            var image_src = "https://luckyapps.github.io/Musik/media/images/logo.png"
+        }
+        if(streamlist.content[streamlist.keylist[i]]){
+            home_container.innerHTML += "<div class='"+ home_card_class +"' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ image_src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+        }else{
+            console.log("nomain");
+        }    
+    }
+    reloadPlaybuttons();
+    channels_start();
 }

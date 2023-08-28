@@ -177,6 +177,29 @@ section{
     box-shadow: 0px 0px 15px 0px #000000;
 }
 
+:root{
+    --playbar-background-color: #494949;
+    --playbar-color: #959595;
+    --playbar-height: 20px;
+    --playbar-border-radius: 10px;
+}
+
+.home_playbarContainer{
+    margin-top: 10px;
+    background-color: var(--playbar-background-color);
+    height: var(--playbar-height);
+    border-radius: var(--playbar-border-radius);
+    width: 100%;
+
+}
+
+.home_playbar{
+    background-color: var(--playbar-color);
+    height: var(--playbar-height);
+    border-radius: var(--playbar-border-radius);
+    width: 0%;
+}
+
 .beta_tag{
     font-size: 50%;
     border: 1px solid red;

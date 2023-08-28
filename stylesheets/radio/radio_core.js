@@ -243,6 +243,17 @@ var channels_base = {
             sizes: "1400x1400",
             type: "image/jpeg"
         } 
+    },
+    originals: {
+        name: "Originals",
+        description: "Luckyapp Originals Collection",
+        streams: ["loop1", "skyfall_fresh"],
+        color: "#2c2c2c",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/logo.png",
+            size: "1440x1440",
+            type: "image/png"
+        }
     }
 };
 
@@ -266,8 +277,8 @@ var radio = {
     },
     streamlist: {
         base: {
-            content: streamlist_base,
-            keylist: Object.keys(streamlist_base)
+            content: Object.assign({},streamlist_base),
+            keylist: Object.keys(Object.assign({},streamlist_base))
         },
         custom: {
             active: false,
@@ -299,9 +310,10 @@ function radio_start(){
     }
     loadPlaybuttons();
     loadPlaybars();
-    window.addEventListener('message', function (evt) {radiotext_receive(evt.data)});
+    //window.addEventListener('message', function (evt) {radiotext_receive(evt.data)});
     radiotext_load();
     streamlist_load();
+    originals_home_load();
     recently_played_load();
 }
 
@@ -346,12 +358,15 @@ function streamlist_load(){
 
 
 class audioObject{
-    constructor(source,name,description,type,image){
+    constructor(source,name,description,type,image, data){
         this.source = source;
         this.name = name;
         this.description = description;
         this.type = type;
         this.image = image;
+        try{
+            this.data_raw = data;
+        }catch(err){}
     }
 }
 
@@ -361,14 +376,14 @@ var player = {
     playbuttons: [],
     playbars: [],
     audioList: {
-        audios: radio.streamlist.base.content,
-        keylist: radio.streamlist.base.keylist
+        audios: Object.assign({}, radio.streamlist.base.content),
+        keylist: JSON.parse(JSON.stringify(radio.streamlist.base.keylist))
     },
     add: function(id, source, data){
         if(player.check(id)!=true){
             this.audioList.keylist.push(id);
             console.warn(data);
-            this.audioList.audios[id] = new audioObject(source,data.name,data.description,data.type,data.image);
+            this.audioList.audios[id] = new audioObject(source,data.name,data.description,data.type,data.image,data);
             reloadPlaybuttons();
         }else{
             console.warn(id +" kann nicht hinzugefügt werden, da die Id bereits belegt ist.");
@@ -533,7 +548,7 @@ function reloadPlaybuttons(){
 }
 
 function loadPlaybars(){
-    var playbars = document.getElementsByClassName("playbar");
+    var playbars = document.getElementsByClassName("home_playbar");
     for(i=0;i<playbars.length;i++){
         if(playbars[i].getAttribute("data-audio")){
             for(j=0;j<player.audioList.keylist.length;j++){ 
@@ -773,6 +788,7 @@ function recently_played_load(streamlist){
             var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].description;
            // console.warn(streamlist.content[streamlist.keylist[i]])
         }
+        console.log(streamlist.content[streamlist.keylist[i]]);
 
         if(part_of_channels(streamlist.keylist[i])){
             var home_card_class = "home_card";
@@ -786,13 +802,21 @@ function recently_played_load(streamlist){
         }else{
             var image_src = "https://luckyapps.github.io/Musik/media/images/logo.png"
         }
+        var playbar = "";
+        if(streamlist.content[streamlist.keylist[i]].data_raw){
+            if(streamlist.content[streamlist.keylist[i]].data_raw.playbar){
+                console.log("playbar");
+                var playbar = '<div class="home_playbarContainer"><div class="home_playbar" data-audio='+ streamlist.keylist[i] +'></div></div>'
+            }
+        }
         if(streamlist.content[streamlist.keylist[i]]){
-            home_container.innerHTML += "<div class='"+ home_card_class +"' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ image_src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p"+ radiotext +"</p></div>"
+            home_container.innerHTML += "<div class='"+ home_card_class +"' id='"+ streamlist.keylist[i] +"_hc'><div class='home_card_img'><img src='"+ image_src +"'><div class='home_card_play playbutton' data-audio='"+ streamlist.keylist[i] +"'>Toggle</div></div><h3>"+ streamlist.content[streamlist.keylist[i]].name +"</h3><p "+ radiotext +"</p>"+ playbar +"</div>";
         }else{
             console.log("nomain");
         }    
     }
     reloadPlaybuttons();
+    loadPlaybars();
     channels_start();
 }
 

@@ -54,6 +54,16 @@
             </div>
             <div class="homebar_settings" onclick="settings_start()">Settings</div>
         </section>
+        <section class="radio_recent">
+            <div class="home_sectitle">
+                <h2>Zuletzt Gespielt <span class="neu_tag"></span></h2>
+
+                <!--<div class="show_more" id="radio_home_show_more" value="radio" onclick="//show_all_open('recent')">Mehr Anzeigen</div>-->
+            </div>
+            <div class="home_card_container">
+                <p>Spiele etwas ab, damit es hier angezeigt wird.</p>
+            </div>
+        </section>
         <section class="radio_home">
             <div class="home_sectitle">
                 <h2>Radio</h2>
@@ -111,14 +121,14 @@
                 </div>
             </div>
         </section>
-        <section class="radio_recent">
+        <section class="radio_originals">
             <div class="home_sectitle">
-                <h2>Zuletzt Gespielt <span class="neu_tag"></span></h2>
+                <h2>Originals <span class="beta_tag"></span></h2>
 
-                <!--<div class="show_more" id="radio_home_show_more" value="radio" onclick="//show_all_open('recent')">Mehr Anzeigen</div>-->
+                <div class="show_more" id="radio_home_show_more" value="radio" onclick="channels_load({id:'loop1'})">Mehr Anzeigen</div>
             </div>
             <div class="home_card_container">
-                <p>Spiele etwas ab, damit es hier angezeigt wird.</p>
+                <p>Keine Originals verfügbar</p>
             </div>
         </section>
         <section class="radio_channels">
