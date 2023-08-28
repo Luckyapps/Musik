@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23083.0",
+            title: "Luckyapp Musik Update 3|aug23",
+            name: "Hauptseite Design",
+            date: "28.08.2023",
+            type: "UPDATE",
+            description: "<ul><li>Design Update der Hauptseite: <ul><li>Lücke auf der linken und rechten Seite beim scrollen entfernt.</li></ul></li></ul>"
+        },{
             id: "dv.2.23082.0",
             title: "Luckyapp Musik Update 2|aug23",
             name: "Hauptseite und Originals",
