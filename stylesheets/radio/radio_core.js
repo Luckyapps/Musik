@@ -247,7 +247,7 @@ var channels_base = {
     originals: {
         name: "Originals",
         description: "Luckyapp Originals Collection",
-        streams: ["loop1", "skyfall_fresh"],
+        streams: [],
         color: "#2c2c2c",
         image: {
             src: "https://luckyapps.github.io/Musik/media/images/logo.png",
@@ -778,10 +778,12 @@ function recently_played_load(streamlist){
     if(streamlist == false){
         return false;
     }
+    console.log(streamlist);
     //console.log(radio.radiotext);
     var home_container = document.getElementsByClassName("radio_recent")[0].getElementsByClassName("home_card_container")[0];
     home_container.innerHTML = "";
     for(i=0; i < streamlist.keylist.length; i++){
+        //console.log(streamlist.content[streamlist.keylist[i]]);
         if(streamlist.content[streamlist.keylist[i]].radiotext != undefined){
             var radiotext = " id='"+ streamlist.keylist[i] +"_rtcd'>"+ streamlist.content[streamlist.keylist[i]].radiotext;
         }else{

@@ -68,21 +68,71 @@ var sources = {
             type: "audio/wav",
             playbar: true
         },
+        loop4:{
+            name: "LOOP4",
+            description: "Ein Loop für zwischendurch",
+            source: "media/audio/LOOP 4.wav",
+            type: "audio/wav",
+            playbar: true
+        },
         skyfall_fresh:{
             name: "Skyfall Fresh",
             description: "Luckyapp Remix von Skyfall",
             source: "media/audio/Adele - Skyfall_F_minor__bpm_104.mp3",
             type: "audio/mp3",
             playbar: true
+        },
+        klavierstück1:{
+            name: "Klavierstück1",
+            description: "Selbstkomponiertes Klavierstück",
+            source: "media/audio/Eigen.mp3",
+            type: "audio/mp3",
+            playbar: true
+        },
+        holz:{
+            name: "Holz Loop",
+            description: "Ich und mein Holz loop",
+            source: "media/audio/holz.wav",
+            type: "audio/wav",
+            playbar: true
+        },
+        song1:{
+            name: "Song1",
+            description: "",
+            source: "media/audio/Song-1-1.wav",
+            type: "audio/wav",
+            playbar: true
+        },
+        web1:{
+            name: "web1",
+            description: "",
+            source: "media/audio/Web1.wav",
+            type: "audio/wav",
+            playbar: true
+        },
+        web1neu:{
+            name: "web1neu",
+            description: "",
+            source: "media/audio/Web1neu.wav",
+            type: "audio/wav",
+            playbar: true
+        },
+        web22:{
+            name: "web2",
+            description: "",
+            source: "media/audio/Web2.wav",
+            type: "audio/wav",
+            playbar: true
         }
     }
 }
 
-//insert originals to player
+//insert originals to player and channels
 var source = sources.list;
 var keylist = Object.keys(source);
 for(g=0;g<keylist.length;g++){
     var obj = source[keylist[g]];
+    radio.channels.originals.streams.push(keylist[g]);
     player.add(keylist[g], obj.source, obj);
 }
 
