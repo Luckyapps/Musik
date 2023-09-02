@@ -123,6 +123,20 @@ var sources = {
             source: "media/audio/Web2.wav",
             type: "audio/wav",
             playbar: true
+        },
+        whistle:{
+            name: "Whistle by Flo Rida | Fresh Version",
+            description: "Luckyapp Remix",
+            source: "media/audio/Flo Rida - Whistle_F_major__bpm_137.mp3",
+            type: "audio/mp3",
+            playbar: true
+        },
+        byebye:{
+            name: "Bye Bye by Cro | Fresh Version",
+            description: "Luckyapp Remix",
+            source: "media/audio/Cro - Bye Bye_D♭_major__bpm_106.mp3",
+            type: "audio/mp3",
+            playbar: true
         }
     }
 }
