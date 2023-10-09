@@ -254,6 +254,17 @@ var channels_base = {
             size: "1440x1440",
             type: "image/png"
         }
+    },
+    alternative: {
+        name: "Alternative Collection",
+        description: "Alternative Lokalsender",
+        streams: ["radio21buxtehude","njoy","radiosauerland"],
+        color: "green",
+        image: {
+            src: "https://luckyapps.github.io/Musik/media/images/logo.png",
+            size: "1440x1440",
+            type: "image/png"
+        }
     }
 };
 

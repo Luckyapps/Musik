@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23101.0",
+            title: "Luckyapp Musik Update 1|okt23",
+            name: "Alternative Collection Channel",
+            date: "09.10.2023",
+            type: "UPDATE",
+            description: "<ul><li>Neuer Channel hinzugefügt: Alternative Collection <ul><li>Hier findest du alle lokale, freie und eher alternative Channels</li></ul></li></ul>"
+        },{
             id: "dv.2.23083.0",
             title: "Luckyapp Musik Update 3|aug23",
             name: "Hauptseite Design",
