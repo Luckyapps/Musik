@@ -214,7 +214,7 @@ section{
     height: var(--playbar-height);
     border-radius: var(--playbar-border-radius);
     width: 100%;
-
+    cursor:pointer;
 }
 
 .home_playbar{
@@ -222,6 +222,7 @@ section{
     height: var(--playbar-height);
     border-radius: var(--playbar-border-radius);
     width: 0%;
+    transition: width .2s;
 }
 
 .beta_tag{

@@ -10,7 +10,7 @@ function channels_start(){
 }
 
 function channels_start_onclick(e){
-    if(e.target.classList == "home_card_play" ||e.target.classList == "home_card_play playbutton"){
+    if(e.target.classList == "home_card_play" ||e.target.classList == "home_card_play playbutton"||e.target.classList.contains("home_playbarContainer")||e.target.classList.contains("home_playbar")){
         //console.log("Play");
     }else{
         //console.log("Card");

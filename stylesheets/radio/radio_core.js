@@ -475,6 +475,14 @@ var player = {
         playbar_design_toggle();
         songscreen_playbutton_toggle()
         save_radio();
+    },
+    changeProgress: function(playbar_progress, audio_id){
+        if(audio_id == player.currentAudio.id){
+            player.currentAudio.audio.currentTime = player.currentAudio.audio.duration * playbar_progress;
+        }else{
+            console.log("Das zur Playbar gehörende Audio ist aktuell nicht das aktive Audio.");
+            console.log(audio_id);
+        }
     }
 }
 
@@ -584,8 +592,20 @@ function playbarsclickeventlistener(e){
     var rect = e.target.getBoundingClientRect();
     var x = e.clientX - rect.left; //x position within the element.
     var y = e.clientY - rect.top;  //y position within the element.
-    console.log("x: "+ x +" | "+ "y: "+ y);
-    console.log(parseFloat(e.target.childNodes[0].style.width));
+    //console.log("x: "+ x +" | "+ "y: "+ y);
+    var playbar_progress, audio_id;
+    if(e.target.classList.contains("home_playbarContainer")||e.target.classList.contains("playbarContainer")){ //Klickposition unterscheiden
+        var width = parseFloat(window.getComputedStyle(e.target).getPropertyValue("width"));
+        playbar_progress = (1 / width) * x;
+        audio_id = e.target.childNodes[0].getAttribute("data-audio");
+    }else if(e.target.classList.contains("home_playbar")||e.target.classList.contains("playbar")){
+        var width = parseFloat(window.getComputedStyle(e.target.parentElement).getPropertyValue("width"));
+        playbar_progress = (1 / width) * x;
+        audio_id = e.target.getAttribute("data-audio");
+    }else{
+        console.warn("Playbar Klickevent Fehler: Klassennamen überprüfen");
+    }
+    player.changeProgress(playbar_progress, audio_id);
 };//für Playbuttons eventlistener
 
 
