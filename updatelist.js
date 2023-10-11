@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.23103.0",
+            title: "Luckyapp Musik Update 3|okt23",
+            name: "Playbars Update 2",
+            date: "10.10.2023",
+            type: "UPDATE",
+            description: "<ul><li>Die Playbars wurden geupdated <ul><li>Das klicken auf die Playbar eines pausierten Audios wird die Wiedergabe nun auf dieses Audio gewechselt.</li></ul></li></ul>"
+        },{
             id: "dv.2.23102.0",
             title: "Luckyapp Musik Update 2|okt23",
             name: "Playbars Update",
