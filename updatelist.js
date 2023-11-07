@@ -3,6 +3,13 @@ var updatelist_musik = {
     "content": [
         {
             id: "dv.2.23103.1",
+            title: "Luckyapp Musik Update 3|okt23 Bugfix 1",
+            name: "Navbar align Fix",
+            date: "31.11.2023",
+            type: "BUGFIX",
+            description: "<ul><li>Ein Problem mit dem alignment der Links in der Navbar wurde behoben.</li></ul>"
+        },{
+            id: "dv.2.23103.0",
             title: "Luckyapp Musik Update 3|okt23",
             name: "Playbars Update 2",
             date: "11.10.2023",
