@@ -2,6 +2,13 @@ var updatelist_musik = {
     "source": "Musik",
     "content": [
         {
+            id: "dv.2.24061.1",
+            title: "Luckyapp Musik Update 1|jun Bugfix 1",
+            name: "Navbar align Fix",
+            date: "14.06.2024",
+            type: "BUGFIX",
+            description: "<ul><li>Ein Problem wurde behoben, das dafür gesorgt hat, dass ein pausierter Live Stream nicht an der Live position weitergespielt hat.</li></ul>"
+        },{
             id: "dv.2.23103.1",
             title: "Luckyapp Musik Update 3|okt23 Bugfix 1",
             name: "Navbar align Fix",
