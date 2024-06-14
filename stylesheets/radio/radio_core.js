@@ -421,10 +421,10 @@ var player = {
             player.audioList.audios[audio_id].audio.addEventListener("timeupdate", (evt)=>{if(player.audioList.audios[audio_id].playbars){playbars.update(player.audioList.audios[audio_id]);}});
         }
         var audio = player.audioList.audios[audio_id].audio;
-        if(player.audioList.audios[audio_id].type == "radio"){
+        /*if(player.audioList.audios[audio_id].type == "radio"){
             console.log("INFO");
             audio.src = audio.src;
-        }
+        }*/
         audio.play();
         this.audioPlaying = true;
         this.currentAudio = player.audioList.audios[audio_id];
@@ -438,13 +438,23 @@ var player = {
     pause: function(audio_id){
         console.log(audio_id);
         var audio = player.audioList.audios[audio_id].audio;
-        audio.pause();
+        if(player.audioList.audios[audio_id].type == "radio"){ //Setzte Stream zurück
+            audio.src = "about:";
+            audio.pause();
+            setTimeout(function () { 
+                audio.load(); // This stops the stream from downloading
+            });
+            audio.src = player.audioList.audios[audio_id].source;
+            audio.load();
+        }else{
+            audio.pause();
+        }
         this.audioPlaying = false;
         if(player.audioList.audios[audio_id].buttons){
             playbuttons.update(player.audioList.audios[audio_id].buttons);
         }
     },
-    stop: function(audio_id){
+    stop: function(audio_id){ // Wird nicht benutzt????
         if(audio_id != undefined){
             var audio = player.audioList.audios[audio_id].audio;
         }else{
