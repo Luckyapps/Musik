@@ -137,6 +137,27 @@ var sources = {
             source: "media/audio/Cro - Bye Bye_D♭_major__bpm_106.mp3",
             type: "audio/mp3",
             playbar: true
+        },
+        backToBlack:{
+            name: "Back to Black by Amy Winehouse | Fresh Version",
+            description: "Luckyapp Remix",
+            source: "media/audio/Amy Winehouse - Back To Black_G♭_minor__bpm_170.mp3",
+            type: "audio/mp3",
+            playbar: true
+        },
+        takeMeToChurch:{
+            name: "Take Me To Church by Hozier | Fresh Version",
+            description: "Luckyapp Remix",
+            source: "media/audio/Hozier - Take Me To Church_A♭_minor__bpm_173.mp3",
+            type: "audio/mp3",
+            playbar: true
+        },
+        tiktok:{
+            name: "Tik Tok by Ke$ha | Fresh Version",
+            description: "Luckyapp Remix",
+            source: "media/audio/Ke$ha - Tik Tok_G_minor__bpm_155.mp3",
+            type: "audio/mp3",
+            playbar: true
         }
     }
 }
