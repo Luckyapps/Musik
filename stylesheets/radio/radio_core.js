@@ -200,10 +200,13 @@ var streamlist_base = {
     njoy:{
         name:"N-JOY",
         description: "Das 1Live des Nordens",
-        radiotext_url: "https://www.n-joy.de/public/radioplaylists/njoy.json", //inkl. weiere Infos
-        source: "https://d111.rndfnk.com/ard/ndr/njoy/live/mp3/128/stream.mp3?cid=01FBRKKTM6TVGA3B3W6Y8NMXK8&sid=2UOa7pXqV0I7kIPb4YARMTDcRaX&token=vSr7JRoKq6p6zfrxKzC6hq4dB6MAVwpANhciJggOE4g&tvf=VjNB1AUofhdkMTExLnJuZGZuay5jb20",
+        radiotext_url: "https://www.ndr.de/public/radioplaylists/njoy.json", //inkl. weitere Infos
+        //radiotext_url: "https://www.n-joy.de/public/radioplaylists/njoy.json", //inkl. weiere Infos (ALTER LINK)
+        //OLD-Source source: "https://d111.rndfnk.com/ard/ndr/njoy/live/mp3/128/stream.mp3?cid=01FBRKKTM6TVGA3B3W6Y8NMXK8&sid=2UOa7pXqV0I7kIPb4YARMTDcRaX&token=vSr7JRoKq6p6zfrxKzC6hq4dB6MAVwpANhciJggOE4g&tvf=VjNB1AUofhdkMTExLnJuZGZuay5jb20",
+        source: "http://icecast.ndr.de/ndr/njoy/live/mp3/128/stream.mp3",
         image:{
-            src: "https://www.n-joy.de/favicon-196x196.png",
+            //src: "https://www.n-joy.de/favicon-196x196.png",
+            src: "https://luckyapps.github.io/Musik/media/images/njoy.webp",
             size: "196x196",
             type: "image/png"
         }
